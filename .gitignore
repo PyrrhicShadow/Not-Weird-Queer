@@ -1,1 +1,4 @@
 *.rpyc
+/cache/
+/saves/
+/tl/
