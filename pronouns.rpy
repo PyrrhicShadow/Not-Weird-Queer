@@ -46,6 +46,7 @@ label gender_custom:
 
     $ gender = "enby"
     $ noun = "kid"
+    $ adj = "neutral"
 
     "Currently, custom pronouns are not supported."
 

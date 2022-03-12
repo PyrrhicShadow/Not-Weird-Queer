@@ -8,7 +8,7 @@ label def_charas:
     define a = Character("[ally]", color="22AAEE", what_prefix="\"", what_suffix="\"", image="ally")
 
     # unnamed classmate characters
-    # define x = Character("[classmate]", color="999999", what_prefix="\"", what_suffix="\"", image="boy")
+    define x = Character("[classmate]", color="999999", what_prefix="\"", what_suffix="\"", image="extra")
     define xm = Character("[m_classmate]", color="9999AA", what_prefix="\"", what_suffix="\"", image="boy")
     define xf = Character("[f_classmate]", color="AA9999" ,what_prefix="\"", what_suffix="\"", image="girl")
 

@@ -125,7 +125,7 @@ label mathBud:
 
     "[name] leaves the classroom and heads back into the void of the game."
 
-    scene bg start
+    scene bg end day
 
     "Now time to test that all the characters work."
 

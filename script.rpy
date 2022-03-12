@@ -15,8 +15,6 @@ label start:
     # names of people
     $ name = ""
     $ ally = ""
-    $ mathbud = ""
-    $ popkid = ""
     $ bioteam = renpy.random.choice(["Issac", "Evan", "Luke"])
 
     # variables
@@ -32,6 +30,7 @@ label start:
     $ talk = False
     $ complete = False
     $ actn = 0
+    $ temp1 = "" 
 
     scene bg start game
 

@@ -1,4 +1,4 @@
-# The script for day 1
+# The script for part 1 day 1
 
 label ch1_01:
 
