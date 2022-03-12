@@ -23,12 +23,12 @@ label def_charas:
 
     # teacher characters
     define t = Character("[teacher]", color="555555", what_prefix="\"", what_suffix="\"", image="teacher")
-    define pe = Character("Coach Paul", kind=t)
-    define bio = Character("Mr. Kinsey", kind=t)
-    define hist = Character("Mr. Coulter", kind=t)
-    define eng = Character("Mr. Francis", kind=t)
-    define math = Character("Mrs. Pendle", kind=t)
-    define art = Character("Ms. Tedders", kind=t)
+    define pe = Character("[peTeach]", kind=t)
+    define bio = Character("[bioTeach]", kind=t)
+    define hist = Character("[histTeach]", kind=t)
+    define eng = Character("[engTeach]", kind=t)
+    define math = Character("[mathTeach]", kind=t)
+    define art = Character("[artTeach]", kind=t)
 
     # other characters
     define mom = Character("Mom", type=t, image="mom")

@@ -16,6 +16,12 @@ label start:
     $ name = ""
     $ ally = ""
     $ bioteam = renpy.random.choice(["Issac", "Evan", "Luke"])
+    $ peTeach = "Coach Paul"
+    $ bioTeach = "Mr. Kinsey"
+    $ histTeach = "Mr. Coulter"
+    $ engTeach = "Mr. Francis"
+    $ mathTeach = "Mrs. Pendle"
+    $ artTeach = "Ms. Tedders"
 
     # variables
     $ part = 0
@@ -30,7 +36,9 @@ label start:
     $ talk = False
     $ complete = False
     $ actn = 0
-    $ temp1 = "" 
+    $ temp1 = ""
+    $ temp2 = ""
+    $ temp3 = ""
 
     scene bg start game
 
