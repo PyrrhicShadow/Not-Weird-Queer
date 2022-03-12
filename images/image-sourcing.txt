@@ -1,0 +1,23 @@
+Placeholder images:
+
+    bg:
+        Sketchup building interior by Jake Kao
+        Sketchup classroom interior by Jake Kao
+        Pebbles drawing by Jake Kao
+        Basketball court photo by Alfonso Yang from Pexels, https://www.pexels.com/photo/basketball-court-887584/
+        School hallway photo by Kobe - from Pexels, https://www.pexels.com/photo/three-men-standing-near-window-1516440/
+        School front photo by Pexels, https://www.pexels.com/photo/red-building-with-clock-tower-207692/
+        School outside photo by JOHNY REBEL, the Explorer Panda from Pexels, https://www.pexels.com/photo/white-and-brown-building-357271/
+        School bus photo by Mihai Vlasceanu from Pexels, https://www.pexels.com/photo/yellow-school-bus-beside-gray-concrete-building-1386484/
+        Kitchen photo by Mark McCammon from Pexels, https://www.pexels.com/photo/kitchen-and-dining-area-1080721/
+        Bedroom photo by Medhat Ayad from Pexels, https://www.pexels.com/photo/white-and-black-desk-beside-bed-and-window-439227/
+
+    charas:
+        Monika from DDLC by Team Salvato, courtesy of Fandom
+        MC concept art from DDLC+ by Team Salvato, courtesy of Fandom
+        Kris fanart by Jake Kao from Deltarune by Toby Fox and team
+        Female teacher from ROverhate on pixabay, https://pixabay.com/vectors/woman-women-business-woman-female-1353211/
+        Mom from ROverhate on pixabay, https://pixabay.com/vectors/woman-women-business-woman-female-1353825/
+        Female extra from OpenClipart-Vectors on pixabay, https://pixabay.com/vectors/student-teenager-book-learning-147783/
+        Male extra from OpenClipart-Vectors on pixabay, https://pixabay.com/vectors/boy-man-teen-teenager-young-161793/
+        Note-sheet-sans (male and female) by Jake Kao, a collage from assets by Toby Fox (Undertale), Helvitza, and Hyden
