@@ -1,22 +1,35 @@
-# test script - to be removed in final game
-# uses assests not created for this game,
+# test script - to be removed in the final game
+# uses assets not created for this game,
 # such as Monika sprites and (my) Kris fanart
 
 label ch0_00:
+
+    $ part = 0
+    $ day = 0
+    $ loop = 0
+    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
 
     $ redEyes = False
 
     scene bg classroom gen
 
-    show monika norm smile
+    show monika norm
 
     # These display lines of dialogue.
 
     "[name] wakes up in a classroom with Monika in front of [n_obj]."
 
-    n norm smile "Whaaa?"
+    $ verb = v("have")
 
-    a norm smile "Hello, [name]. Welcome to the classroom."
+    "[N_sbj] [verb] no idea how [n_sbj] got there."
+
+    $ verb = v("think")
+
+    "[N_sbj] [verb] this is very strange."
+
+    n norm "Whaaa?"
+
+    a "Hello, [name]. Welcome to the classroom."
 
     n "Who are you?"
 
@@ -24,21 +37,21 @@ label ch0_00:
 
     n "Please don't kill me. I'm sorry I couldn't want to date you."
 
-    show monika sly smile
+    show monika sly
 
-    a norm smile "No need to worry. I'm [ally], not Monika."
+    a "No need to worry. I'm [ally], not Monika."
 
-    show monika norm smile
+    show monika norm
 
-    a norm smile "Like I said, this is just a placeholder for my real appearance."
+    a "As I said, this is just a placeholder for my real appearance."
 
     a "Think of it as an online avatar."
 
     n "I still don't trust you."
 
-    show monika sly smile
+    show monika sly
 
-    a norm smile "Hehe."
+    a "Hehe."
 
     scene bg start day
 
@@ -46,11 +59,11 @@ label ch0_00:
 
     scene bg classroom gen
 
-    n norm smile "What? But I'm still here?"
+    n norm "What? But I'm still here?"
 
     show kris norm eyeless
 
-    a norm smile "How's this for a better avatar, huh?"
+    a "How's this for a better avatar, huh?"
 
     n "AHHHHH! YOU HAVE NO EYES!"
 
@@ -65,8 +78,11 @@ label ch0_00:
     a "What do you think?"
 
     menu:
+        "Would red eyes have been creepier than hidden eyes?"
+
         "Yeah, you're right.":
             jump redEyes_creepy
+
         "No, red eyes look cool.":
             jump redEyes_cool
 
@@ -93,37 +109,37 @@ label mathBud:
     n "How did you know what I was thinking."
 
     hide kris
-    show monika sly smile
+    show monika sly
 
-    a norm smile "I have my ways."
+    a "I have my ways."
 
-    show monika norm smile
+    show monika norm
+
     a "Anyway."
 
-    show boy norm at left
+    $ renpy.show("extra " + a_gender + " norm", at_list=[left])
 
-    m norm "I think red eyes look sick!"
+    m "I think red eyes look sick!"
 
-    n norm smile "Who are you?"
+    n "Who are you?"
 
-    a "This is one of our classmates. Looks like he's in your math class."
-
-    hide boy
+    a "This is one of our classmates. Looks like [a_sbj]'s in your math class."
 
     n "Oh my God, please, everyone, get out of here!"
 
-    hide kris
-    show monika norm smile
+    hide extra
 
-    a norm smile "I'm sad to see you go."
+    a "I'm sad to see you go."
 
     a "Bye!"
 
     hide monika
 
-    n "Good riddence."
+    n "Good riddance."
 
     "[name] leaves the classroom and heads back into the void of the game."
+
+label charas_test:
 
     scene bg end day
 
@@ -131,107 +147,115 @@ label mathBud:
 
     scene bg club front
 
-    show ally norm smile
+    $ renpy.show("ally " + a_gender + " norm")
 
-    a norm smile "Hi, I'm [ally], and I use [a_sbj]/[a_obj] pronouns. Nice to meet you."
+    a "Hi, I'm [ally], and I use [a_sbj]/[a_obj] pronouns. Nice to meet you."
 
     hide ally
-    show girl norm
+    show sophia norm
 
-    s norm """Hi, I'm Sophia, and I use she/her pronouns.
+    s """Hi, I'm Sophia, and I use she/her pronouns.
 
     I'm the classmate in [name]'s art class. Nice to meet you."""
 
-    hide girl
-    show boy norm
+    hide sophia
+    show bioteam 1
 
-    b norm """Hi, I'm [bioteam], and I use he/him pronouns.
+    b """Hi, I'm [bioteam], and I use he/him pronouns.
 
-    I'm the classmate in [name]'s biology class. We do a group project together.
+    I'm of one [name]'s biology classmates. We do a group project together.
 
     Nice to meet you."""
 
-    hide boy
-    show girl norm
+    hide bioteam
+    show cami norm
 
-    c norm """Hi, I'm Cami Newton, and I use she/her pronouns.
+    c """Hi, I'm Cami Newton, and I use she/her pronouns.
 
     I'm in [name]'s book club. Nice to meet you."""
 
-    hide girl
-    show boy norm
+    hide cami
+    $ renpy.show("mathbud " + a_gender + " norm")
 
-    m norm """Hi, I'm Dylan, and I use he/him pronouns.
+    m """Hi, I'm [mathBud], and I use [a_sbj]/[a_obj] pronouns.
 
     [name] and I went to the same elementary school. Nice to meet you."""
 
-    hide boy
-    show girl norm
+    hide mathbud
+    $ renpy.show("popkid " + d_gender + " norm")
 
-    p norm "Hi, I'm Elise. Nice to meet you."
+    p "Hi, I'm [popKid]. Nice to meet you."
 
-    a norm smile "You need to give your pronouns."
+    show popkid at right
+    $ renpy.show("ally " + a_gender + " norm", at_list=[left])
+
+    a "You need to give your pronouns."
 
     p "Why would I need to give my pronouns?"
 
-    a "Well, Elise, everyone's has been doing it."
+    a "Well, [popKid], everyone's has been doing it."
 
-    p "Fine.  I use she/her pronouns."
+    p "Fine.  I use [d_sbj]/[d_obj] pronouns."
 
     p "There, are you happy?"
 
+    hide popkid
+    show ally at center
+
     a "Thank you. Next!"
 
-    hide girl
-    show boy norm
+    hide popkid
+    hide ally
+    show extra male norm
 
-    cp norm """Hi, I'm the Club President of the middle school book club.
+    cp """Hi, I'm the Club President of the middle school book club.
 
     I use he/him pronouns. Nice to meet you."""
 
-    hide boy
-    show girl norm
+    hide extra
+    $ renpy.show("extra " + d_gender + " norm")
 
-    e norm """Hi, I'm the eight grader in [name]'s book club.
+    $ classmate = "Classmate 1"
 
-    I use she/her pronouns.  Nice to meet you."""
+    x "Hi, I'm a generic classmate. I use [d_sbj]/[d_obj] pronouns."
 
-    show girl norm
+    hide extra
+    show extra female norm
 
-    $ f_classmate = "Classmate 1"
+    $ classmate = "Classmate 2"
 
-    xf norm """Hi, I'm a generic classmate. I use she/her pronouns.
+    xf """Hi, I'm a generic classmate. I use she/her pronouns.
 
     Nice to meet you!"""
 
-    hide girl
-    show boy norm
+    show extra male norm
 
-    $ m_classmate = "Classmate 2"
+    $ classmate = "Classmate 3"
 
-    xm norm """Hi, I'm another generic classmate.
+    xm """Hi, I'm another generic classmate.
 
     I use he/him pronouns."""
 
-    hide boy
-    show mom norm
+    hide extra
 
     mom norm "Hi, I'm [name]'s mom. Nice to meet you!"
 
-    hide mom
-    show teacher boy
+    show teacher pe
 
-    pe boy """I'm Coach Paul.
+    pe """I'm [peTeach].
 
     Teachers should have a different color than students."""
 
-    show teacher girl
+    hide teacher
+    show teacher math
 
-    math girl "And I'm Mrs. Pendle, a female teacher."
+    math "And I'm [mathTeach], a female teacher."
 
     hide teacher
 
     "Now let's test the fail-safe message: "
+
+    # call instead of jump if you don't want the game to end at the end of the message
 
     call dirty_hacker
 
@@ -239,4 +263,128 @@ label mathBud:
 
     "Now let's get on with the actual game."
 
-    jump ch1_01
+    jump ch1
+
+# for testing the game on a specific day
+label test_game:
+
+    menu:
+        "Select which part you'd like to test:"
+
+        "Debug":
+            jump charas_test
+
+        "Part 1":
+            jump test_ch1
+
+        "Part 2":
+            jump test_ch2
+
+        "Ending":
+            jump tbc
+
+label test_ch1:
+
+    $ part = 1
+
+    call test_variables
+
+    menu:
+
+        "Select which chapter you'd like to begin at:"
+
+        "Part 1":
+            jump ch1
+
+        "Day 1":
+            jump ch1_01
+
+        "Day 2":
+            jump ch1_02
+
+        "Day 3":
+
+            jump ch1_03
+        "Day 4":
+            jump ch1_04
+
+        "Day 5":
+            jump ch1_05
+
+        "Day 6: Weekend":
+            jump ch1_06
+
+label test_ch2:
+
+    $ part = 2
+
+    call test_variables
+
+    menu:
+        "Select which chapter you'd like to begin at:"
+
+        "Part 2":
+            jump ch2
+
+        "Day 7":
+            jump tbc
+
+        "Day 8":
+            jump tbc
+
+        "Day 9":
+            jump tbc
+
+        "Day 10":
+            jump tbc
+
+        "Day 11":
+            jump tbc
+
+        "Day 12: Weekend":
+            jump tbc
+
+label test_variables:
+
+    "Input your day number (not loop) to test specific scenarios."
+
+    $ temp2 = renpy.input("Input your day number:", length=2, allow="{0123456789}")
+    $ temp2 = temp2.strip()
+    if temp2 == "":
+        $ day = 0
+    else:
+        $ day = int(temp2)
+
+    "Input your point values ahead of time to test specific scenarios."
+
+    $ temp2 = renpy.input("Input your self points:", length=2, allow="{0123456789}")
+    $ temp2 = temp2.strip()
+    if temp2 == "":
+        $ self = 0
+    else:
+        $ self = int(temp2)
+
+    if part == 1:
+        $ temp2 = renpy.input("Input your ally-action points:", length=2, allow="{0123456789}")
+        $ temp2 = temp2.strip()
+        if temp2 == "":
+            $ ryan = 0
+        else:
+            $ ryan = int(temp2)
+    elif part == 2:
+        $ temp2 = renpy.input("Input your action points:", length=2, allow="{0123456789}")
+        $ temp2 = temp2.strip()
+        if temp2 == "":
+            $ actn = 0
+        else:
+            $ actn = int(temp2)
+
+    "Set certain boolean variables."
+
+    menu:
+        "Talk true":
+            $ talk = True
+        "Talk false":
+            $ talk = False
+
+    return

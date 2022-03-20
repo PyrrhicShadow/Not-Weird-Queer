@@ -247,6 +247,28 @@ screen quick_menu():
 
     if quick_menu:
 
+        if persistent.debug:
+            vbox:
+                style_prefix "debug"
+                xalign 0.04
+                yalign 0.05
+
+                text "[name] ([n_sbj]/[n_obj])"
+
+            vbox:
+                style_prefix "debug"
+                xalign 0.05
+                yalign 0.11
+
+                text "Days: [day] (Part [part] day [loop])"
+                text "Self: [self] | Happy: [happy] ([last_happy])"
+                text "[ally]: [ryan] | Action: [actn] ([outfit])"
+                if death:
+                    text "Deaths: [deaths]"
+                text "bus: [bus] | club: [share] | share: [share] | talk: [talk]"
+                if persistent.complete:
+                    text "Completed"
+
         hbox:
             style_prefix "quick"
 
@@ -258,9 +280,13 @@ screen quick_menu():
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            textbutton _("Load") action ShowMenu('load')
+            # textbutton _("Q.Save") action QuickSave()
+            # textbutton _("Q.Load") action QuickLoad()
+            textbutton _("T.Debug") action ToggleVariable("persistent.debug")
+            if not persistent.debug:
+                textbutton _("M.Debug") action ShowMenu('debug')
+            textbutton _("Settings") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -310,6 +336,8 @@ screen navigation():
             textbutton _("Save") action ShowMenu("save")
 
         textbutton _("Load") action ShowMenu("load")
+
+        # textbutton "Gallery" action ShowMenu("gallery")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -641,11 +669,11 @@ screen file_slots(title):
 
                         add FileScreenshot(slot) xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
-                            style "slot_time_text"
-
                         text FileSaveName(slot):
                             style "slot_name_text"
+
+                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
+                            style "slot_time_text"
 
                         key "save_delete" action FileDelete(slot)
 

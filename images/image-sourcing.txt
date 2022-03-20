@@ -9,8 +9,10 @@ Placeholder images:
         School front photo by Pexels, https://www.pexels.com/photo/red-building-with-clock-tower-207692/
         School outside photo by JOHNY REBEL, the Explorer Panda from Pexels, https://www.pexels.com/photo/white-and-brown-building-357271/
         School bus photo by Mihai Vlasceanu from Pexels, https://www.pexels.com/photo/yellow-school-bus-beside-gray-concrete-building-1386484/
+        School bathroom photo by Lisa Fotios from Pexels, https://www.pexels.com/photo/blue-public-toilets-2949748/
         Kitchen photo by Mark McCammon from Pexels, https://www.pexels.com/photo/kitchen-and-dining-area-1080721/
         Bedroom photo by Medhat Ayad from Pexels, https://www.pexels.com/photo/white-and-black-desk-beside-bed-and-window-439227/
+        Park swings photo by David Gan from Pexels, https://www.pexels.com/photo/sea-landscape-sunny-beach-10974605/
 
     charas:
         Monika from DDLC by Team Salvato, courtesy of Fandom

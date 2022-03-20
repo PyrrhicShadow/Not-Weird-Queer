@@ -7,6 +7,7 @@ label gender_male:
     $ adj = "boyish"
 
     # pronouns
+    $ plur = False
     $ n_sbj = "he"
     $ n_obj = "him"
     $ n_pos = "his"
@@ -21,6 +22,7 @@ label gender_female:
     $ adj = "girly"
 
     # pronouns
+    $ plur = False
     $ n_sbj = "she"
     $ n_obj = "her"
     $ n_pos = "her"
@@ -31,22 +33,38 @@ label gender_female:
 label gender_enby:
 
     $ gender = "enby"
-    $ noun = "kid"
-    $ adj = "neutral"
+    $ noun = "nonbinary person"
+    $ adj = "gender-neutral"
+
+    jump sex_assigned_at_birth
+
+label gender_enby_xe:
 
     # pronouns
+    $ plur = False
     $ n_sbj = "xe"
     $ n_obj = "xem"
     $ n_pos = "xyr"
     $ n_robj = "xyrs"
 
-    jump sex_assigned_at_birth
+    jump gender_enby
 
-label gender_custom:
+label gender_enby_they:
+
+    # pronouns
+    $ plur = True
+    $ n_sbj = "they"
+    $ n_obj = "them"
+    $ n_pos = "their"
+    $ n_robj = "theirs"
+
+    jump gender_enby
+
+label gender_enby_custom:
 
     $ gender = "enby"
-    $ noun = "kid"
-    $ adj = "neutral"
+    $ noun = "nonbinary person"
+    $ adj = "gender-neutral"
 
     "Currently, custom pronouns are not supported."
 
@@ -56,7 +74,9 @@ label gender_custom:
 
     menu:
         "choose xe/xem pronouns":
-            jump gender_enby
+            jump gender_enby_xe
+        "choose they/them pronouns":
+            jump gender_enby_they
         "return to pronoun choice screen":
             jump choose_pronouns
 
@@ -86,9 +106,14 @@ label transmasc:
     if ally.lower() == name.lower():
         $ally = "Owen"
 
+    $ popKid = "Elise"
+    $ mathBud = "Jaina"
+
     # ally pronouns
+    $ a_gender = "male"
     $ a_noun = "boy"
     $ a_adj = "boyish"
+
     $ a_sbj = "he"
     $ a_obj = "him"
     $ a_pos = "his"
@@ -98,6 +123,7 @@ label transmasc:
     $ d_gender = "female"
     $ d_noun = "girl"
     $ d_adj = "girly"
+
     $ d_sbj = "she"
     $ d_obj = "her"
     $ d_pos = "her"
@@ -113,10 +139,14 @@ label transfemme:
 
     if ally.lower() == name.lower():
         $ ally = "Megan"
+    $ popKid = "Jeremy"
+    $ mathBud = "Dylan"
 
     # ally pronouns
+    $ a_gender = "female"
     $ a_noun = "girl"
     $ a_adj = "girly"
+
     $ a_sbj = "she"
     $ a_obj = "her"
     $ a_pos = "her"
@@ -126,24 +156,10 @@ label transfemme:
     $ d_gender = "male"
     $ d_noun = "boy"
     $ d_adj = "boyish"
+
     $ d_sbj = "he"
     $ d_obj = "him"
     $ d_pos = "his"
     $ d_robj = "his"
 
     jump pronouns_complete
-
-label pronouns_complete:
-
-    "Are you happy with your choice? \n[name] ([n_sbj]/[n_obj])"
-
-    # The programmer (or modders) can start the game at any day (or part) by only changing this menu
-    menu:
-        "I'm ready":
-            jump ch1_01
-        "I want to test the game":
-            jump ch0_00
-        "I want to change my name":
-            jump start
-        "I want to change my pronouns":
-            jump choose_pronouns
