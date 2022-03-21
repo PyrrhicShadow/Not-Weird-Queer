@@ -268,4 +268,7 @@ label ch1_01_notebook:
 
     "[name] is ready to start a new day."
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
+
     jump ch1_02

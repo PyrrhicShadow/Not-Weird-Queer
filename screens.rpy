@@ -248,26 +248,37 @@ screen quick_menu():
     if quick_menu:
 
         if persistent.debug:
-            vbox:
-                style_prefix "debug"
-                xalign 0.04
-                yalign 0.05
 
-                text "[name] ([n_sbj]/[n_obj])"
+            window:
+                style "debug_window"
 
-            vbox:
-                style_prefix "debug"
-                xalign 0.05
-                yalign 0.11
+                vbox:
+                    style "debug_vbox"
+                    spacing 10
 
-                text "Days: [day] (Part [part] day [loop])"
-                text "Self: [self] | Happy: [happy] ([last_happy])"
-                text "[ally]: [ryan] | Action: [actn] ([outfit])"
-                if death:
-                    text "Deaths: [deaths]"
-                text "bus: [bus] | club: [share] | share: [share] | talk: [talk]"
-                if persistent.complete:
-                    text "Completed"
+                    label "[name] ([n_sbj]/[n_obj])"
+
+                    text "Days: [day] (Part [part] day [loop])"
+                    hbox:
+                        text "Self: [self]"
+                        text " | "
+                        text "Happy: [happy] ([last_happy])"
+                    hbox:
+                        text "[ally]: [ryan]"
+                        text " | "
+                        text "Action: [actn] ([outfit])"
+                    if death:
+                        text "Deaths: [deaths]"
+                    hbox:
+                        text "bus: [bus]"
+                        text " | "
+                        text "club: [share]"
+                    hbox:
+                        text "share: [share]"
+                        text " | "
+                        text "talk: [talk]"
+                    if persistent.complete:
+                        text "Completed"
 
         hbox:
             style_prefix "quick"
@@ -336,6 +347,9 @@ screen navigation():
             textbutton _("Save") action ShowMenu("save")
 
         textbutton _("Load") action ShowMenu("load")
+
+        if persistent.debug and initialized and not main_menu:
+            textbutton _("Chapter Select") action ShowMenu("chapter")
 
         # textbutton "Gallery" action ShowMenu("gallery")
 

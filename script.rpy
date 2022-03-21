@@ -11,7 +11,7 @@ label start:
     $ save_name = name + ", Day " + "%s" %day
 
     # names of people
-    $ bioteam = ""
+    $ bioteam = "Issac"
     $ peTeach = "Coach Paul"
     $ bioTeach = "Mr. Kinsey"
     $ histTeach = "Mr. Coulter"
@@ -85,10 +85,16 @@ label pronouns_complete:
     $ A_sbj = a_sbj.capitalize()
     $ D_sbj = d_sbj.capitalize()
 
+    # make sure npc names are not the same as the player name
+
+    if popKid.lower() == name.lower():
+        $ popKid = popKid + " H"
+    if mathBud.lower() == name.lower():
+        $ mathBud = mathBud + " K"
+
     # name the save file name after the player's name and pronouns
     $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
+    $ initialized = True
 
     "Are you happy with your choice?"
 
@@ -186,7 +192,7 @@ label tbc:
     and deal with all my nasty bugs and grammar problems. [temp2]
 
     I hope you enjoyed playing {i}[config.name]{/i} as much as I enjoyed making it.
-    [name] also thanks you eternally for helping [n_obj] get through [n_pos] journey.
+    [name] also thanks you eternally for helping [ n_obj] get through [n_pos] journey.
 
     You completed [n_pos] adventure with [self] self-esteem points over [day] days.
     Hopefully, through this adventure, we've all learned a little more about ourselves and the people around us.

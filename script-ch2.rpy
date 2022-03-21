@@ -5,6 +5,9 @@ label ch2:
     $ part = 2
     $ day1 = day
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
+
     scene bg start day
 
     "Part 2: Choice"

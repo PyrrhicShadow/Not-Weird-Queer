@@ -6,6 +6,9 @@ label ch1:
     $ loop = 0
     $ day = 0
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
+
     scene bg start day
 
     "Part 1: Discovery"

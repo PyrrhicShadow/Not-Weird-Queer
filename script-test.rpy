@@ -237,9 +237,11 @@ label charas_test:
     I use he/him pronouns."""
 
     hide extra
+    show mom norm
 
-    mom norm "Hi, I'm [name]'s mom. Nice to meet you!"
+    mom "Hi, I'm [name]'s mom. Nice to meet you!"
 
+    hide mom
     show teacher pe
 
     pe """I'm [peTeach].
@@ -303,8 +305,8 @@ label test_ch1:
             jump ch1_02
 
         "Day 3":
-
             jump ch1_03
+            
         "Day 4":
             jump ch1_04
 

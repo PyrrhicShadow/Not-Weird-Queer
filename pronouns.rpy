@@ -89,12 +89,16 @@ label sex_assigned_at_birth:
     menu:
         "female":
             jump transmasc
+
         "male":
             jump transfemme
+
         "random":
             $ coin = renpy.random.choice(["H", "T"])
+
             if coin == "H":
                 jump transfemme
+
             if coin == "T":
                 jump transmasc
 
@@ -102,6 +106,9 @@ label transmasc:
 
     # main chara names
     $ d_name = renpy.random.choice(["Jessica", "Allison", "Zoë"])
+    if d_name.lower() == name.lower():
+        $ d_name = "Macie" 
+
     $ ally = renpy.random.choice(["Sean", "Kyle", "Ryan"])
     if ally.lower() == name.lower():
         $ally = "Owen"
@@ -135,10 +142,13 @@ label transfemme:
 
     # main chara names
     $ d_name = renpy.random.choice(["Owen", "Peter", "Kyle"])
-    $ ally = renpy.random.choice(["Allison", "Jessica", "Zoë"])
+    if d_name.lower() == name.lower():
+        $ d_name = "Brian"
 
+    $ ally = renpy.random.choice(["Allison", "Jessica", "Zoë"])
     if ally.lower() == name.lower():
         $ ally = "Megan"
+
     $ popKid = "Jeremy"
     $ mathBud = "Dylan"
 

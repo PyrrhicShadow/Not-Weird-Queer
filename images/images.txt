@@ -21,17 +21,6 @@ side:
     main:
         side main norm smile
 
-    ally:
-        side ally norm smile
-
-    adults:
-        side mom norm
-        side teacher boy
-        side teacher girl
-        side extra norm
-        side girl norm
-        side boy norm
-
 backgrounds:
 
     home:

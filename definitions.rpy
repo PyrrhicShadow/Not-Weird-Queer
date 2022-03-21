@@ -49,12 +49,14 @@ define note = Character("[note]", kind=nvl)
 
 default persistent.debug = False
 default persistent.complete = False
-define config.has_autosave = False
-# define config.autosave_on_choice = False
-# define config.autosave_on_quit = True
+# define config.has_autosave = False
+define config.autosave_on_choice = False
+define config.autosave_on_input = False
+define config.autosave_on_quit = False
 
 default dirty_hacker = "The programmer's not sure how you got here, but you're not supposed to be here. Odds are, you're just a dirty little hacker, aren't you?"
 default save_name = "New game"
+default initialized = False
 
 default name = "New game"
 default n_sbj = "sbj"
@@ -87,13 +89,11 @@ screen debug():
 
     window:
         id "window"
-        vbox:
-            id "namebox"
-            style "namebox"
-            text "[name] ([n_sbj]/[n_obj])" id "who"
 
         vbox:
             style "say_dialogue"
+
+            label "[name] ([n_sbj]/[n_obj])" id "who"
 
             text "Days: [day] (Part [part] day [loop])" id "what"
             text "Self: [self] | Happy: [happy] ([last_happy]) | [ally]: [ryan] | Action: [actn] ([outfit])" id "what"
@@ -103,27 +103,92 @@ screen debug():
             if persistent.complete:
                 text "Completed" id "what"
 
+style debug_window:
+    xalign 0
+    yalign 0.05
+    background Image("gui/debugbox.png", xalign=0.0, yalign=0.25)
+
+style debug_vbox:
+    xalign 0.03
+    yalign 0.05
+
 # create chapter select screen for debug mode
 screen chapter():
     tag menu
 
-    use game_menu(_("About"), scroll="viewport"):
+    default chapter = 1
 
-        style_prefix "about"
+
+    use game_menu(_("Chapter Select"), scroll="viewport"):
+
+        style_prefix "help"
 
         vbox:
+            spacing 23
 
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+            hbox:
+                textbutton _("Chapter 1") action SetScreenVariable("chapter", 1)
+                textbutton _("Chapter 2") action SetScreenVariable("chapter", 2)
 
-            ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
+            if chapter == 1:
+                use chapter1
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            elif chapter == 2:
+                use chapter2
 
-style debug_vbox:
-    background "#000000"
+screen chapter1():
+
+    hbox:
+        label _("Chapter 1")
+        textbutton _("Jump to day 1") action Jump("ch1_01")
+
+    hbox:
+        label _("Chapter 2")
+        textbutton _("Jump to day 2") action Jump("ch1_02")
+
+    hbox:
+        label _("Chapter 3")
+        textbutton _("Jump to day 3") action Jump("ch1_03")
+
+    hbox:
+        label _("Chapter 4")
+        textbutton _("Jump to day 4") action Jump("ch1_04")
+
+    hbox:
+        label _("Chapter 5")
+        textbutton _("Jump to day 5") action Jump("ch1_05")
+
+    hbox:
+        label _("Chapter 6")
+        textbutton _("Jump to day 6") action Jump("ch1_06")
+
+
+
+screen chapter2():
+
+    hbox:
+        label _("Chapter 7")
+        textbutton _("Jump to day 7") action Jump("ch2_07")
+
+    hbox:
+        label _("Chapter 8")
+        textbutton _("Jump to day 8") action Jump("ch2_08")
+
+    hbox:
+        label _("Chapter 9")
+        textbutton _("Jump to day 9") action Jump("ch2_09")
+
+    hbox:
+        label _("Chapter 10")
+        textbutton _("Jump to day 10") action Jump("ch2_10")
+
+    hbox:
+        label _("Chapter 11")
+        textbutton _("Jump to day 11") action Jump("ch2_11")
+
+    hbox:
+        label _("Chapter 12")
+        textbutton _("Jump to day 12") action Jump("ch2_12")
 
 init python:
 
