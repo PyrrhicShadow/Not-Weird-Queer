@@ -14,6 +14,80 @@ label ch2_08:
 
     call ch2_bus
 
+# english class day 8
+label ch2_08_english:
+
+    scene bg classroom english
+
+    show teacher eng
+
+    "In English class, [name]'s teacher gets fed up that only one [d_noun] is answering all the questions, so he decides to pick on a [a_noun] next."
+
+    "As usual, [name] knows the answer."
+
+    "Since [ally] isn't in [name]'s English class, [n_sbj] can't ask [ally] for advice."
+
+    menu:
+        "What should [n_sbj] do?"
+
+        "Raise [n_pos] hand":
+            jump ch2_08_english_answer
+
+        "Do nothing":
+            jump ch2_08_english_nothing
+
+label ch2_08_english_answer:
+
+    $ happy += 1
+
+    "[engTeach] frowns at $name."
+
+    eng "[d_name], I'm only picking on [a_noun]s, so you can put your hand down."
+
+    "[name] takes a deep breath."
+
+    n norm "Well, I am a [noun], and I know the answer."
+
+    if outfit == "g":
+        $ actn += 1.5
+
+        "[engTeach] shrugs and looks around the room before calling on $name."
+
+    elif: outfit == "d":
+        $ actn += 0.5
+
+        eng "I'm in no mood to joke around, [d_name]."
+
+        "[engTeach] calls on two other [noun]s, who both get the question wrong, before finally calling on [name]."
+
+    else:
+        $ actn += 1
+
+        "Mr. Francis is visibly confused. He sighs deeply before calling on $name."
+
+    "Of course, [name] answers the question correctly."
+
+    if outfit == "d":
+        "Even though [engTeach] was a bit of an ass about it, at least [name] got to answer the question in the end."
+
+    scene bg school hallway
+
+    "$name meets up with $ally after English class and tells $obj what happened."
+
+    jump ch2_08_lunch
+
+label ch2_08_english_nothing:
+
+
+
+label ch2_08_lunch:
+
+
+
+label ch2_08_art:
+
+
+
 # story inspiration
 label ch2_08_club_story:
 
@@ -27,7 +101,7 @@ label ch2_08_club_story:
 
     hide extra
 
-    $ verb = v("read") 
+    $ verb = v("read")
 
     "Finally, it's time for [name] to share. [N_sbj] [verb] [n_pos] story with a calm, clear voice."
 

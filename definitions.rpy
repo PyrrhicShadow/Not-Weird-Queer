@@ -50,6 +50,7 @@ define note = Character("[note]", kind=nvl)
 default persistent.debug = False
 default persistent.complete = False
 # define config.has_autosave = False
+define config.has_quicksave = False
 define config.autosave_on_choice = False
 define config.autosave_on_input = False
 define config.autosave_on_quit = False
@@ -85,23 +86,40 @@ default death = False
 
 # create debug screen for showing happy, self, ally, and action points
 screen debug():
-    style_prefix "say"
 
     window:
-        id "window"
+        style "debug_window"
 
         vbox:
-            style "say_dialogue"
+            style "debug_vbox"
+            spacing 10
 
-            label "[name] ([n_sbj]/[n_obj])" id "who"
+            text "[name] ([n_sbj]/[n_obj])" size 25
 
-            text "Days: [day] (Part [part] day [loop])" id "what"
-            text "Self: [self] | Happy: [happy] ([last_happy]) | [ally]: [ryan] | Action: [actn] ([outfit])" id "what"
+            text "Days: [day] (Part [part] day [loop])" size 20
+            hbox:
+                text "Self: [self]" size 20
+                text " | " size 20
+                text "Happy: [happy] ([last_happy])" size 20
+            hbox:
+                text "[ally]: [ryan]" size 20
+                text " | " size 20
+                text "Action: [actn] ([outfit])" size 20
             if death:
-                text "Deaths: [deaths]" id "what"
-            text "bus: [bus] | club: [share] | share: [share] | talk: [talk]" id "what"
-            if persistent.complete:
-                text "Completed" id "what"
+                text "Deaths: [deaths]" size 20
+            hbox:
+                text "bus: [bus]" size 20
+                text " | " size 20
+                text "club: [share]" size 20
+            hbox:
+                text "share: [share]" size 20
+                text " | " size 20
+                text "talk: [talk]" size 20
+            hbox:
+                if death:
+                    text "Deaths: [deaths]" size 20
+                    if persistent.complete:
+                        text "Completed" size 20
 
 style debug_window:
     xalign 0
@@ -111,6 +129,10 @@ style debug_window:
 style debug_vbox:
     xalign 0.03
     yalign 0.05
+    size 10
+
+style debug_hbox:
+    size 10
 
 # create chapter select screen for debug mode
 screen chapter():
@@ -242,6 +264,10 @@ init python:
             xm(what, **kwargs)
         else:
             xf(what, **kwargs)
+
+    # random name bank for deadnames and ally's names for different genders
+    m_names = ["Owen", "Peter", "Kyle", "Sean", "Kevin", "Ryan", "Cole", "Andrew", "Jason"]
+    f_names = ["Allison", "Jessica", "Zoë", "Abby", "Gabby", "Emily", "Katie", "Peyton", "Ciara"]
 
     # function to switch the number agreement for the verbs
     # syntax: v(plural, singular) or v(plural)

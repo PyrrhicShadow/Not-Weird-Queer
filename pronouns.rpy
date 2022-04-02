@@ -105,11 +105,11 @@ label sex_assigned_at_birth:
 label transmasc:
 
     # main chara names
-    $ d_name = renpy.random.choice(["Jessica", "Allison", "Zoë"])
+    $ d_name = renpy.random.choice(f_names)
     if d_name.lower() == name.lower():
-        $ d_name = "Macie" 
+        $ d_name = "Macie"
 
-    $ ally = renpy.random.choice(["Sean", "Kyle", "Ryan"])
+    $ ally = renpy.random.choice(m_names)
     if ally.lower() == name.lower():
         $ally = "Owen"
 
@@ -141,11 +141,11 @@ label transmasc:
 label transfemme:
 
     # main chara names
-    $ d_name = renpy.random.choice(["Owen", "Peter", "Kyle"])
+    $ d_name = renpy.random.choice(m_names)
     if d_name.lower() == name.lower():
         $ d_name = "Brian"
 
-    $ ally = renpy.random.choice(["Allison", "Jessica", "Zoë"])
+    $ ally = renpy.random.choice(f_names)
     if ally.lower() == name.lower():
         $ ally = "Megan"
 

@@ -248,37 +248,7 @@ screen quick_menu():
     if quick_menu:
 
         if persistent.debug:
-
-            window:
-                style "debug_window"
-
-                vbox:
-                    style "debug_vbox"
-                    spacing 10
-
-                    label "[name] ([n_sbj]/[n_obj])"
-
-                    text "Days: [day] (Part [part] day [loop])"
-                    hbox:
-                        text "Self: [self]"
-                        text " | "
-                        text "Happy: [happy] ([last_happy])"
-                    hbox:
-                        text "[ally]: [ryan]"
-                        text " | "
-                        text "Action: [actn] ([outfit])"
-                    if death:
-                        text "Deaths: [deaths]"
-                    hbox:
-                        text "bus: [bus]"
-                        text " | "
-                        text "club: [share]"
-                    hbox:
-                        text "share: [share]"
-                        text " | "
-                        text "talk: [talk]"
-                    if persistent.complete:
-                        text "Completed"
+            use debug
 
         hbox:
             style_prefix "quick"
@@ -294,9 +264,8 @@ screen quick_menu():
             textbutton _("Load") action ShowMenu('load')
             # textbutton _("Q.Save") action QuickSave()
             # textbutton _("Q.Load") action QuickLoad()
-            textbutton _("T.Debug") action ToggleVariable("persistent.debug")
-            if not persistent.debug:
-                textbutton _("M.Debug") action ShowMenu('debug')
+            if persistent.debug:
+                textbutton _("Debug") action ToggleVariable("persistent.debug")
             textbutton _("Settings") action ShowMenu('preferences')
 
 

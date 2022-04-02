@@ -93,7 +93,7 @@ label ch1_01:
         x "Yeah, who does she think she is, sitting there all cocky like that?"
 
     hide extra
-    # hide extra2
+    hide extra2
 
 # lunch day 1
 
