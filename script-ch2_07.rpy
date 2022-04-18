@@ -17,6 +17,9 @@ label ch2_07:
 # biology class day 7
 
     scene bg classroom biology
+
+    play music school
+
     $ defbio = False
 
     if day == (day1 + 1):
@@ -51,28 +54,28 @@ label ch2_07:
     "[ally] addresses [name] by [n_pos] correct pronouns and [bioteam] gets confused."
 
     if day == (day1 + 1):
-        show bioteam 1
+        show bioteam 1 at left
 
         b "Wait, did you get that wrong?"
 
     elif day == (day1 + 5):
-        show bioteam 2
+        show bioteam 2 at left
 
         b "Wait, did you get that wrong?"
 
     else:
-        show bioteam 3
+        show bioteam 3 at left
         b "Wait, did you get that wrong?"
 
     a "Uh…"
 
     menu:
-        "What should $name do?"
+        "What should [name] do?"
 
-        "Explain to $bioteam that $name uses [[$sbj/$obj pronouns":
+        "Explain to [bioteam] that [name] uses [n_sbj]/[n_obj] pronouns":
             jump ch2_07_bio_explain
 
-        "Tell $bioteam [[not to worry about it":
+        "Tell [bioteam] not to worry about it":
             jump ch2_07_bio_ignore
 
 label ch2_07_bio_explain:
@@ -103,7 +106,7 @@ label ch2_07_bio_ignore:
 
     "[name] feels awkward about it, so [n_sbj] not to explain anything to [bioteam]."
 
-    n "Oh, don't worry about it, $bioteam."
+    n norm "Oh, don't worry about it, [bioteam]."
 
     "[bioteam] frowns but doesn't say anything more."
 
@@ -123,15 +126,17 @@ label ch2_07_ryan_apologizes:
 
     $ ryan += 1
 
-    scene bg school hallway
-
     "Regardless, the three continue to work on their poster."
+
+    scene bg school hallway
 
     "[ally] pulls [name] aside before they have to get to their next class."
 
+    $ renpy.show("ally " + a_gender + " norm")
+
     a "Hey, [name], I'm sorry about putting you on the spot there."
 
-    n "It wasn't your fault, [ally]. It's nice of you to apologize, though."
+    n norm "It wasn't your fault, [ally]. It's nice of you to apologize, though."
 
     a "Well, it just doesn't feel right to expose you like that. I'll try to remember next time."
 
@@ -149,6 +154,8 @@ label ch2_07_ryan_apologizes:
     "[name] says goodbye to [ally] and heads to [n_pos] next class."
 
 # history class day 7
+
+    scene bg classroom history
 
     if day == (day1 + 1):
         $ temp1 = "playing a movie about the American Revolution"
@@ -169,7 +176,7 @@ label ch2_07_ryan_apologizes:
 
     "[name] writes a poem about [temp1] in [n_pos] notebook."
 
-    n_self "History is so boring."
+    n_self "History class is so boring."
 
     "Lunch can't come soon enough."
 
@@ -181,7 +188,9 @@ label ch2_07_ryan_apologizes:
 
     "As [ally] takes a bite of [n_pos] cafeteria sloppy joe, [name] hesitantly decides to ask [n_obj] a question."
 
-    n "Hey, [ally]. Why did you, um, want to be my friend?"
+    play music ally
+
+    n norm "Hey, [ally]. Why did you, um, want to be my friend?"
 
     "[ally] sets down [a_pos] messy sandwich."
 
@@ -215,6 +224,8 @@ label ch2_07_ryan_apologizes:
 
     a "Touché, [name]. Touché."
 
+    play music school
+
     jump ch2_club
 
 label ch2_07_club_story:
@@ -239,10 +250,11 @@ label ch2_07_club_story:
 label ch2_07_club_share:
 
     $ happy += 1
-    $ renpy.show("norm " + gender + " " + outfit + " norm")
+    $ renpy.show("main " + gender + " " + outfit + " norm")
 
     "[name] shares [n_pos] story and the other club members snap enthusiastically."
 
+    hide main
     show extra male norm
 
     cp "That was really good, [d_name]."
@@ -250,7 +262,7 @@ label ch2_07_club_share:
     cp "Who wants to go next?"
 
     hide extra
-    $ renpy.show("ally " + a_gender + " smile")
+    $ renpy.show("ally " + a_gender + " smile", at_list=[right])
 
     a "[name], you did great. That was amazing!"
 

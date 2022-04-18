@@ -6,7 +6,12 @@ label ch1_01:
     $ day += 1
     $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
+
     scene bg bedroom
+
+    play music name
 
     "Morning, day [day]."
 
@@ -44,8 +49,9 @@ label ch1_01:
 
     scene bg bus
 
-    "[name] walks to the bus stop and gets on the next bus."
+    play music outside
 
+    "[name] walks to the bus stop and gets on the next bus."
     "There are three open seats left."
 
     $ verb = v("sit")
@@ -70,9 +76,11 @@ label ch1_01:
 
     scene bg classroom history
 
+    play music school
+
     "[name] goes to [n_pos] first class of the day, history."
 
-    "Doodling in [n_pos] notebook, [name] tries [n_obj] to pay attention to the classwork without falling asleep."
+    "Doodling in [n_pos] notebook, [name] tries [n_pos] best to pay attention to the classwork without falling asleep."
 
     $ verb = v("is")
 
@@ -95,11 +103,11 @@ label ch1_01:
     hide extra
     hide extra2
 
-# lunch day 1
-
     "[name] shrinks into [n_pos] desk and tries to ignore [n_pos] classmates by burying [n_pos] head in [n_pos] classwork."
 
     "Thankfully, it's soon lunchtime."
+
+# lunch day 1
 
     scene bg gym lunch
 
@@ -121,6 +129,8 @@ label ch1_01:
     $ classmate = "Classmate 1"
     $ renpy.show("extra " + d_gender + " norm")
 
+    play music bully
+
     x "Hey, look at that weirdo over there."
 
     $ classmate = "Classmate 2"
@@ -138,6 +148,8 @@ label ch1_01:
     x "Haha, definitely."
 
     scene bg field lunch
+
+    play music school
 
     $ verb = v("get")
     $ verb1 = v("leave")
@@ -202,7 +214,7 @@ label ch1_01_notebook:
 
     "[name] wishes [n_sbj] could express [n_obj]self better."
 
-    "Back to the notebook, [name] continues crafting [n_pos] latest story."
+    "Back in [n_pos] notebook, [name] continues crafting [n_pos] latest story."
 
     """[name] loves to write short stories and poems. It's the only way [n_sbj] can really express [n_obj]self.
 
@@ -256,6 +268,8 @@ label ch1_01_notebook:
 # go home day 1
 
     scene bg school street
+
+    play music name
 
     "After the book club, [name] walks home by [n_obj]self."
 

@@ -58,12 +58,12 @@ define config.has_voice = True
 # define config.sample_voice = "sample-voice.ogg"
 
 
-## Uncomment the following line to set an audio file that will be played while
+## The audio file that will be played while
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
-
+define config.main_menu_music = audio.start
+define config.main_menu_music_fadein = 3.0
 
 ## Transitions #################################################################
 ##
@@ -206,4 +206,4 @@ init python:
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
-# define build.itch_project = "renpytom/test-project"
+# define build.itch_project = "pyrrhicsilva/not-weird-queer"

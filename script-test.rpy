@@ -1,6 +1,6 @@
-# test script - to be removed in the final game
+# test script - does not appear in final game
 # uses assets not created for this game,
-# such as Monika sprites and (my) Kris fanart
+# such as music,  Monika sprites and (my) Kris fanart
 
 label ch0_00:
 
@@ -13,6 +13,8 @@ label ch0_00:
 
     scene bg classroom gen
 
+    play music "audio/test/october.mp3"
+
     show monika norm
 
     # These display lines of dialogue.
@@ -22,10 +24,6 @@ label ch0_00:
     $ verb = v("have")
 
     "[N_sbj] [verb] no idea how [n_sbj] got there."
-
-    $ verb = v("think")
-
-    "[N_sbj] [verb] this is very strange."
 
     n norm "Whaaa?"
 
@@ -138,6 +136,16 @@ label mathBud:
     n "Good riddance."
 
     "[name] leaves the classroom and heads back into the void of the game."
+
+    menu:
+
+        "Would you like to continue to the character roll call?"
+
+        "Yes":
+            jump charas_test
+
+        "No":
+            jump ch1
 
 label charas_test:
 
@@ -267,6 +275,22 @@ label charas_test:
 
     jump ch1
 
+label audio_test:
+
+    play music name
+
+    $ temp = renpy.music.get_playing("music")
+
+    "Now playing [temp]"
+
+    stop music
+
+    $ temp = renpy.music.get_playing("music")
+
+    "Now playing [temp]"
+
+    jump test_game
+
 # for testing the game on a specific day
 label test_game:
 
@@ -274,7 +298,7 @@ label test_game:
         "Select which part you'd like to test:"
 
         "Debug":
-            jump charas_test
+            jump test_ch
 
         "Part 1":
             jump test_ch1
@@ -284,6 +308,20 @@ label test_game:
 
         "Ending":
             jump tbc
+
+label test_ch:
+
+    menu:
+        "Select which debug you'd like to run:"
+
+        "Character interaction":
+            jump ch0_00
+
+        "Character roll call":
+            jump charas_test
+
+        "Audio test":
+            jump audio_test
 
 label test_ch1:
 
@@ -306,7 +344,7 @@ label test_ch1:
 
         "Day 3":
             jump ch1_03
-            
+
         "Day 4":
             jump ch1_04
 

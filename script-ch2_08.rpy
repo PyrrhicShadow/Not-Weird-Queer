@@ -19,6 +19,8 @@ label ch2_08_english:
 
     scene bg classroom english
 
+    play music school
+
     show teacher eng
 
     "In English class, [name]'s teacher gets fed up that only one [d_noun] is answering all the questions, so he decides to pick on a [a_noun] next."
@@ -39,8 +41,9 @@ label ch2_08_english:
 label ch2_08_english_answer:
 
     $ happy += 1
+    $ defEng = True
 
-    "[engTeach] frowns at $name."
+    "[engTeach] frowns at [name]."
 
     eng "[d_name], I'm only picking on [a_noun]s, so you can put your hand down."
 
@@ -51,9 +54,9 @@ label ch2_08_english_answer:
     if outfit == "g":
         $ actn += 1.5
 
-        "[engTeach] shrugs and looks around the room before calling on $name."
+        "[engTeach] shrugs and looks around the room before calling on [name]."
 
-    elif: outfit == "d":
+    elif outfit == "d":
         $ actn += 0.5
 
         eng "I'm in no mood to joke around, [d_name]."
@@ -63,7 +66,7 @@ label ch2_08_english_answer:
     else:
         $ actn += 1
 
-        "Mr. Francis is visibly confused. He sighs deeply before calling on $name."
+        "Mr. Francis is visibly confused. He sighs deeply before calling on [name]."
 
     "Of course, [name] answers the question correctly."
 
@@ -72,7 +75,7 @@ label ch2_08_english_answer:
 
     scene bg school hallway
 
-    "$name meets up with $ally after English class and tells $obj what happened."
+    "[name] meets up with $ally after English class and tells $obj what happened."
 
     jump ch2_08_lunch
 

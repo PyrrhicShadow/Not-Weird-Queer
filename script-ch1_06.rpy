@@ -8,6 +8,8 @@ label ch1_06:
 
     scene bg bedroom
 
+    play music name
+
     $ outfit = "g"
 
     "Afternoon, day [day]."
@@ -23,6 +25,8 @@ label ch1_06:
 # head to the park
 
     scene bg park afternoon
+
+    play music ally
 
     "[name] meets up with [ally] at the park. They start talking about reading and books."
 

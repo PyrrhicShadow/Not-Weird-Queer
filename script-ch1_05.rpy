@@ -18,6 +18,8 @@ label ch1_05:
 
     scene bg classroom art
 
+    play music school
+
     "[name] goes to [n_pos] art class with [ally]."
 
     if day == 5:
@@ -68,6 +70,8 @@ label ch1_05_ryan_talk:
     $ ryan += 1
     $ happy += 1
     $ talk = True
+
+    play music ally
 
     "[name] looks up at [ally]."
 
@@ -176,6 +180,8 @@ label ch1_05_ryan_talk:
     $ renpy.show("ally " + a_gender + " norm")
 
     "[name] hasn't felt this good about [n_obj]self since… [n_sbj] can't remember when."
+
+    play music school
 
     if not club:
         call ch1_05_ryan_invite
@@ -338,7 +344,7 @@ label ch1_05_club_talk_share:
 
 label ch1_05_club_talk_nothing:
 
-    "$ally asks $name what $sbj wrote, so $name shares $pos story with just $ally."
+    "[ally] asks [name] what [n_sbj] wrote, so [name] shares [n_pos] story with just [ally]."
 
     a "Hey, that was really good."
 
@@ -356,7 +362,9 @@ label ch1_05_home:
 
     $ happy += 1
 
-    scene bg school street
+    scene bg school front
+
+    play music outside
 
     "[ally] stops [name] before they part ways for the day."
 

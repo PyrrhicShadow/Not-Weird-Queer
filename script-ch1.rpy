@@ -6,9 +6,6 @@ label ch1:
     $ loop = 0
     $ day = 0
 
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
-
     scene bg start day
 
     "Part 1: Discovery"
@@ -21,6 +18,8 @@ label ch1:
 label ch1_morning:
 
     scene bg bedroom
+
+    play music name
 
     "Morning, day [day]."
 
@@ -108,6 +107,8 @@ label ch1_kitchen:
 label ch1_bus:
 
     scene bg bus
+
+    play music outside
 
     "[name] walks to the bus stop and gets on the next bus."
 
@@ -261,12 +262,14 @@ label ch1_school:
     scene bg school front
 
     if bus:
+
         $ temp1 = " " + ally
         if ryan > 2:
             $ temp2 = " with"
         else:
             $ temp2 = " behind"
     else:
+
         $ temp1 = ""
         $ temp2 = ""
 
@@ -282,17 +285,25 @@ label ch1_school:
 
     return
 
+# Cry in the hallway part 1
 label ch1_hallway_cry:
 
     scene bg school hallway
+
+    stop music
 
     "[name] stops in the hallway and checks to see that no one else is there."
 
     if self < -2:
         jump bad_ending
+
     else:
-        "The day's been rough but [name] calms down and makes it through the school day."
         $ happy += 1
+
+        "The day's been rough but [name] calms down and makes it through the school day."
+
+        play music school
+
         jump ch1_club
 
 label ch1_club:
@@ -547,7 +558,9 @@ label ch1_club_nothing_alone:
 
 label ch1_home:
 
-    scene bg school street
+    scene bg school front
+
+    play music outside
 
     if club:
         call ch1_home_club

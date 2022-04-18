@@ -47,6 +47,8 @@ label start:
     # get the main character's name and pronouns
     scene bg start game
 
+    # play music start
+
     "Welcome to {i}[config.name]{/i}!"
 
     call choose_name
@@ -64,18 +66,22 @@ label choose_name:
 
 label choose_pronouns:
 
-    "What pronouns does [name] use?"
-
     menu:
-        "he/him":
+        "{noalt}What pronouns does [name] use?{/noalt}{alt}Hello, [name]. What pronouns do you use?{/alt}"
+
+        "{noalt}he/him{/noalt}{alt}he him{/alt}":
             jump gender_male
-        "she/her":
+
+        "{noalt}she/her{/noalt}{alt}she her{/alt}":
             jump gender_female
-        "xe/xem":
+
+        "{noalt}xe/xem{/noalt}{alt}xee xem{/alt}":
             jump gender_enby_xe
-        "they/them":
+
+        "{noalt}they/them{/noalt}{alt}they them{/alt}":
             jump gender_enby_they
-        "other":
+
+        "other{alt} pronouns{/alt}":
             jump gender_enby_custom
 
 label pronouns_complete:
@@ -94,13 +100,10 @@ label pronouns_complete:
 
     # name the save file name after the player's name and pronouns
     $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
-    $ initialized = True
-
-    "Are you happy with your choice?"
 
     # The programmer (or modders) can start the game at any day (or part) by only changing this menu
     menu:
-        "[name] ([n_sbj]/[n_obj])"
+        "Are you happy with your choice? {p}[name]{noalt} ([n_sbj]/[n_obj]){/noalt}{alt}, [n_sbj] [n_obj] pronouns{/alt}"
 
         "I'm ready":
             jump ch1
@@ -120,14 +123,17 @@ label bad_ending:
 
     scene bg end dead
 
-    "This world is a cruel and unforgiving one."
+    play music death
 
-    "The world crumbles around [name] and [n_pos] vision turns black."
+    end "This world is a cruel and unforgiving one."
 
-    "[name] has died. \n[ally] misses [n_sbj] dearly."
+    end "The world crumbles around [name] and [n_pos] vision turns black."
 
-    "Game over."
+    end "[name] has died. \n[ally] misses [n_sbj] dearly."
 
+    end "Game over."
+
+    $ persistent.death = True
     $ death = True
     $ deaths += 1
 
@@ -156,7 +162,9 @@ label dirty_hacker:
 
     scene bg end day
 
-    """The programmer's not sure how you got here, but you're not supposed to be here.
+    play music death
+
+    end """The programmer's not sure how you got here, but you're not supposed to be here.
 
     Odds are, you're just a dirty little hacker, aren't you?"""
 
@@ -168,37 +176,43 @@ label tbc:
 
     scene bg end game
 
+    play music end
+
     if persistent.complete:
         $ temp1 = " again"
     else:
         $ temp1 = ""
-    if persistent.debug:
-        $ temp2 = "You've even stumbled upon the debug mode somehow. Good on ya ;)"
+
+    if death:
+        $ temp2 = ", even perservering to get " + name + " to a better place"
     else:
         $ temp2 = ""
-    if death:
-        $ temp3 = "perservered to get [name] to a better place, "
-    else:
-        $ temp3 = ""
 
-    """For the special player who played this special game:
+    end "For the special player who played this special game:"
 
-    Thank you for making it through this game[temp1]. No, seriously.
+    end "Thank you for making it through this game[temp1]."
 
-    I know it's very unfinished,
-    but it means a lot to me that you took the time to click through the text,
-    read through all the dialogue,
-    [temp3]
-    and deal with all my nasty bugs and grammar problems. [temp2]
+    end "No, seriously."
 
-    I hope you enjoyed playing {i}[config.name]{/i} as much as I enjoyed making it.
-    [name] also thanks you eternally for helping [ n_obj] get through [n_pos] journey.
+    end "I know it's very unfinished,
+    {w}but it means a lot to me that you took the time to click through the text,
+    {w}read through all the dialogue,
+    {w}and deal with all my nasty bugs and grammar problems."
 
-    You completed [n_pos] adventure with [self] self-esteem points over [day] days.
-    Hopefully, through this adventure, we've all learned a little more about ourselves and the people around us.
+    if persistent.debug:
+        end "You've even stumbled upon the debug mode somehow. Good on ya {noalt};){/noalt}{alt}winking smiley face{/alt}"
 
-    With hope, \n
-    Pyrrhic Silva"""
+    nvl clear
+
+    end "I hope you enjoyed playing {i}[config.name]{/i} as much as I enjoyed making it."
+
+    end "[name] also thanks you eternally for helping [n_obj] get through [n_pos] journey[temp2]."
+
+    end "You completed [n_pos] adventure with [self] self-esteem points over [day] days."
+
+    end "Hopefully, through this adventure, we've all learned a little more about ourselves and the people around us."
+
+    end "With hope, {p}Pyrrhic Silva"
 
     $ persistent.complete = True
 

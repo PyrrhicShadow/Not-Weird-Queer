@@ -18,6 +18,8 @@ label ch1_03:
 
     scene bg classroom math
 
+    play music school
+
     "During math class, [name] needs to go to the bathroom."
 
     scene bg school hallway
@@ -112,6 +114,8 @@ label ch1_03_math_missing:
         "[d_noun]'s":
             jump ch1_03_math_notGender
 
+# lunch day 3
+
 label ch1_03_lunch:
 
     $ ryan += 1
@@ -203,7 +207,7 @@ label ch1_03_english:
     if self > -1:
         jump ch1_club
 
-    else:
+    else:        
         "[name] slowly packs [n_pos] things and heads into a quiet hallway."
 
         jump ch1_hallway_cry

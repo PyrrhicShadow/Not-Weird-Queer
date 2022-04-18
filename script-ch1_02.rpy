@@ -18,6 +18,8 @@ label ch1_02:
 
     scene bg classroom biology
 
+    play music school
+
     if day > 2:
         $ temp1 = "still "
     else:
@@ -120,10 +122,11 @@ label ch1_02_bio_nothing:
 
     return
 
+# lunch day 2
+
 label ch1_02_lunch:
 
     scene bg gym lunch
-
 
     "It's lunch now. [name] sits down at a table and starts eating the sandwich [n_pos] mom made for [n_obj]."
 
@@ -208,6 +211,8 @@ label ch1_02_ryan_talk:
     $ ryan += 1
     $ happy += 1
 
+    play music ally
+
     "[name] looks up at [ally]."
 
     n norm "I just hate that people keep doing that."
@@ -223,6 +228,8 @@ label ch1_02_ryan_talk:
     a "No problem, [d_name]. If that guy ever bothers you again, just let me know, okay?"
 
     n "Okay. I will."
+
+    play music school
 
     jump ch1_02_club_eligible
 

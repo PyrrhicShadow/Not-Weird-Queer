@@ -72,10 +72,16 @@ label gender_enby_custom:
 
     "Thank you for your patience."
 
+    # example for how I would implement pronounciation guides for custom pronouns
+    $ n_sbj = "xe"
+    if preferences.self_voicing:
+        $ p_sbj = "xee"
+        $ n_sbj = "{noalt}" + n_sbj + "{/noalt}" + "{alt}" + p_sbj + "{/alt}"
+
     menu:
-        "choose xe/xem pronouns":
+        "choose {noalt}xe/xem{/noalt}{alt}xee xem{/alt} pronouns":
             jump gender_enby_xe
-        "choose they/them pronouns":
+        "choose {noalt}they/them{/noalt}{alt}they them{/alt} pronouns":
             jump gender_enby_they
         "return to pronoun choice screen":
             jump choose_pronouns
@@ -97,9 +103,13 @@ label sex_assigned_at_birth:
             $ coin = renpy.random.choice(["H", "T"])
 
             if coin == "H":
+                "Congrats! [name] is transfemme."
+
                 jump transfemme
 
             if coin == "T":
+                "Congrats! [name] is transmasc."
+
                 jump transmasc
 
 label transmasc:

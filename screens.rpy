@@ -317,10 +317,10 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
-        if persistent.debug and initialized and not main_menu:
+        if persistent.debug and not main_menu:
             textbutton _("Chapter Select") action ShowMenu("chapter")
 
-        # textbutton "Gallery" action ShowMenu("gallery")
+        textbutton _("Gallery") action ShowMenu("gallery")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -1527,3 +1527,235 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+################################################################################
+## Custom Screens
+################################################################################
+
+## debug screen for showing happy, self, ally, and action points
+screen debug():
+
+    window:
+        style "debug_window"
+
+        vbox:
+            style "debug_vbox"
+            spacing 10
+
+            text "{noalt}[name] ([n_sbj]/[n_obj]){/noalt}" size 25
+
+            text "{noalt}Days: [day] (Part [part] day [loop]){/noalt}" size 20
+            hbox:
+                text "{noalt}Self: [self]{/noalt}" size 20
+                text "{noalt} | {/noalt}" size 20
+                text "{noalt}Happy: [happy] ([last_happy]){/noalt}" size 20
+            hbox:
+                text "{noalt}[ally]: [ryan]{/noalt}" size 20
+                text "{noalt} | {/noalt}" size 20
+                text "{noalt}Action: [actn] ([outfit]){/noalt}" size 20
+            if death:
+                text "{noalt}Deaths: [deaths]{/noalt}" size 20
+            hbox:
+                text "{noalt}bus: [bus]{/noalt}" size 20
+                text "{noalt} | {/noalt}" size 20
+                text "{noalt}club: [share]{/noalt}" size 20
+            hbox:
+                text "{noalt}share: [share]{/noalt}" size 20
+                text "{noalt} | {/noalt}" size 20
+                text "{noalt}talk: [talk]{/noalt}" size 20
+            hbox:
+                if death:
+                    text "{noalt}Deaths: [deaths]{/noalt}" size 20
+                if death and persistent.complete:
+                    text "{noalt} | {/noalt}" size 20
+                if persistent.complete:
+                    text "{noalt}Completed{/noalt}" size 20
+
+style debug_window:
+    xalign 0
+    yalign 0.1
+    background Image("gui/debugbox.png", xalign=0.0, yalign=0.5)
+
+style debug_vbox:
+    xalign 0.03
+    yalign 0.05
+    size 10
+
+style debug_hbox:
+    size 10
+
+## chapter select screen for debug mode
+screen chapter():
+
+    tag menu
+
+    default chapter = 1
+
+    use game_menu(_("Chapter Select"), scroll="viewport"):
+
+        style_prefix "help"
+
+        vbox:
+            spacing 23
+
+            hbox:
+                textbutton _("Chapter 1") action SetScreenVariable("chapter", 1)
+                textbutton _("Chapter 2") action SetScreenVariable("chapter", 2)
+
+            if chapter == 1:
+                use chapter1
+
+            elif chapter == 2:
+                use chapter2
+
+screen chapter1():
+
+    hbox:
+        label _("Chapter 1")
+        textbutton _("Jump to day 1") action Jump("ch1_01")
+
+    hbox:
+        label _("Chapter 2")
+        textbutton _("Jump to day 2") action Jump("ch1_02")
+
+    hbox:
+        label _("Chapter 3")
+        textbutton _("Jump to day 3") action Jump("ch1_03")
+
+    hbox:
+        label _("Chapter 4")
+        textbutton _("Jump to day 4") action Jump("ch1_04")
+
+    hbox:
+        label _("Chapter 5")
+        textbutton _("Jump to day 5") action Jump("ch1_05")
+
+    hbox:
+        label _("Chapter 6")
+        textbutton _("Jump to day 6") action Jump("ch1_06")
+
+screen chapter2():
+
+    hbox:
+        label _("Chapter 7")
+        textbutton _("Jump to day 7") action Jump("ch2_07")
+
+    hbox:
+        label _("Chapter 8")
+        textbutton _("Jump to day 8") action Jump("ch2_08")
+
+    hbox:
+        label _("Chapter 9")
+        textbutton _("Jump to day 9") action Jump("ch2_09")
+
+    hbox:
+        label _("Chapter 10")
+        textbutton _("Jump to day 10") action Jump("ch2_10")
+
+    hbox:
+        label _("Chapter 11")
+        textbutton _("Jump to day 11") action Jump("ch2_11")
+
+    hbox:
+        label _("Chapter 12")
+        textbutton _("Jump to day 12") action Jump("ch2_12")
+
+## gallery screen for both cgs and audio
+screen gallery():
+
+    tag menu
+
+    default gallery_view = 0
+
+    use game_menu(_("Gallery"), scroll="viewport"):
+
+        style_prefix "help"
+
+        vbox:
+            spacing 23
+
+            hbox:
+                textbutton _("Backgrounds") action SetScreenVariable("gallery_view", 0)
+                textbutton _("CGs") action SetScreenVariable("gallery_view", 1)
+                textbutton _("Music") action SetScreenVariable("gallery_view", 2)
+                if persistent.debug:
+                    textbutton _("Voices") action SetScreenVariable("gallery_view", 3)
+
+            if gallery_view == 0:
+                use gallery0
+
+            elif gallery_view == 1:
+                use gallery1
+
+            elif gallery_view == 2:
+                use gallery2
+
+            elif gallery_view == 3:
+                use gallery3
+
+
+### Backgrounds
+screen gallery0():
+
+    text "Coming soon"
+
+### CGs
+screen gallery1():
+
+    text "Coming soon"
+
+### Music
+screen gallery2():
+
+    hbox:
+        label "Opening"
+        textbutton "Play" action Play("music", audio.start)
+
+    hbox:
+        label name + "\'s Theme"
+        textbutton "Play" action Play("music", audio.name)
+
+    hbox:
+        label ally + "\'s Theme"
+        textbutton "Play" action Play("music", audio.ally)
+
+    hbox:
+        label "The Outdoors"
+        textbutton "Play" action Play("music", audio.outside)
+
+    hbox:
+        label "School"
+        textbutton "Play" action Play("music", audio.school)
+
+    hbox:
+        label "Bullies"
+        textbutton "Play" action Play("music", audio.bully)
+
+    if persistent.complete:
+        hbox:
+            label "Ending"
+            textbutton "Play" action Play("music", audio.end)
+
+    if persistent.death:
+        hbox:
+            label "Death Screen"
+            textbutton "Play" action Play("music", audio.death)
+
+### Voices
+screen gallery3():
+
+    hbox:
+        label name
+        textbutton "Sample" action Play("sound", audio.name_dia, fadeout=0.0)
+
+    hbox:
+        label ally
+        textbutton "Sample" action Play("sound", audio.ally_dia, fadeout=0.0)
+
+    hbox:
+        label "Classmates"
+        textbutton "Sample" action Play("sound", audio.extra_dia, fadeout=0.0)
+
+    hbox:
+        label "Adults"
+        textbutton "Sample" action Play("sound", audio.adult_dia, fadeout=0.0)

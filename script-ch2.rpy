@@ -5,14 +5,16 @@ label ch2:
     $ part = 2
     $ day1 = day
 
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
-
     scene bg start day
+
+    play music start
 
     "Part 2: Choice"
 
     jump ch2_07
+
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
 
 # make sure only to call this label, not jump
 # when the game gets further along, I might replace the morning loop with unique mornings per day
@@ -21,10 +23,20 @@ label ch2_morning:
 
     scene bg bedroom
 
+    play music name
+
     "Morning, day [day]."
 
     if self > 5:
-        "Life is looking up. [name] wonders what adventures life will bring next."
+        "Life is looking up."
+
+        "[name] wonders what adventures life will bring next."
+
+    elif self < 3:
+        "So, this is dummy text. Enjoy!"
+
+    else:
+        "So, this is dummy text. Enjoy!"
 
     if loop == 7:
         if gender == "male":
@@ -86,9 +98,9 @@ label ch2_morning_gender:
     else:
         $ temp1 = "gender neutral outfit idea"
 
-    "$name looks in the mirror at $pos [temp1]."
+    "[name] looks in the mirror at [n_pos] [temp1]."
 
-    "It's emboldening to be able to dress the way $sbj feels on the inside."
+    "It's emboldening to be able to dress the way [n_sbj] feels on the inside."
 
     return
 
@@ -158,6 +170,8 @@ label ch2_bus:
 
     scene bg bus
 
+    play music outside
+
     "[name] gets on the bus and sits with [n_pos] friend, [ally]."
 
     if outfit == "g":
@@ -176,19 +190,45 @@ label ch2_bus:
 
     "Birds are singing, flowers are blooming."
 
-    """On days like these,
-
-    kids like you
-
-    should be arriving at school."""
+    """On days like these, {w}kids like you {w}should be arriving at school."""
 
     return
 
+# Cry in the hallway part 2
+label  ch2_hallway_cry:
+
+    scene bg school hallway
+
+    stop music
+
+    "[name] stops in the hallway and checks to see that no one else is there."
+
+    if self < 2:
+        jump bad_ending
+
+    else:
+        $ happy += 1
+
+        "The day's been rough but [name] calms down and makes it through the school day."
+
+        play music school
+
+        if loop == 8:
+            jump ch2_08_art
+
+        elif loop == 10:
+            jump ch2_club
+
+        else:
+            call dirty_hacker
+            jump ch2_home
+
+# club part 2
 label ch2_club:
 
     scene bg club front
 
-    "$name and $ally go to the afterschool book club."
+    "[name] and [ally] go to the afterschool book club."
 
     if loop == 7:
         $ temp1 = "day 1 topic"
@@ -199,10 +239,9 @@ label ch2_club:
     else:
         $ temp1 = "day 4 topic"
 
-
     "[name] writes a story about [temp1]."
 
-    "When [n_sbj] showes [ally], $sbj tells $name that it's really good and that other people will like it."
+    "When [n_sbj] showes [ally], [n_sbj] tells [name] that it's really good and that other people will like it."
 
     "Soon, it's time for everyone to share their writing."
 
@@ -228,7 +267,9 @@ label ch2_club_share:
 
 label ch2_home:
 
-    scene bg school street
+    scene bg school front
+
+    play music outside
 
     if loop == 7:
         $ temp1 = "chat topic 1"
@@ -239,7 +280,7 @@ label ch2_home:
     else:
         $ temp1 = "chat topic 4"
 
-    "After the club meeting, $name and $ally chat a little about [temp1] while walking home."
+    "After the club meeting, [name] and [ally] chat a little about [temp1] while walking home."
 
     if happy < 0:
         $ self -= 1
@@ -260,7 +301,7 @@ label ch2_home:
 
             "Hopefully, tomorrow will go well, too."
 
-        elif lasthappy < 0:
+        elif last_happy < 0:
             $ verb = v("have", "has")
 
             "The day was a rough one, but nothing [n_sbj] [verb]n't seen before."
@@ -275,7 +316,7 @@ label ch2_home:
     $ renpy.checkpoint()
     $ renpy.force_autosave(take_screenshot=True, block=True)
 
-    if action > 5:
+    if actn > 5:
         jump ch2_11
     else:
         if loop == 7:

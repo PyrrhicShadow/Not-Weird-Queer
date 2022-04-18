@@ -18,6 +18,8 @@ label ch1_04:
 
     scene bg gym pe
 
+    play music school
+
     "[name] heads to [n_pos] first class, PE."
 
     "[peTeach] splits the class into boys and girls teams to play dodgeball."
@@ -246,7 +248,7 @@ label ch1_04_lunch_confront:
     xf "Chill out, [temp1], I was just joking. Can't you take a joke?"
 
     if self < 0:
-        "Stunned, $name backed up and ran out of the cafeteria."
+        "Stunned, [name] backed up and ran out of the cafeteria."
         jump ch1_hallway_cry
     else:
         "[name] frowned, balling [n_pos] fists."
@@ -283,6 +285,8 @@ label ch1_04_lunch_after:
         n "Yeah!"
 
     jump ch1_club
+
+# art class day 4
 
 label ch1_04_art:
 
@@ -332,7 +336,6 @@ label ch1_04_art:
     show art ally
 
     "[name] studies [ally]'s sculpture."
-
 
     "It's a fairly tall structure comprised of complex hubs stacked atop one another, each bearing its own theme."
 
