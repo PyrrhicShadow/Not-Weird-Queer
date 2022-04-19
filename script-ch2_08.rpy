@@ -81,7 +81,11 @@ label ch2_08_english_answer:
 
 label ch2_08_english_nothing:
 
+    "Mr. Francis calls on three different [noun]s before one of them answers the question correctly."
 
+    $ verb = v("feel")
+
+    "[name] knew the answer, so [pn[sbj]] [verb] bad that [pn[sbj]] just let it go so easily."
 
 label ch2_08_lunch:
 

@@ -29,7 +29,15 @@ label ch1_02:
 
     n_self "Flower genders are weird."
 
-    $ temp2 = renpy.random.choice(["anthers", "pistils", "sepals"])
+    # $ temp2 = renpy.random.choice(["anthers", "pistils", "sepals"])
+    if day == 2:
+        $ temp2 = "anthers"
+
+    elif day > 2 and day < 6:
+        $ temp2 = "pistils"
+
+    else:
+        $ temp2 = "sepals"
 
     show teacher bio
 

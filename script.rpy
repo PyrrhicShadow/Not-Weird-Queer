@@ -81,7 +81,7 @@ label choose_pronouns:
         "{noalt}[they_them[pn]]{/noalt}{alt}they them{/alt}":
             jump pronouns_they_them
 
-        "other{alt} pronouns{/alt}":
+        "other{alt} pronouns{/alt}" if persistent.debug:
             jump pronouns_custom
 
 label pronouns_he_him:
@@ -120,19 +120,23 @@ label pronouns_they_them:
 
 label pronouns_custom:
 
-    "Currently, custom pronouns are not supported."
-
-    "Support for custom pronouns will be added when the programmer figures out how to display multiple text boxes at once."
-
-    "Thank you for your patience."
+    $ sbj = renpy.input("Subject pronoun (ex: xe)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ obj = renpy.input("Object pronoun (ex: xem)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ psv = renpy.input("Possesive pronoun (ex: xyr)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ rfv = renpy.input("Reflexive pronoun (ex: xyrs)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
 
     menu:
-        "choose {noalt}[xe_xem[pn]]{/noalt}{alt}xee xem{/alt} pronouns":
-            jump pronouns_xe_xem
-        "choose {noalt}[they_them[pn]]{/noalt}{alt}they them{/alt} pronouns":
-            jump pronouns_they_them
-        "return to pronoun choice screen":
-            jump choose_pronouns
+        "Are your pronouns singular (like xe/xem) or plural (like they/them)?"
+
+        "Singular":
+            $ plur = False
+
+        "Plural":
+            $ plur = True
+
+    $ pn = pn_custom(plur, sbj, obj, psv, rfv)
+
+    jump gender_enby
 
 label gender_enby:
 
@@ -140,13 +144,9 @@ label gender_enby:
     $ noun = "nonbinary person"
     $ adj = "gender-neutral"
 
-    jump sex_assigned_at_birth
-
-label sex_assigned_at_birth:
-
     menu:
         "Pick a sex assigned at birth."
-        
+
         "female":
             jump transmasc
 
@@ -157,12 +157,12 @@ label sex_assigned_at_birth:
             $ coin = renpy.random.choice(["H", "T"])
 
             if coin == "H":
-                "Congrats! [name] is transfemme."
+                "Congrats! [name] is a nonbinary transfemme person."
 
                 jump transfemme
 
             if coin == "T":
-                "Congrats! [name] is transmasc."
+                "Congrats! [name] is a nonbinary transmasc person."
 
                 jump transmasc
 
