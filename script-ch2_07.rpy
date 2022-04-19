@@ -4,7 +4,7 @@ label ch2_07:
 
     $ loop = 7
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -51,7 +51,7 @@ label ch2_07:
 
     $ renpy.show("ally " + a_gender + " norm")
 
-    "[ally] addresses [name] by [n_pos] correct pronouns and [bioteam] gets confused."
+    "[ally] addresses [name] by [pn[psv]] correct pronouns and [bioteam] gets confused."
 
     if day == (day1 + 1):
         show bioteam 1 at left
@@ -72,7 +72,7 @@ label ch2_07:
     menu:
         "What should [name] do?"
 
-        "Explain to [bioteam] that [name] uses [n_sbj]/[n_obj] pronouns":
+        "Explain to [bioteam] that [name] uses [pn[pn]] pronouns":
             jump ch2_07_bio_explain
 
         "Tell [bioteam] not to worry about it":
@@ -82,7 +82,7 @@ label ch2_07_bio_explain:
 
     $ defbio = True
 
-    "[name] explains to [bioteam] that [n_sbj] prefers [n_sbj]/[n_obj] pronouns."
+    "[name] explains to [bioteam] that [pn[sbj]] prefers [pn[pn]] pronouns."
 
     if outfit == "g":
         $ actn += 1.5
@@ -104,13 +104,13 @@ label ch2_07_bio_explain:
 
 label ch2_07_bio_ignore:
 
-    "[name] feels awkward about it, so [n_sbj] not to explain anything to [bioteam]."
+    "[name] feels awkward about it, so [pn[sbj]] not to explain anything to [bioteam]."
 
     n norm "Oh, don't worry about it, [bioteam]."
 
     "[bioteam] frowns but doesn't say anything more."
 
-    "[ally] almost seems disapointed, but [name] can't tell if [n_sbj]'s imagining it."
+    "[ally] almost seems disapointed, but [name] can't tell if [pn[sbj]]'s imagining it."
 
     if outfit == "d":
         $ actn -= 1
@@ -151,7 +151,7 @@ label ch2_07_ryan_apologizes:
 
     a "Well, you should do it on your terms. Anyway, see you at lunch!"
 
-    "[name] says goodbye to [ally] and heads to [n_pos] next class."
+    "[name] says goodbye to [ally] and heads to [pn[psv]] next class."
 
 # history class day 7
 
@@ -174,7 +174,7 @@ label ch2_07_ryan_apologizes:
     else:
         $ temp1 = "cheddar cheese and frozen mice"
 
-    "[name] writes a poem about [temp1] in [n_pos] notebook."
+    "[name] writes a poem about [temp1] in [pn[psv]] notebook."
 
     n_self "History class is so boring."
 
@@ -186,13 +186,13 @@ label ch2_07_ryan_apologizes:
 
     "[name] hangs out with [ally] at lunch."
 
-    "As [ally] takes a bite of [n_pos] cafeteria sloppy joe, [name] hesitantly decides to ask [n_obj] a question."
+    "As [ally] takes a bite of [pn[psv]] cafeteria sloppy joe, [name] hesitantly decides to ask [pn[obj]] a question."
 
     play music ally
 
     n norm "Hey, [ally]. Why did you, um, want to be my friend?"
 
-    "[ally] sets down [a_pos] messy sandwich."
+    "[ally] sets down [pa[psv]] messy sandwich."
 
     a"When I moved here, I left everything behind. Sure, the kids at my old school were pricks, but I had friends, too."
 
@@ -236,12 +236,12 @@ label ch2_07_club_story:
 
     cp "Have we got any brave volunteers for sharing today?"
 
-    "[name] looks down at [n_pos] story."
+    "[name] looks down at [pn[psv]] story."
 
     menu:
         "What should [name] do?"
 
-        "Share [n_pos] story":
+        "Share [pn[psv]] story":
             jump ch2_07_club_share
 
         "Do nothing":
@@ -252,7 +252,7 @@ label ch2_07_club_share:
     $ happy += 1
     $ renpy.show("main " + gender + " " + outfit + " norm")
 
-    "[name] shares [n_pos] story and the other club members snap enthusiastically."
+    "[name] shares [pn[psv]] story and the other club members snap enthusiastically."
 
     hide main
     show extra male norm
@@ -274,9 +274,9 @@ label ch2_07_club_nothing:
 
     $ happy -= 1
 
-    "[ally] asks [name] what [n_sbj] wrote, so [name] shares [n_pos] story with just [ally]."
+    "[ally] asks [name] what [pn[sbj]] wrote, so [name] shares [pn[psv]] story with just [ally]."
 
-    "[ally] tells [name] that [n_pos] writing is really good."
+    "[ally] tells [name] that [pn[psv]] writing is really good."
 
     a "Why don't you share it with the club?"
 
@@ -286,6 +286,6 @@ label ch2_07_club_nothing:
 
     n "Okay. Maybe next time."
 
-    "[name] decides that next time, [n_sbj] has to share [n_pos] story, if only for [ally]'s sake."
+    "[name] decides that next time, [pn[sbj]] has to share [pn[psv]] story, if only for [ally]'s sake."
 
     jump ch2_home

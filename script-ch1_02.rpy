@@ -4,7 +4,7 @@ label ch1_02:
 
     $ loop = 2
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -25,7 +25,7 @@ label ch1_02:
     else:
         $ temp1 = ""
 
-    "[name] goes to [n_pos] biology class.  The teacher, [bioTeach] is[temp1] lecturing about parts of flowers."
+    "[name] goes to [pn[psv]] biology class.  The teacher, [bioTeach] is[temp1] lecturing about parts of flowers."
 
     n_self "Flower genders are weird."
 
@@ -41,12 +41,12 @@ label ch1_02:
         $ temp1 = "classmate"
 
     menu:
-        "[name] knows the answer. What should [n_sbj] do?"
+        "[name] knows the answer. What should [pn[sbj]] do?"
 
-        "Raise [n_pos] hand":
+        "Raise [pn[psv]] hand":
             call ch1_02_bio_answer
 
-        "Whisper to [n_pos] [temp1], [ally]":
+        "Whisper to [pn[psv]] [temp1], [ally]":
             call ch1_02_bio_ryan
 
         "Do nothing":
@@ -114,9 +114,9 @@ label ch1_02_bio_nothing:
 
     "[name] stares out the window as [temp3] answers the question."
 
-    $ verb = v("were", "was")
+    $ verb = v(pn, "were", "was")
 
-    "Although [name] knew the answer, [n_sbj] [verb] too embarrassed to answer."
+    "Although [name] knew the answer, [pn[sbj]] [verb] too embarrassed to answer."
 
     "Maybe next time."
 
@@ -128,9 +128,9 @@ label ch1_02_lunch:
 
     scene bg gym lunch
 
-    "It's lunch now. [name] sits down at a table and starts eating the sandwich [n_pos] mom made for [n_obj]."
+    "It's lunch now. [name] sits down at a table and starts eating the sandwich [pn[psv]] mom made for [pn[obj]]."
 
-    "Someone sitting at the other end of the table looks at [n_obj] sideways."
+    "Someone sitting at the other end of the table looks at [pn[obj]] sideways."
 
     n norm "What?"
 
@@ -163,9 +163,9 @@ label ch1_02_lunch_ryan:
 
     a_myst "What the fuck are you doing, asshole? Don't you have anything better to do?"
 
-    n_self "Wait, is that [ally]? What is [a_sbj] doing here?"
+    n_self "Wait, is that [ally]? What is [pa[sbj]] doing here?"
 
-    "[name] turns around and indeed, [ally]'s standing behind [n_obj]."
+    "[name] turns around and indeed, [ally]'s standing behind [pn[obj]]."
 
     $ renpy.show("ally " + a_gender + " norm")
 
@@ -177,9 +177,9 @@ label ch1_02_lunch_ryan:
 
 label ch1_02_lunch_alone:
 
-    "[name] buries [n_pos] attention into [n_pos] sandwich."
+    "[name] buries [pn[psv]] attention into [pn[psv]] sandwich."
 
-    "When the roaring in [n_pos] ears becomes unbearable, [n_sbj] storms out of the cafeteria."
+    "When the roaring in [pn[psv]] ears becomes unbearable, [pn[sbj]] storms out of the cafeteria."
 
     jump ch1_hallway_cry
 
@@ -193,10 +193,10 @@ label ch1_02_lunch_field:
 
     a "Hey, you okay?"
 
-    "[name] stares at [n_pos] shoes and shrugs."
+    "[name] stares at [pn[psv]] shoes and shrugs."
 
     menu:
-        "Should [name] tell [ally] what's bothering [n_obj]?"
+        "Should [name] tell [ally] what's bothering [pn[obj]]?"
 
         "Talk about [name]'s problems.":
             if (self > 1) and (ryan > 4):
@@ -219,7 +219,7 @@ label ch1_02_ryan_talk:
 
     a "Yeah. That guy was a real jerk."
 
-    "[name] stares back at [n_pos] shoes."
+    "[name] stares back at [pn[psv]] shoes."
 
     n "Uh, thanks for standing up for me. Not a lot of people do that."
 
@@ -235,7 +235,7 @@ label ch1_02_ryan_talk:
 
 label ch1_02_ryan_not:
 
-    "[name] continues staring at [n_pos] shoes."
+    "[name] continues staring at [pn[psv]] shoes."
 
     n norm "I'm doing fine."
 

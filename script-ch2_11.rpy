@@ -4,7 +4,7 @@ label ch2_11:
 
     $ loop = 11
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
     scene bg bedroom
 
@@ -27,9 +27,9 @@ label ch2_11:
 
     $ renpy.show("main " + gender + " " + outfit + " norm")
 
-    "[name] looks in [n_pos] wardrobe and decides to put on a [adj] outfit today."
+    "[name] looks in [pn[psv]] wardrobe and decides to put on a [adj] outfit today."
 
-    "[name] is pleased with the way [n_pos] outfit turned out."
+    "[name] is pleased with the way [pn[psv]] outfit turned out."
 
 # bus part 2
 
@@ -37,7 +37,7 @@ label ch2_11:
 
 # PE class day 11
 
-    show bg field pe
+    scene bg field pe
 
     "[name] and [ally] go to PE class. Today, the class is playing tennis."
 
@@ -47,7 +47,7 @@ label ch2_11:
 
 # lunch day 11
 
-    show bg gym lunch
+    scene bg gym lunch
 
     "Soon, [name] and [ally] go to lunch."
 
@@ -63,7 +63,7 @@ label ch2_11:
 
     a "I'm listening."
 
-    n "So, when I was in elementary school, I had a really cool friend named [name]. I really looked up to [n_obj] and I wanted to be more like [n_obj]."
+    n "So, when I was in elementary school, I had a really cool friend named [name]. I really looked up to [pn[obj]] and I wanted to be more like [pn[obj]]."
 
     a "That's not sappy at all. That's actually a cool reason to pick a name."
 
@@ -71,15 +71,15 @@ label ch2_11:
 
     a "So, what's the other [name] doing right now?"
 
-    n "Oh, you know, [n_sbj] moved away when [pos] dad got a different job. It was different, back then."
+    n "Oh, you know, [pn[sbj]] moved away when [psv] dad got a different job. It was different, back then."
 
     n "We were in fourth grade and after a while, we just kinda lost touch."
 
-    a "Oh. That's kinda sad. Do you still miss [a_obj]?"
+    a "Oh. That's kinda sad. Do you still miss [pa[obj]]?"
 
     n "I guess, sometimes. It doesn't really matter. I bet $sbj doesn't even remember me."
 
-    a "How could [n_sbj] forget someone as cool as you? Maybe when we grow up, you can go find [n_obj] and say hi or something."
+    a "How could [pn[sbj]] forget someone as cool as you? Maybe when we grow up, you can go find [pn[obj]] and say hi or something."
 
     n "That's a silly idea, [ally]."
 
@@ -89,7 +89,7 @@ label ch2_11:
 
     n "Yeah. Some of them must."
 
-    a "Anyway, '[name]' is a super cool name and I'm sure the other [name] will be super jealous when [a_sbj] finds out you stole [a_pos] name."
+    a "Anyway, '[name]' is a super cool name and I'm sure the other [name] will be super jealous when [pa[sbj]] finds out you stole [pa[psv]] name."
 
     n "You can't {i}steal{/i} a name. That's not how names work. I know multiple '[ally]s' at this school."
 
@@ -97,7 +97,7 @@ label ch2_11:
 
 # biology class day 11
 
-    show bg classroom biology
+    scene bg classroom biology
 
     $ happy += 1
 
@@ -121,7 +121,7 @@ label ch2_11:
 
 # book club day 11
 
-    show bg club front
+    scene bg club front
 
     "[name] and [ally] go to the afterschool book club."
 
@@ -147,13 +147,13 @@ label ch2_11:
 
     "By the time it's time to share, both [name] and [ally] agree that the story is really clever and original."
 
-    show bg club sharing
+    scene bg club sharing
 
     "[name] and [ally] share their story in front of the club, alternating reading paragraphs. Their story is fun, exciting, and weird."
 
     "The club memebers laugh throughout their tale and by the end are clapping enthusiastically. [name] and [ally] beam proudly."
 
-    show bg club front
+    scene bg club front
 
     a "I'm so glad you talked me into writing a story with you. That was so much fun!"
 
@@ -167,7 +167,7 @@ label ch2_11:
 
 # Go home day 11
 
-    show bg school front
+    scene bg school front
 
     play music outside
 
@@ -200,7 +200,7 @@ label ch2_11:
 
     "Today was a surprisingly good day[temp1]. Life sure is looking up."
 
-    "[name] is ready to start [n_pos] weekend."
+    "[name] is ready to start [pn[psv]] weekend."
 
     $ happy += 1
 

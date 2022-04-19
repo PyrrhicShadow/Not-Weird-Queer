@@ -4,7 +4,7 @@ label ch1_06:
 
     $ loop = 6
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
     scene bg bedroom
 
@@ -18,15 +18,15 @@ label ch1_06:
 
     "After a leisurely Saturday morning of lounging in bed and watching Cartoon Network, it's time to go hang out with [ally]."
 
-    $ verb = v("put")
+    $ verb = v(pn, "put")
 
-    "Feeling more confident than usual, [n_sbj] [verb] on a mostly [adj] outfit before heading out."
+    "Feeling more confident than usual, [pn[sbj]] [verb] on a mostly [adj] outfit before heading out."
 
 # head to the park
 
     scene bg park afternoon
 
-    play music ally
+    play music outside
 
     "[name] meets up with [ally] at the park. They start talking about reading and books."
 
@@ -99,6 +99,8 @@ label ch1_06:
 
     a "Writing is art, silly."
 
+    play music ally
+
     n "Yeah, I guess it is."
 
 # It's not that easy
@@ -109,7 +111,7 @@ label ch1_06:
 
     a "Why don't you dress [adj] more often?"
 
-    "[name] gestures to [n_pos] vaguely [adj] outfit."
+    "[name] gestures to [pn[psv]] vaguely [adj] outfit."
 
     n "I'm wearing a [adj] outfit today!"
 
@@ -119,7 +121,7 @@ label ch1_06:
 
     a "That's only vaguely [adj]."
 
-    "[name] frowns, poking at [n_pos] own jacket."
+    "[name] frowns, poking at [pn[psv]] own jacket."
 
     $ renpy.show("ally " + a_gender + " norm")
 
@@ -129,7 +131,7 @@ label ch1_06:
 
     n "But when I try dressing like a [noun], like really going all out…"
 
-    "[ally] puts [a_pos] hand on [name]'s shoulder."
+    "[ally] puts [pa[psv]] hand on [name]'s shoulder."
 
     if d_gender == "male":
         $ temp1 = "masculine"
@@ -219,6 +221,8 @@ label ch1_06:
     a "Hey, I get that it's not easy. But nothing worth having is ever easy, right?"
 
     n "I guess that's true. Yeah."
+
+    play music outside
 
     $ renpy.show("ally " + a_gender + " smile")
 
@@ -370,11 +374,11 @@ label ch1_06_home:
 
     scene bg day end
 
-    "[name] goes home feeling lighter about [n_obj]self."
+    "[name] goes home feeling lighter about [pn[obj]]self."
 
-    $ verb = v("try", "tries")
+    $ verb = v(pn, "try", "tries")
 
-    "Maybe if [n_sbj] [verb] to express [n_obj]self more, things will start getting better."
+    "Maybe if [pn[sbj]] [verb] to express [pn[obj]]self more, things will start getting better."
 
     "[name] is ready to start a new week."
 

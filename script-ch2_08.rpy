@@ -4,7 +4,7 @@ label ch2_08:
 
     $ loop = 8
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -27,12 +27,12 @@ label ch2_08_english:
 
     "As usual, [name] knows the answer."
 
-    "Since [ally] isn't in [name]'s English class, [n_sbj] can't ask [ally] for advice."
+    "Since [ally] isn't in [name]'s English class, [pn[sbj]] can't ask [ally] for advice."
 
     menu:
-        "What should [n_sbj] do?"
+        "What should [pn[sbj]] do?"
 
-        "Raise [n_pos] hand":
+        "Raise [pn[psv]] hand":
             jump ch2_08_english_answer
 
         "Do nothing":
@@ -98,15 +98,15 @@ label ch2_08_club_story:
 
     cp "Anyone wanna volunteer today?"
 
-    $ verb = v("re", "s")
+    $ verb = v(pn, "re", "s")
 
-    "[name] raises [n_pos] hand. The club president tell [n_obj] that [n_sbj]'[verb] fourth."
+    "[name] raises [pn[psv]] hand. The club president tell [pn[obj]] that [pn[sbj]]'[verb] fourth."
 
     hide extra
 
-    $ verb = v("read")
+    $ verb = v(pn, "read")
 
-    "Finally, it's time for [name] to share. [N_sbj] [verb] [n_pos] story with a calm, clear voice."
+    "Finally, it's time for [name] to share. [pn[sbj]!c] [verb] [pn[psv]] story with a calm, clear voice."
 
     "After everyone's done snapping, Cami Newton raises her hand."
 
@@ -118,12 +118,12 @@ label ch2_08_club_story:
 
     c "Sure. That sounds good."
 
-    $ verb = v("wonder")
+    $ verb = v(pn, "wonder")
 
-    "After [name] sits down, [n_sbj] [verb] what [n_sbj] should tell Cami."
+    "After [name] sits down, [pn[sbj]] [verb] what [pn[sbj]] should tell Cami."
 
     menu:
-        "Should [name] share [n_pos] inspiration?"
+        "Should [name] share [pn[psv]] inspiration?"
 
         "Share the true inspiration":
             call ch2_08_club_inspiration
@@ -132,7 +132,7 @@ label ch2_08_club_story:
 
     a_myst "I told you your writing is good!"
 
-    "Sure enough, [ally] sneaks up on [name] as soon as [n_pos] conversation is done."
+    "Sure enough, [ally] sneaks up on [name] as soon as [pn[psv]] conversation is done."
 
     n "I'm sure she's just being nice."
 
@@ -158,7 +158,7 @@ label ch2_08_club_inspiration:
     $ happy += 1
     $ share = True
 
-    "After the club meeting, [name] explains to Cami the inspiration behind the day 2 topic story, including some of [n_pos] struggles with implicit gender biases."
+    "After the club meeting, [name] explains to Cami the inspiration behind the day 2 topic story, including some of [pn[psv]] struggles with implicit gender biases."
 
     c "Wow, that's actually pretty cool. Keep up the good work!"
 
@@ -176,7 +176,7 @@ label ch2_08_club_related:
 
     $ share = False
 
-    "After the club meeting, [name] tells Cami that [n_sbj] was inspired by a book [n_sbj] read once."
+    "After the club meeting, [name] tells Cami that [pn[sbj]] was inspired by a book [pn[sbj]] read once."
 
     c "Oh, cool! What book?"
 

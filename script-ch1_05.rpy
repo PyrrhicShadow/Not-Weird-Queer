@@ -4,7 +4,7 @@ label ch1_05:
 
     $ loop = 5
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -20,7 +20,7 @@ label ch1_05:
 
     play music school
 
-    "[name] goes to [n_pos] art class with [ally]."
+    "[name] goes to [pn[psv]] art class with [ally]."
 
     if day == 5:
         $ temp1 = "working on"
@@ -54,7 +54,7 @@ label ch1_05:
 
     a "What's your sculpture about?"
 
-    "[name] frowns at [n_pos] sculpture."
+    "[name] frowns at [pn[psv]] sculpture."
 
     menu:
         "Should [name] let [ally] in on the inspiration?"
@@ -108,11 +108,11 @@ label ch1_05_ryan_talk:
     elif d_gender == "female":
         $ temp1 = "girly"
 
-    n "I mean, I've always felt weird when people called me '[d_sbj]' or '[d_obj]' or tried to associate me with [temp1] things."
+    n "I mean, I've always felt weird when people called me '[pd[sbj]]' or '[pd[obj]]' or tried to associate me with [temp1] things."
 
     a "I see."
 
-    "[name] looks down at [n_pos] shoes."
+    "[name] looks down at [pn[psv]] shoes."
 
     # show cg ryan accepts you (depending on how you got here)
 
@@ -132,7 +132,7 @@ label ch1_05_ryan_talk:
     a "Yeah!  I think so. You're saying that you're actually a [a_noun][temp1]."
 
     if gender == "enby":
-        "[name] chuckles quietly to [n_obj]self."
+        "[name] chuckles quietly to [pn[obj]]self."
 
         n "Um, no. Actually, I don't think I'm a [d_noun] or a [a_noun]."
 
@@ -175,11 +175,11 @@ label ch1_05_ryan_talk:
 
     n "Yeah! Thanks. I'm so glad you agree."
 
-    "[name] laughs along with [n_pos] friend."
+    "[name] laughs along with [pn[psv]] friend."
 
     $ renpy.show("ally " + a_gender + " norm")
 
-    "[name] hasn't felt this good about [n_obj]self since… [n_sbj] can't remember when."
+    "[name] hasn't felt this good about [pn[obj]]self since… [pn[sbj]] can't remember when."
 
     play music school
 
@@ -207,9 +207,9 @@ label ch1_05_ryan_evade:
 
     if day > 5:
         $ happy -= 1
-        $ verb = v("do", "does")
+        $ verb = v(pn, "do", "does")
 
-        "[name] wants to tell [ally] what's going on, but [n_sbj] [verb]n't know how to find the right words."
+        "[name] wants to tell [ally] what's going on, but [pn[sbj]] [verb]n't know how to find the right words."
 
         n_self "Maybe next time."
 
@@ -279,7 +279,7 @@ label ch1_05_lunch_thanks:
 
     a "Of course. You're my friend, [name]. That's what friends are for."
 
-    "[ally] called [name] by the correct name. [N_sbj] had no idea it'd feel this good to be validated."
+    "[ally] called [name] by the correct name. [pn[sbj]!c] had no idea it'd feel this good to be validated."
 
     if loop == 4:
         jump ch1_04_art
@@ -307,9 +307,9 @@ label ch1_05_club_share:
     hide ally
 
     menu:
-        "[name] looks down at [n_pos] story."
+        "[name] looks down at [pn[psv]] story."
 
-        "Share [n_pos] story":
+        "Share [pn[psv]] story":
             jump ch1_05_club_talk_share
         "Do nothing":
             jump ch1_05_club_talk_nothing
@@ -322,7 +322,7 @@ label ch1_05_club_talk_share:
 
     $ renpy.show("main " + gender + " " + outfit + " norm")
 
-    "[name] shares [n_pos] story and the other club members snap enthusiastically."
+    "[name] shares [pn[psv]] story and the other club members snap enthusiastically."
 
     hide main
     $ renpy.show("ally " + a_gender + " smile")
@@ -344,7 +344,7 @@ label ch1_05_club_talk_share:
 
 label ch1_05_club_talk_nothing:
 
-    "[ally] asks [name] what [n_sbj] wrote, so [name] shares [n_pos] story with just [ally]."
+    "[ally] asks [name] what [pn[sbj]] wrote, so [name] shares [pn[psv]] story with just [ally]."
 
     a "Hey, that was really good."
 
@@ -382,13 +382,13 @@ label ch1_05_home:
 
     hide ally
 
-    "It's really cool to hear [ally] call [n_obj] \"[name]\" instead of \"[d_name].\""
+    "It's really cool to hear [ally] call [pn[obj]] \"[name]\" instead of \"[d_name]\"."
 
     scene bg day end
 
     "The day has gone surprisingly well. [name] is feeling hopeful for tomorrow."
 
-    "[name] is ready to start [n_pos] weekend."
+    "[name] is ready to start [pn[psv]] weekend."
 
     if happy < 0:
         $ self -= 1

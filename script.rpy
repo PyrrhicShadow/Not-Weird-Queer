@@ -69,27 +69,148 @@ label choose_pronouns:
     menu:
         "{noalt}What pronouns does [name] use?{/noalt}{alt}Hello, [name]. What pronouns do you use?{/alt}"
 
-        "{noalt}he/him{/noalt}{alt}he him{/alt}":
-            jump gender_male
+        "{noalt}[he_him[pn]]{/noalt}{alt}he him{/alt}":
+            jump pronouns_he_him
 
-        "{noalt}she/her{/noalt}{alt}she her{/alt}":
-            jump gender_female
+        "{noalt}[she_her[pn]]{/noalt}{alt}she her{/alt}":
+            jump pronouns_she_her
 
-        "{noalt}xe/xem{/noalt}{alt}xee xem{/alt}":
-            jump gender_enby_xe
+        "{noalt}[xe_xem[pn]]{/noalt}{alt}xee xem{/alt}":
+            jump pronouns_xe_xem
 
-        "{noalt}they/them{/noalt}{alt}they them{/alt}":
-            jump gender_enby_they
+        "{noalt}[they_them[pn]]{/noalt}{alt}they them{/alt}":
+            jump pronouns_they_them
 
         "other{alt} pronouns{/alt}":
-            jump gender_enby_custom
+            jump pronouns_custom
+
+label pronouns_he_him:
+
+    $ gender = "male"
+    $ noun = "boy"
+    $ adj = "boyish"
+    $ pn = he_him
+    $ plur = False
+
+    jump transmasc
+
+label pronouns_she_her:
+
+    $ gender = "female"
+    $ noun = "girl"
+    $ adj = "girly"
+    $ pn = she_her
+    $ plur = False
+
+    jump transfemme
+
+label pronouns_xe_xem:
+
+    $ pn = xe_xem
+    $ plur = False
+
+    jump gender_enby
+
+label pronouns_they_them:
+
+    $ pn = they_them
+    $ plur = True
+
+    jump gender_enby
+
+label pronouns_custom:
+
+    "Currently, custom pronouns are not supported."
+
+    "Support for custom pronouns will be added when the programmer figures out how to display multiple text boxes at once."
+
+    "Thank you for your patience."
+
+    menu:
+        "choose {noalt}[xe_xem[pn]]{/noalt}{alt}xee xem{/alt} pronouns":
+            jump pronouns_xe_xem
+        "choose {noalt}[they_them[pn]]{/noalt}{alt}they them{/alt} pronouns":
+            jump pronouns_they_them
+        "return to pronoun choice screen":
+            jump choose_pronouns
+
+label gender_enby:
+
+    $ gender = "enby"
+    $ noun = "nonbinary person"
+    $ adj = "gender-neutral"
+
+    jump sex_assigned_at_birth
+
+label sex_assigned_at_birth:
+
+    menu:
+        "Pick a sex assigned at birth."
+        
+        "female":
+            jump transmasc
+
+        "male":
+            jump transfemme
+
+        "random":
+            $ coin = renpy.random.choice(["H", "T"])
+
+            if coin == "H":
+                "Congrats! [name] is transfemme."
+
+                jump transfemme
+
+            if coin == "T":
+                "Congrats! [name] is transmasc."
+
+                jump transmasc
+
+label transmasc:
+
+    # main chara names
+    $ d_name = renpy.random.choice(f_names)
+    if d_name.lower() == name.lower():
+        $ d_name = "Macie"
+    $ d_gender = "female"
+    $ d_noun = "girl"
+    $ d_adj = "girly"
+    $ pd = she_her
+
+    $ ally = renpy.random.choice(m_names)
+    if ally.lower() == name.lower():
+        $ally = "Owen"
+    $ a_gender = "male"
+    $ a_noun = "boy"
+    $ a_adj = "boyish"
+    $ pa = he_him
+
+    $ popKid = "Elise"
+    $ mathBud = "Jaina"
+
+label transfemme:
+
+    # main chara names
+    $ d_name = renpy.random.choice(m_names)
+    if d_name.lower() == name.lower():
+        $ d_name = "Brian"
+    $ d_gender = "male"
+    $ d_noun = "boy"
+    $ d_adj = "boyish"
+    $ pd = he_him
+
+    $ ally = renpy.random.choice(f_names)
+    if ally.lower() == name.lower():
+        $ ally = "Megan"
+    $ a_gender = "female"
+    $ a_noun = "girl"
+    $ a_adj = "girly"
+    $ pa = she_her
+
+    $ popKid = "Jeremy"
+    $ mathBud = "Dylan"
 
 label pronouns_complete:
-
-    # capitalized subject pronouns for ease of access
-    $ N_sbj = n_sbj.capitalize()
-    $ A_sbj = a_sbj.capitalize()
-    $ D_sbj = d_sbj.capitalize()
 
     # make sure npc names are not the same as the player name
 
@@ -99,11 +220,11 @@ label pronouns_complete:
         $ mathBud = mathBud + " K"
 
     # name the save file name after the player's name and pronouns
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
     # The programmer (or modders) can start the game at any day (or part) by only changing this menu
     menu:
-        "Are you happy with your choice? {p}[name]{noalt} ([n_sbj]/[n_obj]){/noalt}{alt}, [n_sbj] [n_obj] pronouns{/alt}"
+        "Are you happy with your choice? {p}[name]{noalt} ([pn[pn]]){/noalt}{alt}, [pn[sbj]] [pn[obj]] pronouns{/alt}"
 
         "I'm ready":
             jump ch1
@@ -127,9 +248,9 @@ label bad_ending:
 
     end "This world is a cruel and unforgiving one."
 
-    end "The world crumbles around [name] and [n_pos] vision turns black."
+    end "The world crumbles around [name] and [pn[psv]] vision turns black."
 
-    end "[name] has died. \n[ally] misses [n_sbj] dearly."
+    end "[name] has died. \n[ally] misses [pn[sbj]] dearly."
 
     end "Game over."
 
@@ -206,9 +327,9 @@ label tbc:
 
     end "I hope you enjoyed playing {i}[config.name]{/i} as much as I enjoyed making it."
 
-    end "[name] also thanks you eternally for helping [n_obj] get through [n_pos] journey[temp2]."
+    end "[name] also thanks you eternally for helping [pn[obj]] get through [pn[psv]] journey[temp2]."
 
-    end "You completed [n_pos] adventure with [self] self-esteem points over [day] days."
+    end "You completed [pn[psv]] adventure with [self] self-esteem points over [day] days."
 
     end "Hopefully, through this adventure, we've all learned a little more about ourselves and the people around us."
 

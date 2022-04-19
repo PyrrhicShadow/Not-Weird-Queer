@@ -30,6 +30,7 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+\"Not Weird. Queer\" is a loosely autobiographical text-based video game about a trans teen going through middle school created by Pyrrhic Silva.
 """)
 
 

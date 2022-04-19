@@ -4,7 +4,7 @@ label ch2_12:
 
     $ loop = 12
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
     scene bg bedroom
 
@@ -22,7 +22,7 @@ label ch2_12:
 
 # head to the pier
 
-    "[name] and [n_pos] friend [ally] have made great strides in understanding themselves, and their adventure will soon come to a close, but the ending hasn't yet been written."
+    "[name] and [pn[psv]] friend [ally] have made great strides in understanding themselves, and their adventure will soon come to a close, but the ending hasn't yet been written."
 
     "Go forth, brave soul, and enjoy the [config.version] ending."
 

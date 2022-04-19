@@ -4,7 +4,7 @@ label ch1_01:
 
     $ loop = 1
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
     $ renpy.checkpoint()
     $ renpy.force_autosave(take_screenshot=True, block=True)
@@ -19,12 +19,12 @@ label ch1_01:
 
     $ renpy.show("main " + gender + " " + outfit + " norm")
 
-    "[name] finally wakes up after [n_pos] alarm rings four times."
+    "[name] finally wakes up after [pn[psv]] alarm rings four times."
 
-    $ verb = v("throw")
-    $ verb1 = v("rush", "rushes")
+    $ verb = v(pn, "throw")
+    $ verb1 = v(pn, "rush", "rushes")
 
-    "[N_sbj] quickly [verb] on a vaguely [adj] outfit and [verb1] to the kitchen to grab some breakfast, inevitably running into [n_pos] mom."
+    "[pn[sbj]!c] quickly [verb] on a vaguely [adj] outfit and [verb1] to the kitchen to grab some breakfast, inevitably running into [pn[psv]] mom."
 
     scene bg kitchen
     show mom norm
@@ -39,11 +39,11 @@ label ch1_01:
 
     mom "Love you, too, sweetie. Have a good day!"
 
-    $ verb = v("were", "was")
+    $ verb = v(pn, "were", "was")
 
-    "[name] doesn't like being called \"[d_name]\", but that's the name [n_sbj] [verb] given."
+    "[name] doesn't like being called \"[d_name]\", but that's the name [pn[sbj]] [verb] given."
 
-    "With a heavy sigh, [name] grabs [n_pos] backpack and heads out the door."
+    "With a heavy sigh, [name] grabs [pn[psv]] backpack and heads out the door."
 
 # catch the bus day 1
 
@@ -54,21 +54,23 @@ label ch1_01:
     "[name] walks to the bus stop and gets on the next bus."
     "There are three open seats left."
 
-    $ verb = v("sit")
+    $ verb = v(pn, "sit")
 
-    "[name] is shy so [n_sbj] [verb] alone."
+    "[name] is shy so [pn[sbj]] [verb] alone."
 
-    "[name] sees [n_pos] classmate, [ally], sitting a few rows away and wonders if [a_sbj] would like to have company."
+    $ verb = v(pn, "see")
 
-    "Before [name] gets the courage to sit with [ally], the bus doors close and it's too late for [n_obj] to get up and switch seats."
+    "[pn[sbj]!cl] [verb] [pn[psv]] classmate, [ally], sitting a few rows away and wonders if [pa[sbj]] would like to have company."
+
+    "Before [name] gets the courage to sit with [ally], the bus doors close and it's too late for [pn[obj]] to get up and switch seats."
 
     n_self "It's fine, I chose to be lonely today, that's all."
 
-    "But a part of [n_obj] wishes [n_sbj] hadn't chosen to sit alone."
+    "But a part of [pn[obj]] wishes [pn[sbj]] hadn't chosen to sit alone."
 
     scene bg school front
 
-    "[name] arrives at school, wearing [n_pos] jacket around [n_pos] waist."
+    "[name] arrives at school, wearing [pn[psv]] jacket around [pn[psv]] waist."
 
     "The morning is surprisingly warm compared to last week. Spring must be on its way."
 
@@ -78,13 +80,13 @@ label ch1_01:
 
     play music school
 
-    "[name] goes to [n_pos] first class of the day, history."
+    "[name] goes to [pn[psv]] first class of the day, history."
 
-    "Doodling in [n_pos] notebook, [name] tries [n_pos] best to pay attention to the classwork without falling asleep."
+    "Doodling in [pn[psv]] notebook, [name] tries [pn[psv]] best to pay attention to the classwork without falling asleep."
 
-    $ verb = v("is")
+    $ verb = v(pn, "is")
 
-    "One of [name]'s classmates comes up and picks on the way [n_sbj] [verb] acting."
+    "One of [name]'s classmates comes up and picks on the way [pn[sbj]] [verb] acting."
 
     $ renpy.show("extra " + d_gender + " norm", at_list=[left])
     $ renpy.show("extra " + d_gender + " norm", at_list=[right], tag="extra2")
@@ -103,7 +105,7 @@ label ch1_01:
     hide extra
     hide extra2
 
-    "[name] shrinks into [n_pos] desk and tries to ignore [n_pos] classmates by burying [n_pos] head in [n_pos] classwork."
+    "[name] shrinks into [pn[psv]] desk and tries to ignore [pn[psv]] classmates by burying [pn[psv]] head in [pn[psv]] classwork."
 
     "Thankfully, it's soon lunchtime."
 
@@ -111,9 +113,9 @@ label ch1_01:
 
     scene bg gym lunch
 
-    "[name] eats [n_pos] sandwich alone at lunch, watching the other kids laugh and talk."
+    "[name] eats [pn[psv]] sandwich alone at lunch, watching the other kids laugh and talk."
 
-    "At any moment, one of them could refocus their attention at laughing at [n_obj]."
+    "At any moment, one of them could refocus their attention at laughing at [pn[obj]]."
 
     "Lunch is fairly stressful most days."
 
@@ -128,8 +130,6 @@ label ch1_01:
 
     $ classmate = "Classmate 1"
     $ renpy.show("extra " + d_gender + " norm")
-
-    play music bully
 
     x "Hey, look at that weirdo over there."
 
@@ -151,10 +151,10 @@ label ch1_01:
 
     play music school
 
-    $ verb = v("get")
-    $ verb1 = v("leave")
+    $ verb = v(pn, "get")
+    $ verb1 = v(pn, "leave")
 
-    "Even though [name]'s not quite done with [n_pos] sandwich, [n_sbj] [verb] up and [verb1] the lunchroom to finish [n_pos] sandwich on the field."
+    "Even though [name]'s not quite done with [pn[psv]] sandwich, [pn[sbj]] [verb] up and [verb1] the lunchroom to finish [pn[psv]] lunch on the field."
 
     "At least the next class is one [name] enjoys, art."
 
@@ -164,20 +164,19 @@ label ch1_01:
 
     "Today in art class, [name]'s class is finishing up their charcoal self-portraits."
 
-    $ verb = v("has")
-    $ verb1 = v("are")
+    $ verb = v(pn, "are")
 
-    "Since [n_sbj] [verb] already finished [n_pos] portrait last class, [n_sbj] [verb1] writing in [n_pos] notebook."
+    "Since Swatch already finished [pn[psv]] portrait last class, [pn[sbj]] [verb] writing in [pn[psv]] notebook."
 
-    $ verb = v("want")
+    $ verb = v(pn, "want")
 
     menu:
-        "A few other classmates are also finishing up. [name] isn't sure if [n_sbj] [verb] to talk to one of them or not."
+        "A few other classmates are also finishing up. [name] isn't sure if [pn[sbj]] [verb] to talk to one of them or not."
 
         "Talk to a classmate":
             jump ch1_01_art_talk
 
-        "Not talk to a classmate":
+        "Write some more":
             jump ch1_01_art_not
 
 label ch1_01_art_talk:
@@ -188,7 +187,7 @@ label ch1_01_art_talk:
 
     s "Hello, [d_name]. What's up?"
 
-    "[name] stares at [n_pos] notebook."
+    "[name] stares at [pn[psv]] notebook, barely flinching at {i}that{/i} name."
 
     n "Not much."
 
@@ -198,13 +197,13 @@ label ch1_01_art_talk:
 
     hide sophia
 
-    "Sighing, [name] returns to writing in [n_pos] notebook."
+    "Sighing, [name] returns to writing in [pn[psv]] notebook."
 
     jump ch1_01_notebook
 
 label ch1_01_art_not:
 
-    "After a moment of thought, [name] decides not to bother [n_pos] classmates."
+    "After a moment of thought, [name] decides not to bother [pn[psv]] classmates."
 
     n_self "Sigh."
 
@@ -212,56 +211,80 @@ label ch1_01_art_not:
 
 label ch1_01_notebook:
 
-    "[name] wishes [n_sbj] could express [n_obj]self better."
+    $ verb = v(pn, "wish", "wishes")
 
-    "Back in [n_pos] notebook, [name] continues crafting [n_pos] latest story."
+    "[pn[sbj]!cl] [verb] [pn[sbj]] could express [pn[obj]]self better."
 
-    """[name] loves to write short stories and poems. It's the only way [n_sbj] can really express [n_obj]self.
+    "Back to [pn[psv]] notebook, [name] continues crafting [pn[psv]] latest story."
 
-    [name] likes writing so much, [n_sbj] joined the middle school book club."""
+    "[name] loves to write short stories and poems. It's the only way [pn[sbj]] can really express [pn[obj]]self."
 
-    $ verb = v("do")
+    "With [pn[psv]] head stuck in [pn[psv]] journal, art class is soon over."
 
-    "Though [n_sbj] [verb]n't know anyone in the book club, [name] enjoys the opportunity to write and listen to the other's stories."
+    "[name] quickly packs up and heads to [pn[psv]] next class."
 
 # book club day 1
 
     scene bg club front
 
-    "After class, [name] heads to the afterschool book club."
+    "Since it doesn't look like it's going to rain today, [name] heads to the book club after school."
 
-    $ verb = v("sit")
-    $ verb1 = v("start")
+    $ verb = v(pn, "do")
 
-    "As soon as [n_sbj] [verb] down, [n_sbj] [verb1] writing."
+    "Though [pn[sbj]] [verb]n't really know anyone in there, [name] enjoys the opportunity to write and listen to the other's stories."
 
-    $ verb = v("hate")
+    "Every day, the club officers decide on a prompt to help get the creative juices going."
 
-    "Today, [name] is writing a poem about the struggle of looking like a [d_noun] when [n_sbj] [verb] most [d_adj] things."
+    $ verb = v(pn, "come")
 
-    $ verb = v("choose")
+    "Sometimes, [name] uses them, but other times, [pn[sbj]] [verb] up with [pn[psv]] own idea."
 
-    "[N_sbj] [verb] to express this through a metaphor of a deep, artsy film written in a language no one understands."
+    "Today's prompt is [writing_prompt[0]]."
 
-    "It's a really personal piece, and [name] is really proud of how it turned out."
+    $ verb = v(pn, "sit")
+    $ verb1 = v(pn, "start")
 
-    "Soon, it is time for everyone to share their pieces of writing."
+    "As soon as [pn[sbj]] [verb] down, [pn[sbj]] [verb1] writing."
+
+    $ verb = v(pn, "hate")
+    if gender == "enby":
+        $ temp1 = "a lot of"
+    else:
+        $ temp1 = "most"
+
+    "[name] decides to write a poem about the struggle of looking like a [d_noun] when [pn[sbj]] [verb] being associated with [temp1] [d_adj] things."
+
+    $ verb = v(pn, "choose")
+
+    "[pn[sbj]!c] [verb] to express this through a metaphor of a deep, artsy film written in a language no one understands."
+
+    $ verb = v(pn, "is")
+
+    "It's a really personal piece, and [pn[sbj]] [verb] really proud of how it turned out."
+
+    "Soon, it is time for the club members to share their pieces of writing."
 
     scene bg club sharing
 
+    cp "Hello, everyone! I hope you all enjoyed today's prompt."
+
+    cp "Or ignoring today's prompt. Looking at you, Trevor."
+
+    "Everyone laughs"
+
     "Every day, the book club president asks if there are any volunteers. The same few kids who always share volunteer immediately."
 
-    "[name] listens as the other club members, mostly kids older than [n_obj], share their fun, wacky stories and freeform poetry."
+    "[name] listens as the other club members, mostly kids older than [pn[obj]], share their fun, wacky stories and freeform poetry."
 
-    $ verb = v("wish", "wishes")
+    $ verb = v(pn, "wish", "wishes")
 
-    "[name] usually doesn't share, but [n_sbj] [verb] [n_sbj] had the courage to."
+    "[name] usually doesn't share, but [pn[sbj]] [verb] [pn[sbj]] had the courage to."
 
     "After every person who shares, all the club members politely snap their fingers in encouragement."
 
-    $ verb = v("gain")
+    $ verb = v(pn, "gain")
 
-    "[name] always snaps along, wondering if [n_sbj] should go next, but [n_sbj] rarely [verb] the courage to."
+    "[name] always snaps along, wondering if [pn[sbj]] should go next, but [pn[sbj]] rarely [verb] the courage to."
 
     "Soon, it's time to head home."
 
@@ -271,10 +294,10 @@ label ch1_01_notebook:
 
     play music name
 
-    "After the book club, [name] walks home by [n_obj]self."
+    "After the book club, [name] walks home by [pn[obj]]self."
 
-    """During the colder months, [n_sbj]'d often skip the book club in order to catch the bus home,
-    especially when it rained, but the weather was finally nice enough for [name] to risk missing the bus."""
+    """During the colder months, [pn[sbj]]'d often skip the book club in order to catch the bus home,
+    especially when it rained, but the weather's actually pretty nice today."""
 
     scene bg day end
 

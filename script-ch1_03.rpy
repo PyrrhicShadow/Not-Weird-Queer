@@ -4,7 +4,7 @@ label ch1_03:
 
     $ loop = 3
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -22,12 +22,12 @@ label ch1_03:
 
     "During math class, [name] needs to go to the bathroom."
 
-    scene bg school hallway
+    scene bg school bathroom
 
-    "[name] walks out into the hallway and has to make a choice."
+    "[name] walks the the school bathrooms and has to make a choice."
 
     menu:
-        "Which bathroom should [n_sbj] use?"
+        "Which bathroom should [pn[sbj]] use?"
 
         "[a_noun]'s":
             call ch1_03_math_gender
@@ -54,15 +54,15 @@ label ch1_03_math_gender:
 
     $ happy += 1
 
-    scene bg school bathroom
+    $ verb = v(pn, "need")
 
-    $ verb = v("need")
+    "[name] goes to the bathroom and does what [pn[sbj]] [verb] to do."
 
-    "[name] goes to the bathroom and does what [n_sbj] [verb] to do."
+    scene bg school hallway
 
-    $ verb = v("walk")
+    $ verb = v(pn, "walk")
 
-    "As [n_sbj] [verb] out, [n_pos] art teacher, [artTeach], walks by."
+    "As [pn[sbj]] [verb] out, [pn[psv]] art teacher, [artTeach], walks by."
 
     show teacher art
 
@@ -78,9 +78,9 @@ label ch1_03_math_gender:
 
     "[name] whispers this before heading back to math class."
 
-    "Despite the confrontation, [name] still feels like [n_sbj] did the right thing."
+    "Despite the confrontation, [name] still feels like [pn[sbj]] did the right thing."
 
-    "If only other people understood [n_obj]."
+    "If only other people understood [pn[obj]]."
 
     return
 
@@ -88,11 +88,9 @@ label ch1_03_math_notGender:
 
     $ happy -= 1
 
-    scene bg school bathroom
+    $ verb = v(pn, "is")
 
-    $ verb = v("is")
-
-    "[name] goes into the [d_noun]'s bathroom. It bothers [n_obj] to need to hide who [n_sbj] [verb] but the fear keeps [n_obj] from doing differently."
+    "[name] goes into the [d_noun]'s bathroom. It bothers [pn[obj]] to need to hide who [pn[sbj]] [verb] but the fear keeps [pn[obj]] from doing differently."
 
     "Afterward, [name] heads back to math class."
 
@@ -102,11 +100,11 @@ label ch1_03_math_missing:
 
     "Unfortunately, [name]'s school doesn't have a gender neutral bathroom."
 
-    $ verb = v("has")
-    $ verb1 = v("make")
+    $ verb = v(pn, "has")
+    $ verb1 = v(pn, "make")
 
     menu:
-        "[name] frowns but [n_sbj] really [verb] to pee, so [n_sbj] [verb1] a choice."
+        "[name] frowns but [pn[sbj]] really [verb] to pee, so [pn[sbj]] [verb1] a choice."
 
         "[a_noun]'s":
             jump ch1_03_math_gender
@@ -128,7 +126,7 @@ label ch1_03_lunch:
     else:
         $ temp1 = ""
 
-    "[name] picks a table [temp1]and starts eating [n_pos] sandwich."
+    "[name] picks a table [temp1]and starts eating [pn[psv]] sandwich."
 
     if club:
         call ch1_03_lunch_club
@@ -140,18 +138,18 @@ label ch1_03_lunch:
     "Today, no one bullies [name] during the lunch period."
 
     if day == 3:
-        "[N_sbj] can't remember the last time that happened."
+        "[pn[sbj]!c] can't remember the last time that happened."
 
     else:
         "It's a pleasant surprise."
 
-    "All too soon, it's time to go to [n_pos] next class."
+    "All too soon, it's time to go to [pn[psv]] next class."
 
     jump ch1_03_english
 
 label ch1_03_lunch_club:
 
-    "They talk about reading, writing, and the book club. [ally] encourages [name] to share [n_pos] writing with the other club members because it's good."
+    "They talk about reading, writing, and the book club. [ally] encourages [name] to share [pn[psv]] writing with the other club members because it's good."
 
     return
 
@@ -161,7 +159,7 @@ label ch1_03_lunch_ryan:
 
     "They talk about their favorite books."
 
-    "Seeing [ally]'s interest in books, [name] decides to invite [a_sbj] to [n_pos] afterschool book club."
+    "Seeing [ally]'s interest in books, [name] decides to invite [pa[sbj]] to [pn[psv]] afterschool book club."
 
     a norm "Oh, I didn't know we had a book club!"
 
@@ -173,7 +171,7 @@ label ch1_03_lunch_ryan:
 
 label ch1_03_lunch_company:
 
-    "[ally] sees [name] sitting alone in the cafeteria and decides to join [n_obj]."
+    "[ally] sees [name] sitting alone in the cafeteria and decides to join [pn[obj]]."
 
     "Though they're mostly silent while eating, it's still nice to have company during lunch."
 
@@ -198,16 +196,16 @@ label ch1_03_english:
     else:
         $ temp1 = "nothing of particular importance"
 
-    $ verb = v("doodle")
+    $ verb = v(pn, "doodle")
 
-    "As [name]'s taking notes, [n_sbj] [verb] [temp1] in the margins of [n_pos] notes."
+    "As [name]'s taking notes, [pn[sbj]] [verb] [temp1] in the margins of [pn[psv]] notes."
 
     "Eventually, the bell rings."
 
     if self > -1:
         jump ch1_club
 
-    else:        
-        "[name] slowly packs [n_pos] things and heads into a quiet hallway."
+    else:
+        "[name] slowly packs [pn[psv]] things and heads into a quiet hallway."
 
         jump ch1_hallway_cry

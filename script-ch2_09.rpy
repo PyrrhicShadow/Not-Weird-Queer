@@ -4,7 +4,7 @@ label ch2_09:
 
     $ loop = 9
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -16,7 +16,7 @@ label ch2_09:
 
 # history class day 9
 
-    show bg classroom history
+    scene bg classroom history
 
     $ happy -= 1
 
@@ -25,10 +25,10 @@ label ch2_09:
     menu:
         "What should [name] do?"
 
-        "Defend [n_obj]self calmly":
+        "Defend [pn[obj]]self calmly":
             jump ch2_08_history_calm
 
-        "Defend [n_obj]self angrily":
+        "Defend [pn[obj]]self angrily":
             jump ch2_08_history_angry
 
         "Do nothing":
@@ -36,7 +36,7 @@ label ch2_09:
 
     jump ch2_club
 
-label ch2_08_history_calm:
+label ch2_09_history_calm:
 
     $ defHist = "calm"
     $ happy += 1
@@ -52,9 +52,9 @@ label ch2_08_history_calm:
 
     "The peaceful option gives [name] the best outcome."
 
-    jump ch2_08_lunch
+    jump ch2_09_lunch
 
-label ch2_08_history_angry:
+label ch2_09_history_angry:
 
     $ defHist = "angry"
 
@@ -70,9 +70,9 @@ label ch2_08_history_angry:
 
     "$name doesn't feel worse than before, but this doesn't feel like the right reaction."
 
-    jump ch2_08_lunch
+    jump ch2_09_lunch
 
-label ch2_08_history_nothing:
+label ch2_09_history_nothing:
 
     $ defHist = "none"
     $ happy -= 1
@@ -89,9 +89,9 @@ label ch2_08_history_nothing:
 
     "Why didn't $name fight back? {w}Why?"
 
-    jump ch2_08_lunch
+    jump ch2_09_lunch
 
-label ch2_08_lunch:
+label ch2_09_lunch:
 
     if defHist == "calm":
         n "I composed myself and told him why he was wrong."
@@ -147,15 +147,15 @@ label ch2_08_lunch:
 
     n "Oh, what's it about?"
 
-    "[ally] laughs before describing the plot of [a_pos] [temp2]."
+    "[ally] laughs before describing the plot of [pa[psv]] [temp2]."
 
     "Chilling with [name]'s friend is a good break from the events of history class."
 
 # PE class day 9
 
-    show bg field pe
+    scene bg field pe
 
-    "$name goes to $pos PE class with $ally."
+    "$name goes to $psv PE class with $ally."
 
     "Today's just a fitness day, so they run the mile together."
 

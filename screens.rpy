@@ -1542,7 +1542,7 @@ screen debug():
             style "debug_vbox"
             spacing 10
 
-            text "{noalt}[name] ([n_sbj]/[n_obj]){/noalt}" size 25
+            text "{noalt}[name] ([pn[pn]]){/noalt}" size 25
 
             text "{noalt}Days: [day] (Part [part] day [loop]){/noalt}" size 20
             hbox:

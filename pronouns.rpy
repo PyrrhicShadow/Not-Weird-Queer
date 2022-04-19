@@ -1,185 +1,103 @@
-# The script for setting up all the variables that varry based on gender
+################################################################################
+## Pronouns
+################################################################################
 
-label gender_male:
+## For variable pronouns, assign your character a pronoun
+#  $ p_main = he_him
+## Then use in "say" statement
+#  "I'll give [p_main[obj]] some money later."
+define he_him = {
+    "pn": "he/him",
+    "plur": False,
+    "sbj": "he",
+    "obj": "him",
+    "psv": "his",
+    "rfx": "his"
+}
 
-    $ gender = "male"
-    $ noun = "boy"
-    $ adj = "boyish"
+define she_her = {
+    "pn": "she/her",
+    "plur": False,
+    "sbj": "she",
+    "obj": "her",
+    "psv": "her",
+    "rfx": "hers"
+}
 
-    # pronouns
-    $ plur = False
-    $ n_sbj = "he"
-    $ n_obj = "him"
-    $ n_pos = "his"
-    $ n_robj = "his"
+define they_them = {
+    "pn": "they/them",
+    "plur": True,
+    "sbj": "they",
+    "obj": "them",
+    "psv": "their",
+    "rfx": "theirs"
+}
 
-    jump transmasc
+define xe_xem = {
+    "pn": "xe/xem",
+    "plur": False,
+    "sbj": "xe",
+    "obj": "xem",
+    "psv": "xyr",
+    "rfx": "xyrs"
+}
 
-label gender_female:
+################################################################################
+## Functions
+################################################################################
 
-    $ gender = "female"
-    $ noun = "girl"
-    $ adj = "girly"
+init python:
 
-    # pronouns
-    $ plur = False
-    $ n_sbj = "she"
-    $ n_obj = "her"
-    $ n_pos = "her"
-    $ n_robj = "hers"
+## function to populate a custom set of pronouns
+## syntax
+    def pn_custom(plur, sbj, obj, psv, rfv):
+        pn = sbj + "/" + obj
+        custom = {
+            "pn": pn,
+            "plur": plur,
+            "sbj": sbj,
+            "obj": obj,
+            "psv": psv,
+            "rfv": rfv
+        }
 
-    jump transfemme
+        return custom
 
-label gender_enby:
+## function to switch the number agreement for the verbs
+## syntax: v(pronoun, plural, singular) or v(pronoun, plural)
+## pronoun defaults to he/him, or singular
+## common irregulars include is/are, have/has, do/does
+## let's say `px` contains the user-player's pronouns
+#  $ temp1 = v(px, have)
+#  $ temp2 = v(px, think)
+## temp1 returns "They have" or "She has"
+## temp2 returns "They think" or "She thinks"
+    def v(pronoun = he_him, *verbs):
+        common = v_common(verbs[0])
 
-    $ gender = "enby"
-    $ noun = "nonbinary person"
-    $ adj = "gender-neutral"
+        if common != "":
+            verbs = common
 
-    jump sex_assigned_at_birth
+        if pronoun["plur"]:
+            return verbs[0]
 
-label gender_enby_xe:
+        else:
+            if len(verbs) == 2:
+                return verbs[1]
 
-    # pronouns
-    $ plur = False
-    $ n_sbj = "xe"
-    $ n_obj = "xem"
-    $ n_pos = "xyr"
-    $ n_robj = "xyrs"
+            else:
+                return verbs[0] + "s"
 
-    jump gender_enby
+    ## helper function for common, irregular verbs
+    def v_common(vc):
+        if vc == "are" or vc == "is":
+            return ("are", "is")
 
-label gender_enby_they:
+        elif vc == "have" or vc == "has":
+            return ("have", "has")
 
-    # pronouns
-    $ plur = True
-    $ n_sbj = "they"
-    $ n_obj = "them"
-    $ n_pos = "their"
-    $ n_robj = "theirs"
+        elif vc == "do" or vc == "does":
+            return ("do", "does")
 
-    jump gender_enby
-
-label gender_enby_custom:
-
-    $ gender = "enby"
-    $ noun = "nonbinary person"
-    $ adj = "gender-neutral"
-
-    "Currently, custom pronouns are not supported."
-
-    "Support for custom pronouns will be added when the programmer figures out how to display multiple text boxes at once."
-
-    "Thank you for your patience."
-
-    # example for how I would implement pronounciation guides for custom pronouns
-    $ n_sbj = "xe"
-    if preferences.self_voicing:
-        $ p_sbj = "xee"
-        $ n_sbj = "{noalt}" + n_sbj + "{/noalt}" + "{alt}" + p_sbj + "{/alt}"
-
-    menu:
-        "choose {noalt}xe/xem{/noalt}{alt}xee xem{/alt} pronouns":
-            jump gender_enby_xe
-        "choose {noalt}they/them{/noalt}{alt}they them{/alt} pronouns":
-            jump gender_enby_they
-        "return to pronoun choice screen":
-            jump choose_pronouns
-
-    jump sex_assigned_at_birth
-
-label sex_assigned_at_birth:
-
-    "Pick a sex assigned at birth."
-
-    menu:
-        "female":
-            jump transmasc
-
-        "male":
-            jump transfemme
-
-        "random":
-            $ coin = renpy.random.choice(["H", "T"])
-
-            if coin == "H":
-                "Congrats! [name] is transfemme."
-
-                jump transfemme
-
-            if coin == "T":
-                "Congrats! [name] is transmasc."
-
-                jump transmasc
-
-label transmasc:
-
-    # main chara names
-    $ d_name = renpy.random.choice(f_names)
-    if d_name.lower() == name.lower():
-        $ d_name = "Macie"
-
-    $ ally = renpy.random.choice(m_names)
-    if ally.lower() == name.lower():
-        $ally = "Owen"
-
-    $ popKid = "Elise"
-    $ mathBud = "Jaina"
-
-    # ally pronouns
-    $ a_gender = "male"
-    $ a_noun = "boy"
-    $ a_adj = "boyish"
-
-    $ a_sbj = "he"
-    $ a_obj = "him"
-    $ a_pos = "his"
-    $ a_robj = "his"
-
-    # dead pronouns
-    $ d_gender = "female"
-    $ d_noun = "girl"
-    $ d_adj = "girly"
-
-    $ d_sbj = "she"
-    $ d_obj = "her"
-    $ d_pos = "her"
-    $ d_robj = "hers"
-
-    jump pronouns_complete
-
-label transfemme:
-
-    # main chara names
-    $ d_name = renpy.random.choice(m_names)
-    if d_name.lower() == name.lower():
-        $ d_name = "Brian"
-
-    $ ally = renpy.random.choice(f_names)
-    if ally.lower() == name.lower():
-        $ ally = "Megan"
-
-    $ popKid = "Jeremy"
-    $ mathBud = "Dylan"
-
-    # ally pronouns
-    $ a_gender = "female"
-    $ a_noun = "girl"
-    $ a_adj = "girly"
-
-    $ a_sbj = "she"
-    $ a_obj = "her"
-    $ a_pos = "her"
-    $ a_robj = "hers"
-
-    # dead pronouns
-    $ d_gender = "male"
-    $ d_noun = "boy"
-    $ d_adj = "boyish"
-
-    $ d_sbj = "he"
-    $ d_obj = "him"
-    $ d_pos = "his"
-    $ d_robj = "his"
-
-    jump pronouns_complete
+        else:
+            return ""

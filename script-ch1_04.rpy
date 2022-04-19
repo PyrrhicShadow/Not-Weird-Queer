@@ -4,7 +4,7 @@ label ch1_04:
 
     $ loop = 4
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -20,7 +20,7 @@ label ch1_04:
 
     play music school
 
-    "[name] heads to [n_pos] first class, PE."
+    "[name] heads to [pn[psv]] first class, PE."
 
     "[peTeach] splits the class into boys and girls teams to play dodgeball."
 
@@ -70,7 +70,7 @@ label ch1_04:
 
 label ch1_04_pe_gender:
 
-    $ verb = v("want")
+    $ verb = v(pn, "want")
 
     n "Sorry, [peTeach], I'm playing on the [a_noun]'s team today!"
 
@@ -80,13 +80,13 @@ label ch1_04_pe_gender:
 
         if talk:
             $ temp1 = ""
-            $ temp2 = n_obj
+            $ temp2 = pn["obj"]
 
         else:
             $ temp1 = "Despite not fully understanding why, "
-            $ temp2 = d_obj
+            $ temp2 = pd["obj"]
 
-        "[temp1][ally] supports [n_obj], too."
+        "[temp1][ally] supports [pn[obj]], too."
 
         a "Yeah. Maybe one of the other [a_noun]s can switch places with [temp2]?"
 
@@ -121,8 +121,8 @@ label ch1_04_pe_gender:
             "A [a_noun] walks over to the [d_noun]'s team, snickering. [peTeach] is satisfied."
 
         else:
-            $ verb = v("stare")
-            "[n_sbj] [verb] at the ground for a moment before walking to the [d_noun]'s team."
+            $ verb = v(pn, "stare")
+            "[pn[sbj]] [verb] at the ground for a moment before walking to the [d_noun]'s team."
 
     hide teacher
     hide ally
@@ -145,7 +145,7 @@ label ch1_04_pe_notGender:
 
     $ happy -= 1
 
-    "[name] decides it's easier if [n_sbj] plays on the [d_noun]'s team."
+    "[name] decides it's easier if [pn[sbj]] plays on the [d_noun]'s team."
 
     if ryan > 4:
         "[ally] notices [name]'s discomfort but doesn't say anything."
@@ -191,7 +191,7 @@ label ch1_04_ryan_talk:
     a "Why did you insist on playing on the [a_noun]'s team with me today?"
 
     menu:
-        "[name] can tell that [a_sbj] is truly curious and just trying to understand."
+        "[name] can tell that [pa[sbj]] is truly curious and just trying to understand."
 
         "Explain [name]'s reasons":
             jump ch1_05_ryan_talk
@@ -206,7 +206,7 @@ label ch1_04_lunch:
     scene bg gym lunch
 
     if ryan > 3:
-        "[ally] has homework to get done, so [n_sbj] doesn't have time to eat lunch with [name]"
+        "[ally] has homework to get done, so [pn[sbj]] doesn't have time to eat lunch with [name]"
 
     if gender == "male":
         $ temp1 = renpy.random.choice(["male topic 1", "male topic 2", "male topic 3"])
@@ -215,9 +215,9 @@ label ch1_04_lunch:
     else:
         $ temp1 = renpy.random.choice(["topic 1", "topic 2", "topic 3"])
 
-    $ verb = v("get")
+    $ verb = v(pn, "get")
 
-    "[name] eats [n_pos] sandwich in peace, thinking about [temp1], when [n_sbj] [verb] bullied by this girl sitting across from [n_obj]."
+    "[name] eats [pn[psv]] sandwich in peace, thinking about [temp1], when [pn[sbj]] [verb] bullied by this girl sitting across from [pn[obj]]."
 
     show extra female norm
 
@@ -229,7 +229,7 @@ label ch1_04_lunch:
         "[name] gets angry and wonders if there's another way to live."
         jump ch1_04_lunch_confront
     else:
-        "[name] burries [n_pos] head in [n_pos] sandwich and ignors her."
+        "[name] burries [pn[psv]] head in [pn[psv]] sandwich and ignors her."
         jump ch1_04_lunch_after
 
 label ch1_04_lunch_confront:
@@ -251,10 +251,10 @@ label ch1_04_lunch_confront:
         "Stunned, [name] backed up and ran out of the cafeteria."
         jump ch1_hallway_cry
     else:
-        "[name] frowned, balling [n_pos] fists."
+        "[name] frowned, balling [pn[psv]] fists."
         n "It's not funny, jerk."
         xf "Whatever, weirdo."
-        xf "Amazingly, the bully left [n_obj] alone for the rest of the lunch period."
+        xf "Amazingly, the bully left [pn[obj]] alone for the rest of the lunch period."
         jump ch1_04_lunch_after
 
 label ch1_04_lunch_after:
@@ -264,7 +264,7 @@ label ch1_04_lunch_after:
 
     scene bg school hallway
 
-    "After lunch but before [n_pos] next class, [name] meets up with [ally] and tells [a_obj] about what just happened."
+    "After lunch but before [pn[psv]] next class, [name] meets up with [ally] and tells [pa[obj]] about what just happened."
 
     $ renpy.show("ally " + a_gender + " shocked")
 
@@ -292,7 +292,7 @@ label ch1_04_art:
 
     scene bg classroom art
 
-    "[name] goes to [n_pos] art class with [ally]."
+    "[name] goes to [pn[psv]] art class with [ally]."
 
     if day == 4:
         $ temp1 = "working on"
@@ -343,7 +343,7 @@ label ch1_04_art:
 
     n "Your sculpture is really cool, too. So diverse and abstract."
 
-    "[ally] studies [a_pos] own sculpture for a second."
+    "[ally] studies [pa[psv]] own sculpture for a second."
 
     if talk:
         $ temp1 = name + ". Yours feels like you"
