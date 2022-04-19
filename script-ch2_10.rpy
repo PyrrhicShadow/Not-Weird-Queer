@@ -4,7 +4,7 @@ label ch2_10:
 
     $ loop = 10
     $ day += 1
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
 # for now, each morning in the "loop" is the same
 
@@ -16,7 +16,7 @@ label ch2_10:
 
 # math class day 10
 
-    show bg classroom math
+    scene bg classroom math
 
     "[name] heads to math class."
 
@@ -58,9 +58,9 @@ label ch2_10_math_art:
     m "Oh, no need to thank me. You capture this feeling of darkness really well, even though the [temp1] you used weren't dark at all."
 
     menu:
-        "[name] feels proud of [n_pos] sculpture. Should [n_pos] explain their art to [mathBud]"
+        "[name] feels proud of [pn[psv]] sculpture. Should [pn[psv]] explain their art to [mathBud]"
 
-        "Explain [name]'s personal connection to [n_pos] sculpture":
+        "Explain [name]'s personal connection to [pn[psv]] sculpture":
             jump ch2_10_math_explain
 
         "Play off [name]'s scuplture as inspired by a good book":
@@ -79,7 +79,7 @@ label ch2_10_math_explain:
     else:
         $ temp1 = "gender-ambiguous"
 
-    "[name] decides to explain to [mathBud] the personal significance of the [temp1] pain depicted in [n_pos] sculpture."
+    "[name] decides to explain to [mathBud] the personal significance of the [temp1] pain depicted in [pn[psv]] sculpture."
 
     n "And that's why I've decided to go as '[name]' now."
 
@@ -124,13 +124,13 @@ label ch2_10_math_explain:
 
     n "Thanks, [mathBud]."
 
-    "[name] is surprised at how [mathBud] reacts to [n_pos] art. [mathBud] is actually a pretty cool person."
+    "[name] is surprised at how [mathBud] reacts to [pn[psv]] art. [mathBud] is actually a pretty cool person."
 
     jump ch2_10_lunch
 
 label ch2_10_math_notExplain:
 
-    "[name] tells [mathBud] that [n_sbj] was inspired by this book that [n_sbj] recently read. [mathBud] isn't really into books, but [a_sbj] agrees that that book sounds cool."
+    "[name] tells [mathBud] that [pn[sbj]] was inspired by this book that [pn[sbj]] recently read. [mathBud] isn't really into books, but [pa[sbj]] agrees that that book sounds cool."
 
     m "Anyway, don't ever stop making art. You've got a good eye."
 
@@ -154,9 +154,9 @@ label ch2_10_math_chat:
 
 label ch2_10_lunch:
 
-    show bg gym lunch
+    scene bg gym lunch
 
-    "[name] starts out lunch with [ally] and they hang out as much as they can while eating as [ally] has to work on [a_pos] group project during the lunch period."
+    "[name] starts out lunch with [ally] and they hang out as much as they can while eating as [ally] has to work on [pa[psv]] group project during the lunch period."
 
     n "Good luck."
 
@@ -164,9 +164,9 @@ label ch2_10_lunch:
 
     a "I'm gonna need it."
 
-    "[ally] throws their lunch tray away and leaves to work on [a_pos] project."
+    "[ally] throws their lunch tray away and leaves to work on [pa[psv]] project."
 
-    show bg field lunch
+    scene bg field lunch
 
     "[name] heads out to the field and wanders alone in the quiet landscape, thinking."
 
@@ -180,11 +180,11 @@ label ch2_10_lunch_popkid:
 
     $ happy -= 1
 
-    "After a bit, [n_sbj] runs into [n_pos] classmate [popKid]."
+    "After a bit, [pn[sbj]] runs into [pn[psv]] classmate [popKid]."
 
     "They had gone to the same elementary school, but rarely talked since [popKid] mostly hung out with the \"popular\" kids."
 
-    "It was strange to see [d_sbj] out in the field, alone."
+    "It was strange to see [pd[sbj]] out in the field, alone."
 
     if outfit == "d":
         $ happy -= 1
@@ -197,14 +197,14 @@ label ch2_10_lunch_popkid:
 
         "[popKid] compliments [name]'s outfit for being [temp1]."
 
-        "[name] tries to take [popKid]'s words as a compliment the best [n_sbj] can even though it makes [n_obj] feel angry about [n_obj]self."
+        "[name] tries to take [popKid]'s words as a compliment the best [pn[sbj]] can even though it makes [pn[obj]] feel angry about [pn[obj]]self."
 
     else:
-        "[popKid] asks [name] about [n_pos] odd outfit."
+        "[popKid] asks [name] about [pn[psv]] odd outfit."
 
         "Before [name] can reply, [popKid] asks why [name] can't just pretend to be a [d_noun]."
 
-        "[name] genuinely thinks about it for a moment and plainly tells [popKid] that [n_sbj] can't because [n_sbj]'s a [noun]."
+        "[name] genuinely thinks about it for a moment and plainly tells [popKid] that [pn[sbj]] can't because [pn[sbj]]'s a [noun]."
 
         p "Interesting."
 
@@ -214,7 +214,7 @@ label ch2_10_lunch_popkid:
 
 label ch2_10_lunch_wander:
 
-    "The weather is nice and [n_sbj] brainstorms an idea for the book club before the bell rings for the end of lunch period."
+    "The weather is nice and [pn[sbj]] brainstorms an idea for the book club before the bell rings for the end of lunch period."
 
     jump ch2_10_english
 
@@ -232,7 +232,7 @@ label ch2_10_english:
     else:
         $ temp1 = ""
 
-    "[engTeach] [temp1]refers to [n_obj] as a [d_noun]."
+    "[engTeach] [temp1]refers to [pn[obj]] as a [d_noun]."
 
     if defEng:
         menu:
@@ -276,7 +276,7 @@ label ch2_10_english_calm:
     else:
         $ temp1 = ""
 
-    "[name] explains[temp1] that [n_pos] is a [noun] and uses {noalt}[n_sbj]/[n_obj]{/noalt}{alt}[n_sbj] [n_obj]{/alt} pronouns."
+    "[name] explains[temp1] that [pn[psv]] is a [noun] and uses {noalt}[pn[pn]]{/noalt}{alt}[pn[sbj]] [pn[obj]]{/alt} pronouns."
 
     "Getting people to repsepct [name]'s gender is an uphill battle, but calm and collected is the way to win the war."
 
@@ -324,7 +324,7 @@ label ch2_10_english_nothing:
         $ actn -= 0.5
 
     if defEng:
-        "Even though [name] has already told [engTeach] about $pos gender, $sbj decides that [engTeach] is too stubborn to bother correcting."
+        "Even though [name] has already told [engTeach] about $psv gender, $sbj decides that [engTeach] is too stubborn to bother correcting."
 
     else:
         if outfit == "d":
@@ -343,12 +343,12 @@ label ch2_10_club_story:
 
     cp "Any volunteers for sharing today?"
 
-    "[name] looks at [n_pos] story."
+    "[name] looks at [pn[psv]] story."
 
     menu:
         "What should [name] do?"
 
-        "Share [n_pos] story":
+        "Share [pn[psv]] story":
             jump ch2_10_club_share
 
         "Do nothing":
@@ -359,9 +359,9 @@ label ch2_10_club_share:
     $ happy += 1
     $ share = True
 
-    "[name] shares [n_pos] story with the club."
+    "[name] shares [pn[psv]] story with the club."
 
-    "They appreciate the odd humor that [n_sbj] put into day 4 topic."
+    "They appreciate the odd humor that [pn[sbj]] put into day 4 topic."
 
     a "That one was really cool. I told you people would like it."
 
@@ -369,7 +369,7 @@ label ch2_10_club_share:
 
     a "I'll go after Cami to prove to you that they like your stuff more than mine."
 
-    "[name] rolls [n_pos] eyes, but Cami starts reading before [n_sbj] can reply."
+    "[name] rolls [pn[psv]] eyes, but Cami starts reading before [pn[sbj]] can reply."
 
     jump ch2_10_club_ryan
 
@@ -378,7 +378,7 @@ label ch2_10_club_nothing:
     $ happy -= 1
     $ share = False
 
-    "Of course, [ally] notices when [name] doesn't raise [n_pos] hand to share."
+    "Of course, [ally] notices when [name] doesn't raise [pn[psv]] hand to share."
 
     a "You're not sharing today?"
 
@@ -392,21 +392,21 @@ label ch2_10_club_nothing:
 
     n "What?"
 
-    "Before [n_sbj] can say anything more, [ally] is already in front of the classroom with [pos] notebook."
+    "Before [pn[sbj]] can say anything more, [ally] is already in front of the classroom with [psv] notebook."
 
     jump ch2_10_club_ryan
 
 label ch2_10_club_ryan:
 
     if share:
-        $ temp1 = "Once it's " + a_pos + " turn, "
+        $ temp1 = "Once it's " + a_psv + " turn, "
 
     else:
         $ temp1 = ""
 
     play music ally
 
-    "[temp1][ally] reads [a_pos] short poem in front of class."
+    "[temp1][ally] reads [pa[psv]] short poem in front of class."
 
     if day == (day1 + 2):
         $ temp1 = "strangely bouncy " + book + " poem"
@@ -417,16 +417,16 @@ label ch2_10_club_ryan:
     else:
         $ temp1 = "few repeating lines about the life of a cat"
 
-    "It's a [temp1]. [ally]'s voice shakes slightly as [a_sbj] reads, something that surprises [name] as [ally] is usually such a fearless, outgoing person."
+    "It's a [temp1]. [ally]'s voice shakes slightly as [pa[sbj]] reads, something that surprises [name] as [ally] is usually such a fearless, outgoing person."
 
-    "[name] snaps enthusiastically for [n_pos] friend, but notices that [ally] is right about the other club members."
+    "[name] snaps enthusiastically for [pn[psv]] friend, but notices that [ally] is right about the other club members."
 
     "Even though [name] thought that [ally]'s poem was great, the other club members just aren't snapping as loudly for $ally."
 
     play music school
 
     if not share:
-        "[name] regrets not sharing [n_pos] story, if only for [ally]'s sake."
+        "[name] regrets not sharing [pn[psv]] story, if only for [ally]'s sake."
 
     "[ally] sits back down next to [name] looking exhasted."
 
@@ -442,9 +442,9 @@ label ch2_10_club_ryan:
 
     "And that's okay I'm more of a visual artist, anyway."
 
-    "[name] frowns. [ally] has really great ideas for stories, but it was just that [a_pos] pacing and delivery was a little off."
+    "[name] frowns. [ally] has really great ideas for stories, but it was just that [pa[psv]] pacing and delivery was a little off."
 
-    "What if there was a way to help [ally] solve [a_pos] reading confidence problems?"
+    "What if there was a way to help [ally] solve [pa[psv]] reading confidence problems?"
 
     "The other club members are dispersing. It's time to head home."
 

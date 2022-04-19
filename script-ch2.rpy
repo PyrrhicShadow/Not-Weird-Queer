@@ -48,12 +48,12 @@ label ch2_morning:
         else:
             $ temp1 = "both girls' and boys'"
 
-        "[N_sbj] has [temp1] clothes that [n_sbj] had bough on [n_pos] own with [n_pos] Christmas money."
+        "[pn[sbj]!c] has [temp1] clothes that [pn[sbj]] had bough on [pn[psv]] own with [pn[psv]] Christmas money."
 
-        "On the other hand, [n_sbj] could it safe and just wear a [d_noun]s' outfit."
+        "On the other hand, [pn[sbj]] could it safe and just wear a [d_noun]s' outfit."
 
     menu:
-        "[name] looks in [n_pos] wardrobe. What should [n_sbj] wear today?"
+        "[name] looks in [pn[psv]] wardrobe. What should [pn[sbj]] wear today?"
 
         "[adj] outfit":
             $ outfit = "g"
@@ -98,9 +98,9 @@ label ch2_morning_gender:
     else:
         $ temp1 = "gender neutral outfit idea"
 
-    "[name] looks in the mirror at [n_pos] [temp1]."
+    "[name] looks in the mirror at [pn[psv]] [temp1]."
 
-    "It's emboldening to be able to dress the way [n_sbj] feels on the inside."
+    "It's emboldening to be able to dress the way [pn[sbj]] feels on the inside."
 
     return
 
@@ -134,7 +134,7 @@ label ch2_morning_notGender:
 
     "[name] quickly throws on a [temp1] and hurries out to the kitchen."
 
-    "[name] is embarrassed that [n_sbj] didn't have to courage to express [n_pos] true self."
+    "[name] is embarrassed that [pn[sbj]] didn't have to courage to express [pn[psv]] true self."
 
     return
 
@@ -151,15 +151,15 @@ label ch2_morning_neutral:
     else:
         $ temp1 = "gender neutral outfit 4"
 
-    $ verb = v("do", "does")
+    $ verb = v(pn, "do", "does")
 
-    "[name] decides that [n_sbj] doesn't feel like taking risks today, but [n_sbj] also [verb]n't want to hide [n_obj]self."
+    "[name] decides that [pn[sbj]] doesn't feel like taking risks today, but [pn[sbj]] also [verb]n't want to hide [pn[obj]]self."
 
-    $ verb = v("put")
+    $ verb = v(pn, "put")
 
-    "[N_sbj] [verb] on a [temp1]."
+    "[pn[sbj]!c] [verb] on a [temp1]."
 
-    "[name] figures [n_sbj] can always fight another day."
+    "[name] figures [pn[sbj]] can always fight another day."
 
     return
 
@@ -172,15 +172,15 @@ label ch2_bus:
 
     play music outside
 
-    "[name] gets on the bus and sits with [n_pos] friend, [ally]."
+    "[name] gets on the bus and sits with [pn[psv]] friend, [ally]."
 
     if outfit == "g":
         "[ally] has a supportive reaction to [name]'s outfit."
 
     elif outfit == "d":
-        "[ally] tells [name] to take [n_pos] time with things."
+        "[ally] tells [name] to take [pn[psv]] time with things."
     else:
-        "[ally] reminds [name] that [n_sbj] will always support [name]'s choices."
+        "[ally] reminds [name] that [pn[sbj]] will always support [name]'s choices."
 
     "[name] and [ally] talk about stuff on the bus ride."
 
@@ -241,7 +241,7 @@ label ch2_club:
 
     "[name] writes a story about [temp1]."
 
-    "When [n_sbj] showes [ally], [n_sbj] tells [name] that it's really good and that other people will like it."
+    "When [pn[sbj]] showes [ally], [pn[sbj]] tells [name] that it's really good and that other people will like it."
 
     "Soon, it's time for everyone to share their writing."
 
@@ -261,7 +261,7 @@ label ch2_club_share:
 
     $ renpy.show("name " + gender + " " + outfit + " norm")
 
-    "[name] shares [n_pos] story with the club. The other club memebers loved [n_pos] story."
+    "[name] shares [pn[psv]] story with the club. The other club memebers loved [pn[psv]] story."
 
     jump ch2_home
 
@@ -302,9 +302,9 @@ label ch2_home:
             "Hopefully, tomorrow will go well, too."
 
         elif last_happy < 0:
-            $ verb = v("have", "has")
+            $ verb = v(pn, "have", "has")
 
-            "The day was a rough one, but nothing [n_sbj] [verb]n't seen before."
+            "The day was a rough one, but nothing [pn[sbj]] [verb]n't seen before."
 
         else:
             "The day was an okay one."
