@@ -4,4 +4,6 @@
 /tl/
 /audio/test/
 /images/test/
-script-test
+
+# trying to get rid of script-test.rpy from the repository but keep it locally 
+script-test.rpy
