@@ -7,7 +7,7 @@ label ch0_00:
     $ part = 0
     $ day = 0
     $ loop = 0
-    $ save_name = name + " (" + n_sbj + "/" + n_obj + "), Day " + "%s" %day
+    $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
     $ redEyes = False
 
@@ -17,13 +17,13 @@ label ch0_00:
 
     show monika norm
 
-    # These display lines of dialogue.
+    $ temp1 = pn["obj"]
 
-    "[name] wakes up in a classroom with Monika in front of [n_obj]."
+    "[name] wakes up in a classroom with Monika in front of [temp1]."
 
-    $ verb = v("have")
+    $ verb = v(pn, "have")
 
-    "[N_sbj] [verb] no idea how [n_sbj] got there."
+    "[pn[sbj]!cl] [verb] no idea how [pn[sbj]] got there."
 
     n norm "Whaaa?"
 
@@ -121,7 +121,7 @@ label mathBud:
 
     n "Who are you?"
 
-    a "This is one of our classmates. Looks like [a_sbj]'s in your math class."
+    a "This is one of our classmates. Looks like [pa[sbj]]'s in your math class."
 
     n "Oh my God, please, everyone, get out of here!"
 
@@ -157,19 +157,19 @@ label charas_test:
 
     $ renpy.show("ally " + a_gender + " norm")
 
-    a "Hi, I'm [ally], and I use [a_sbj]/[a_obj] pronouns. Nice to meet you."
+    a "Hi, I'm [ally], and I use [pa[sbj]]/[pa[obj]] pronouns. Nice to meet you."
 
     hide ally
     show sophia norm
 
-    s """Hi, I'm Sophia, and I use she/her pronouns.
+    s """Hi, I'm Sophia, and I use [she_her[pn]] pronouns.
 
     I'm the classmate in [name]'s art class. Nice to meet you."""
 
     hide sophia
     show bioteam 1
 
-    b """Hi, I'm [bioteam], and I use he/him pronouns.
+    b """Hi, I'm [bioteam], and I use [he_him[pn]] pronouns.
 
     I'm of one [name]'s biology classmates. We do a group project together.
 
@@ -178,14 +178,14 @@ label charas_test:
     hide bioteam
     show cami norm
 
-    c """Hi, I'm Cami Newton, and I use she/her pronouns.
+    c """Hi, I'm Cami Newton, and I use [she_her[pn]] pronouns.
 
     I'm in [name]'s book club. Nice to meet you."""
 
     hide cami
     $ renpy.show("mathbud " + a_gender + " norm")
 
-    m """Hi, I'm [mathBud], and I use [a_sbj]/[a_obj] pronouns.
+    m """Hi, I'm [mathBud], and I use [pa[sbj]]/[pa[obj]] pronouns.
 
     [name] and I went to the same elementary school. Nice to meet you."""
 
@@ -203,7 +203,7 @@ label charas_test:
 
     a "Well, [popKid], everyone's has been doing it."
 
-    p "Fine.  I use [d_sbj]/[d_obj] pronouns."
+    p "Fine.  I use [pd[sbj]]/[pd[obj]] pronouns."
 
     p "There, are you happy?"
 
@@ -218,21 +218,21 @@ label charas_test:
 
     cp """Hi, I'm the Club President of the middle school book club.
 
-    I use he/him pronouns. Nice to meet you."""
+    I use [he_him[pn]] pronouns. Nice to meet you."""
 
     hide extra
     $ renpy.show("extra " + d_gender + " norm")
 
     $ classmate = "Classmate 1"
 
-    x "Hi, I'm a generic classmate. I use [d_sbj]/[d_obj] pronouns."
+    x "Hi, I'm a generic classmate. I use [pd[sbj]]/[pd[obj]] pronouns."
 
     hide extra
     show extra female norm
 
     $ classmate = "Classmate 2"
 
-    xf """Hi, I'm a generic classmate. I use she/her pronouns.
+    xf """Hi, I'm a generic classmate. I use [she_her[pn]] pronouns.
 
     Nice to meet you!"""
 
@@ -242,7 +242,7 @@ label charas_test:
 
     xm """Hi, I'm another generic classmate.
 
-    I use he/him pronouns."""
+    I use [he_him[pn]] pronouns."""
 
     hide extra
     show mom norm
