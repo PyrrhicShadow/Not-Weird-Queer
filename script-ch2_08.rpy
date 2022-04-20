@@ -79,7 +79,16 @@ label ch2_08_english_answer:
 
     a "Yeah, that Mr. Francis guy is a dick. I'm sorry you have to put up with him."
 
-    n "Well, he let me answer (cond: $outfit is "gender", "anyway,", $outfit is "not gender", "only because no one else knew the answer,", $outfit is "neutral", "eventually,") so it was okay in the end."
+    if outfit == "g":
+        $ temp1 = "anyway"
+
+    elif outfit == "d":
+        $ temp1 = "only because no one else knew the answer"
+
+    else:
+        $ temp1 = "eventually"
+
+    n "Well, he let me answer only because no one else knew the answer, [temp1], so it was okay in the end."
 
     a "That was really brave of you to stand up to him."
 
@@ -106,7 +115,7 @@ label ch2_08_english_nothing:
 
     $ verb = v("feel")
 
-    "[name] knew the answer, so [pn[sbj]] [verb] bad that [pn[sbj]] just let it go so easily." j
+    "[name] knew the answer, so [pn[sbj]] [verb] bad that [pn[sbj]] just let it go so easily."
 
     if outfit == "g":
         n_self "Well, I know [engTeach] is a sexist and besides, [ally] isn't here."
@@ -191,7 +200,7 @@ label ch2_08_english_after:
 
     n "Yeah, [pa[sbj]]'s not worth my time if [pa[sbj]]'s going to be so disrespectful."
 
-    if: outfit == "g":
+    if outfit == "g":
         a "Besides, being trans has nothing to do with being gay."
 
         "[name] thinks if over for a seccond."
