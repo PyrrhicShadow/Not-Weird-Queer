@@ -97,9 +97,15 @@ init python:
         else:
             m_popKid(what, **kwargs)
 
-    ## unnamed classmate
+    ## unnamed classmates
     def x(what, **kwargs):
         if d_gender == "male":
             xm(what, **kwargs)
         else:
             xf(what, **kwargs)
+
+    def y(what, **kwargs):
+        if d_gender == "male":
+            xf(what, **kwargs)
+        else:
+            xm(what, **kwargs)

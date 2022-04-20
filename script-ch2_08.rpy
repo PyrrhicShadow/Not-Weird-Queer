@@ -77,19 +77,130 @@ label ch2_08_english_answer:
 
     "[name] meets up with $ally after English class and tells $obj what happened."
 
-    jump ch2_08_lunch
+    a "Yeah, that Mr. Francis guy is a dick. I'm sorry you have to put up with him."
+
+    n "Well, he let me answer (cond: $outfit is "gender", "anyway,", $outfit is "not gender", "only because no one else knew the answer,", $outfit is "neutral", "eventually,") so it was okay in the end."
+
+    a "That was really brave of you to stand up to him."
+
+    "[name] frowns for a moment."
+
+    n "Yeah, I guess it was. It was a little scary, but in the end, I'm glad that I did it."
+
+    "It feels nice to stand up for myself."
+
+    a "Yeah. It is."
+
+    jump ch2_08_english_after
 
 label ch2_08_english_nothing:
 
-    "Mr. Francis calls on three different [noun]s before one of them answers the question correctly."
+    if outfit == "d":
+        $ actn -= 1
+        $ happy -= 1
+
+    elif outfit == "n":
+        $ actn -= 0.5
+
+    "[engTeach] calls on three different [noun]s before one of them answers the question correctly."
 
     $ verb = v("feel")
 
-    "[name] knew the answer, so [pn[sbj]] [verb] bad that [pn[sbj]] just let it go so easily."
+    "[name] knew the answer, so [pn[sbj]] [verb] bad that [pn[sbj]] just let it go so easily." j
 
-label ch2_08_lunch:
+    if outfit == "g":
+        n_self "Well, I know [engTeach] is a sexist and besides, [ally] isn't here."
 
+        $ temp1 = "Still, "
 
+    else:
+        $ temp1 = ""
+
+    n_self "[temp1]I should probably stand up for myself next time."
+
+    scene bg school hallway
+
+    "[name] meets up with $ally after English class and tells $obj what happened."
+
+    a "That Mr. Francis guy is a dick. I'm sorry you have to put up with him."
+
+    n "Yeah. He's really scary. I'm not sure what would've happened if I had actually tried to answer his question."
+
+    a "I guess you'll never know if you never try."
+
+    n "I guess so. Maybe next time, I'll take the chance."
+
+    a "Well, only if you're comfortable, [name]."
+
+    jump ch2_08_english_after
+
+label ch2_08_english_after:
+
+    "[name] smiles at [ally]."
+
+    n "Hey, [ally]. Thanks."
+
+    a "Thanks? For what?"
+
+    n "For believing in me."
+
+    a "Of course. Thanks for being my friend, too."
+
+# lunch day 8
+    scene bg gym lunch
+
+    $ happy -= 1
+
+    "During lunch, some creep hits on [name], thinking [pn[sbj]]'s a [d_noun]."
+
+    "[name] tells [pa[obj]] that [pn[sbj]] isn't interested and asks the creep if [pa[sbj] knew that [name]'s a [noun]."
+
+    "[ally] defends [name] against [pa[obj]], telling the creep to piss off."
+
+    $ classmate = "Creepy " + a_noun.capitalize()
+    if outfit == "g":
+        y "Oh. You're one of those weird gay people. Miss me with that shit."
+
+        "Before either [name] or [ally] could snap back at [pa[obj]], the creep leaves and joins [pa[pos] friends sitting by the door."
+
+    elif outfit == "d":
+        y "Really?"
+
+        "The creep looks [name] up and down."
+
+        y "You're way too cute to be a [d_noun], darling."
+
+        "Giggling, the creep walks back to [pa[psv]] friends sitting by the door."
+
+    else:
+        y "Oh, really? Yeah, right. I'll give you some time to reconsider, darling."
+
+        "After lingering for a few seconds, the creep leaves and joins [pa[pos]] friends by the door."
+
+    "[name] shakes [pn[psv]] head."
+
+    if a_gender == "male":
+        $ temp1 = "guy"
+
+    else:
+        $ temp1 = "chick"
+
+    n "Is it just me, or was that [temp1] kind of a creep?"
+
+    a "And an asshole at that. If [pa[sbj]] was really interested, [pa[sbj]] wouldn't have been so rude just because you told [pa[obj]] that you're a [noun]."
+
+    n "Yeah, [pa[sbj]]'s not worth my time if [pa[sbj]]'s going to be so disrespectful."
+
+    if: outfit == "g":
+        a "Besides, being trans has nothing to do with being gay."
+
+        "[name] thinks if over for a seccond."
+
+        n "Yeah. Exactly!"
+
+    "Even though the weirdo ended up leaving $name alone, $sbj still shivers slightly at the memory."
+
+        jump ch2_08_art
 
 label ch2_08_art:
 
