@@ -200,11 +200,56 @@ label ch2_08_english_after:
 
     "Even though the weirdo ended up leaving $name alone, $sbj still shivers slightly at the memory."
 
+    if happy > -1:
+        a "Hey, $name, forget about that prick. Your next sculpture isn't going to build itself!"
+
+        if day1 == day + 1:
+            n "I'm actually not sure what to make next. The next project is like recycled art?"
+
+            a "Maybe? I'm sure whatever it is, you'll do great."
+
+        else:
+            n "Yeah, making art from recycled materials is an interesting idea."
+
+            a "Yeah. Enviornmentally respectful."
+
         jump ch2_08_art
+
+    else:
+        a "Hey, [name], you okay?"
+
+        n "Huh?"
+
+        n "Yeah, just give me a moment. I want to think."
+
+        jump ch2_hallway_cry
 
 label ch2_08_art:
 
+    "$name heads to $pos art class with $ally."
 
+    if day > day1 + 7:
+        $ temp1 = "finishing up"
+
+    else:
+        $ temp1 = "working on"
+
+    "Today, the class is [temp1] sculptures made from recycled materials."
+
+    if gender == "male":
+        $ temp1 = "masculine sculpture idea"
+
+    elif gender == "female":
+        $ temp1 = "feminine sculpture idea"
+
+    else:
+        $ temp1 = "nonbinary sculpture idea"
+
+    "$name is making a [temp1]."
+
+    "[ally] is also working on a sculpture of [pa[psv]] own with some sort of recycled materials."
+
+    jump ch2_club
 
 # story inspiration
 label ch2_08_club_story:
