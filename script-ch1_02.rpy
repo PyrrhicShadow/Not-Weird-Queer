@@ -29,7 +29,6 @@ label ch1_02:
 
     n_self "Flower genders are weird."
 
-    # $ temp2 = renpy.random.choice(["anthers", "pistils", "sepals"])
     if day == 2:
         $ temp2 = "anthers"
 
@@ -131,7 +130,6 @@ label ch1_02_bio_nothing:
     return
 
 # lunch day 2
-
 label ch1_02_lunch:
 
     scene bg gym lunch
@@ -239,7 +237,7 @@ label ch1_02_ryan_talk:
 
     play music school
 
-    jump ch1_02_club_eligible
+    jump ch1_02_ryan_eligible
 
 label ch1_02_ryan_not:
 
@@ -255,9 +253,9 @@ label ch1_02_ryan_not:
 
     n "Thanks, [ally]."
 
-    jump ch1_02_club_eligible
+    jump ch1_02_ryan_eligible
 
-label ch1_02_club_eligible:
+label ch1_02_ryan_eligible:
 
     if ryan > 2:
         jump ch1_02_ryan_invite
