@@ -17,8 +17,8 @@ define config.autosave_on_quit = False
 default dirty_hacker = "The programmer's not sure how you got here, but you're not supposed to be here. {p}Odds are, you're just a dirty little hacker, aren't you?"
 default save_name = "New game"
 
-default name = "New game"
-default pn = {"pn": "sbj/obj", "plur": False, "sbj": "sbj", "obj": "obj", "psv": "psv", "rfx": "rfx"}
+default name = "Main"
+default pn = they_them
 default ally = "Ally"
 
 default part = 0

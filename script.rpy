@@ -281,7 +281,7 @@ label restart:
 # if you don't want the game to end on reaching this screen, use call instead of jump
 label dirty_hacker:
 
-    scene bg end day
+    scene bg end game
 
     play music death
 

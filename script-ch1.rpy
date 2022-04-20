@@ -187,7 +187,9 @@ label ch1_bus_ryan_classmate:
 
     "Since [ally] thinks [name]'s name is \"[d_name]\", [pa[sbj]] thinks [name]'s a [d_noun]."
 
-    "[name] doesn't bother to correct [pa[obj]]. This happens all the time."
+    $ verb = v(pn, "is")
+
+    "[name] doesn't bother to correct [pa[obj]]. This happens all the time, and [pn[sbj]] [verb]n't sure what [pn[sbj]] could do about it."
 
     "[ally] seems like a cool person otherwise."
 
@@ -319,9 +321,10 @@ label ch1_club:
 
     "After school, [name] goes to the middle school book club[temp1]."
 
-    $ verb = v(pn, "begin")
+    $ verb = v(pn, "sit")
+    $ verb1 = v(pn, "begin")
 
-    "[name] sits down[temp2]. As usual, [pn[sbj]] [verb] writing."
+    "[pn[sbj]!cl] [verb] down[temp2]. As usual, [pn[sbj]] [verb1] writing."
 
     if happy > 2:
         $ temp2 = "a short story about "
@@ -605,8 +608,6 @@ label ch1_home_club:
     return
 
 label ch1_home_alive:
-
-    scene bg day end
 
     if last_happy > 2:
         "The day surprisingly didn't suck. Hopefully, tomorrow won't suck, either."

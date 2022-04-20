@@ -227,11 +227,12 @@ label ch1_01_notebook:
 
     scene bg club front
 
-    "Since it doesn't look like it's going to rain today, [name] heads to the book club after school."
+    "It doesn't look like it's going to rain today, so [pn[sbj]] heads to the book club after school."
 
     $ verb = v(pn, "do")
+    $ verb1 = v(pn, "enjoy")
 
-    "Though [pn[sbj]] [verb]n't really know anyone in there, [name] enjoys the opportunity to write and listen to the other's stories."
+    "Though [pn[sbj]] [verb]n't really know anyone there, [pn[sbj]] [verb1] the opportunity to write and listen to the other's stories."
 
     "Every day, the club officers decide on a prompt to help get the creative juices going."
 
@@ -266,13 +267,17 @@ label ch1_01_notebook:
 
     scene bg club sharing
 
+    show extra male norm
+
     cp "Hello, everyone! I hope you all enjoyed today's prompt."
 
     cp "Or ignoring today's prompt. Looking at you, Trevor."
 
-    "Everyone laughs"
+    "Everyone laughs. Trevor's pretty famous for flipping the prompt on its head or flat out ignoring it whenever he shares."
 
-    "Every day, the book club president asks if there are any volunteers. The same few kids who always share volunteer immediately."
+    cp "Okay, any volunteers?"
+
+    "As usual, the same few kids who always share volunteer immediately."
 
     "[name] listens as the other club members, mostly kids older than [pn[obj]], share their fun, wacky stories and freeform poetry."
 
@@ -290,18 +295,17 @@ label ch1_01_notebook:
 
 # go home day 1
 
-    scene bg school street
+    scene bg school front
 
-    play music name
+    play music outside
 
     "After the book club, [name] walks home by [pn[obj]]self."
 
     """During the colder months, [pn[sbj]]'d often skip the book club in order to catch the bus home,
     especially when it rained, but the weather's actually pretty nice today."""
 
-    scene bg day end
-
-    "While the day was a rough one, it was nothing [name] hasn't seen before."
+    $ verb = v(pn, "have")
+    "While the day was a rough one, it was nothing [pn[sbj]] [verb]n't seen before."
 
     "[name] is ready to start a new day."
 

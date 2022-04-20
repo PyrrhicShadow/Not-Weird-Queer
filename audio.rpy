@@ -9,7 +9,6 @@ define audio.outside = "audio/music/star_swimming.ogg" # a motif for when the sc
 define audio.school = "audio/music/growing_up.mp3" # the game's main theme, used in school and elsewhere
 define audio.name = "audio/music/elementary.mp3" # the main character's theme, used in their house and after school
 define audio.ally = "audio/music/reckoning.mp3" # the ally's theme, used when having important conversations with the ally
-define audio.bully = "audio/music/die_historic.mp3" # when the main character is being bullied
 define audio.death = "audio/music/prairie_wolfs_view.mp3" # the theme for when you die or when you dogcheck
 define audio.end = "audio/music/die_historic.mp3" # ending theme
 

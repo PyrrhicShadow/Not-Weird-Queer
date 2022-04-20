@@ -59,8 +59,6 @@ label ch1_02:
         "Do nothing":
             call ch1_02_bio_nothing
 
-    "Soon, it's time for lunch."
-
     jump ch1_02_lunch
 
 label ch1_02_bio_answer:
@@ -134,7 +132,9 @@ label ch1_02_lunch:
 
     scene bg gym lunch
 
-    "It's lunch now. [name] sits down at a table and starts eating the sandwich [pn[psv]] mom made for [pn[obj]]."
+    "Soon, it's time for lunch."
+
+    "At the cafeteria, [name] sits down at a table and starts eating the sandwich [pn[psv]] mom made for [pn[obj]]."
 
     "Someone sitting at the other end of the table looks at [pn[obj]] sideways."
 
@@ -177,7 +177,7 @@ label ch1_02_lunch_ryan:
 
     a "Come on, [d_name], let's get out of here."
 
-    "Grateful for the help, [name] follows [ally] out of the lunchroom."
+    "Grateful for the support, [name] follows [ally] out of the lunchroom."
 
     jump ch1_02_lunch_field
 
@@ -271,7 +271,7 @@ label ch1_02_ryan_invite:
     else:
         $temp1 = ""
 
-    a "So, what you're doing after school?"
+    a "So, what're you doing after school?"
 
     n "Not much. Just my book club.[temp1]"
 

@@ -1727,10 +1727,6 @@ screen gallery2():
         label "School"
         textbutton "Play" action Play("music", audio.school)
 
-    hbox:
-        label "Bullies"
-        textbutton "Play" action Play("music", audio.bully)
-
     if persistent.complete:
         hbox:
             label "Ending"

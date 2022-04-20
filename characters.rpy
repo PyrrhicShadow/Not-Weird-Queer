@@ -14,8 +14,8 @@ define name_enby_d = Character("[name]", color="44DD22", what_prefix="\"", what_
 define n_self = Character("[name]", color="44DD22", what_italic=True, who_alt="[name] thinks,")
 
 ## ally character
-define ally_girl = Character("[ally]", color="22AAEE", what_prefix="\"", what_suffix="\"", callback=a_voice, who_alt="[ally] says,")
-define ally_boy = Character("[ally]", color="22AAEE", what_prefix="\"", what_suffix="\"", callback=a_voice, who_alt="[ally] says,")
+define ally_girl = Character("[ally]", color="22AAEE", what_prefix="\"", what_suffix="\"", image = "ally_f", callback=a_voice, who_alt="[ally] says,")
+define ally_boy = Character("[ally]", color="22AAEE", what_prefix="\"", what_suffix="\"", image = "ally_m", callback=a_voice, who_alt="[ally] says,")
 define a_myst = Character("???", color="22AAEE", what_prefix="\"", what_suffix="\"", callback=a_voice, who_alt="A familiar voice says,")
 
 ## unnamed classmate characters
