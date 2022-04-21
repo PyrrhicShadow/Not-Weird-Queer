@@ -149,7 +149,7 @@ label ch1_05_ryan_talk:
 
     a "Hey, [d_name]. You okay?"
 
-    n "Um, I don't actually being called '[d_name]'."
+    n "Um, I don't actually like being called '[d_name]'."
 
     $ renpy.show("ally " + a_gender + " frown")
 
@@ -178,6 +178,26 @@ label ch1_05_ryan_talk:
     "[name] laughs along with [pn[psv]] friend."
 
     $ renpy.show("ally " + a_gender + " norm")
+
+    a "So what about pronouns?"
+
+    n "Pronouns?"
+
+    a "Yeah. So, are you cool with {noalt}[pa[pn]]{/noalt}{alt}[pa[sbj]] [pa[obj]]{/alt} pronouns or…?"
+
+    n "I like {noalt}[pn[pn]]{/noalt}{alt}[pn[sbj]] [pn[obj]]{/alt} pronouns."
+
+    a "Ah, got it. {noalt}[pn[pn]!cl]{/noalt}{alt}[pn[sbj]] [pn[obj]]{/alt} it is."
+
+    n "If it's not too much trouble…"
+
+    $ renpy.show("ally " + a_gender + " smile")
+
+    a "Of course it's not too much trouble! They're only words, after all."
+
+    "[name] smiles."
+
+    n "Yeah. They are."
 
     "[name] hasn't felt this good about [pn[obj]]self since… [pn[sbj]] can't remember when."
 

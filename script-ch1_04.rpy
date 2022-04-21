@@ -59,6 +59,9 @@ label ch1_04:
 
     "[name] shivers upon hearing {i}that{/i} name."
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True)
+
     menu:
         "What should [name] do?"
 
@@ -96,9 +99,9 @@ label ch1_04_pe_gender:
 
         "A [a_noun] walks over to the [d_noun]'s team, snickering."
 
-        hide teacher
+        "[peTeach] is satisfied."
 
-        "[peTeach] is satisified."
+        hide teacher
 
     else:
         if self < 2:
@@ -189,6 +192,9 @@ label ch1_04_ryan_talk:
     a "So, I was just wondering."
 
     a "Why did you insist on playing on the [a_noun]'s team with me today?"
+
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True)
 
     menu:
         "[name] can tell that [pa[sbj]] is truly curious and just trying to understand."

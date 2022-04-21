@@ -66,7 +66,7 @@ label ch1_03_math_gender:
 
     show teacher art
 
-    art "What were you doing in the [a_noun]'s bathroom?"
+    art "What were you doing in the [a_noun]'s bathroom, [d_name]?"
 
     n norm "Um, using the bathroom…?"
 

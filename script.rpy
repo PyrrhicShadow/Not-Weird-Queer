@@ -86,23 +86,17 @@ label choose_pronouns:
 
 label pronouns_he_him:
 
-    $ gender = "male"
-    $ noun = "boy"
-    $ adj = "boyish"
     $ pn = he_him
     $ plur = False
 
-    jump transmasc
+    jump gender_male
 
 label pronouns_she_her:
 
-    $ gender = "female"
-    $ noun = "girl"
-    $ adj = "girly"
     $ pn = she_her
     $ plur = False
 
-    jump transfemme
+    jump gender_female
 
 label pronouns_xe_xem:
 
@@ -120,13 +114,13 @@ label pronouns_they_them:
 
 label pronouns_custom:
 
-    $ sbj = renpy.input("Subject pronoun (ex: xe)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
-    $ obj = renpy.input("Object pronoun (ex: xem)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
-    $ psv = renpy.input("Possesive pronoun (ex: xyr)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
-    $ rfv = renpy.input("Reflexive pronoun (ex: xyrs)", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ sbj = renpy.input("Subject pronoun {noalt}(ex: xe){/noalt}", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ obj = renpy.input("Object pronoun {noalt}(ex: xem){/noalt}", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ psv = renpy.input("Possesive pronoun {noalt}(ex: xyr){/noalt}", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
+    $ rfv = renpy.input("Reflexive pronoun {noalt}(ex: xyrs){/noalt}", length=8, allow="{ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789}")
 
     menu:
-        "Are your pronouns singular (like xe/xem) or plural (like they/them)?"
+        "Are your pronouns singular {noalt}(like xe/xem){/noalt} or plural {noalt}(like they/them){/noalt}?"
 
         "Singular":
             $ plur = False
@@ -137,6 +131,36 @@ label pronouns_custom:
     $ pn = pn_custom(plur, sbj, obj, psv, rfv)
 
     jump gender_enby
+
+label pronouns_neo:
+
+    menu:
+        "What is your gender identity?"
+
+        "Female or demigirl":
+            jump transfemme
+
+        "Male or demiboy":
+            jump transmasc
+
+        "Nonbinary or agender":
+            jump gender_enby
+
+label gender_male:
+
+    $ gender = "male"
+    $ noun = "boy"
+    $ adj = "boyish"
+
+    jump transmasc
+
+label gender_female:
+
+    $ gender = "female"
+    $ noun = "girl"
+    $ adj = "girly"
+
+    jump transfemme
 
 label gender_enby:
 
@@ -188,6 +212,8 @@ label transmasc:
     $ popKid = "Elise"
     $ mathBud = "Jaina"
 
+    jump pronouns_complete
+
 label transfemme:
 
     # main chara names
@@ -209,6 +235,8 @@ label transfemme:
 
     $ popKid = "Jeremy"
     $ mathBud = "Dylan"
+
+    jump pronouns_complete
 
 label pronouns_complete:
 

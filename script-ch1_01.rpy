@@ -166,7 +166,7 @@ label ch1_01:
 
     $ verb = v(pn, "are")
 
-    "Since Swatch already finished [pn[psv]] portrait last class, [pn[sbj]] [verb] writing in [pn[psv]] notebook."
+    "Since [name] already finished [pn[psv]] portrait last class, [pn[sbj]] [verb] writing in [pn[psv]] notebook."
 
     $ verb = v(pn, "want")
 
@@ -219,6 +219,8 @@ label ch1_01_notebook:
 
     "[name] loves to write short stories and poems. It's the only way [pn[sbj]] can really express [pn[obj]]self."
 
+    "[pn[sbj]!cl] also adds little doodles to [pn[psv] stories."
+
     "With [pn[psv]] head stuck in [pn[psv]] journal, art class is soon over."
 
     "[name] quickly packs up and heads to [pn[psv]] next class."
@@ -242,18 +244,18 @@ label ch1_01_notebook:
 
     "Today's prompt is [writing_prompt[0]]."
 
-    $ verb = v(pn, "sit")
-    $ verb1 = v(pn, "start")
+    $ verb = v(pn, "start")
 
-    "As soon as [pn[sbj]] [verb] down, [pn[sbj]] [verb1] writing."
+    "As soon as [name] sits down, [pn[sbj]] [verb] writing."
 
-    $ verb = v(pn, "hate")
+    $ verb = v(pn, "decide")
+    $ verb1 = v(pn, "hate")
     if gender == "enby":
         $ temp1 = "a lot of"
     else:
         $ temp1 = "most"
 
-    "[name] decides to write a poem about the struggle of looking like a [d_noun] when [pn[sbj]] [verb] being associated with [temp1] [d_adj] things."
+    "[pn[sbj]!cl] [verb] to write a poem about the struggle of looking like a [d_noun] when [pn[sbj]] [verb1] being associated with [temp1] [d_adj] things."
 
     $ verb = v(pn, "choose")
 

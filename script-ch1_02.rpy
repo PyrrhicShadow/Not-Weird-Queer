@@ -201,6 +201,9 @@ label ch1_02_lunch_field:
 
     "[name] stares at [pn[psv]] shoes and shrugs."
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True)
+
     menu:
         "Should [name] tell [ally] what's bothering [pn[obj]]?"
 
