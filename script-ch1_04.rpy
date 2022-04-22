@@ -6,6 +6,9 @@ label ch1_04:
     $ day += 1
     $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
+
 # for now, each morning in the "loop" is the same
 
     call ch1_morning
@@ -258,9 +261,13 @@ label ch1_04_lunch_confront:
         jump ch1_hallway_cry
     else:
         "[name] frowned, balling [pn[psv]] fists."
+
         n "It's not funny, jerk."
+
         xf "Whatever, weirdo."
+
         xf "Amazingly, the bully left [pn[obj]] alone for the rest of the lunch period."
+        
         jump ch1_04_lunch_after
 
 label ch1_04_lunch_after:

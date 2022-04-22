@@ -317,12 +317,12 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
+        textbutton _("Settings") action ShowMenu("preferences")
+
         if persistent.debug and not main_menu:
             textbutton _("Chapter Select") action ShowMenu("chapter")
 
         textbutton _("Gallery") action ShowMenu("gallery")
-
-        textbutton _("Preferences") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -727,7 +727,7 @@ screen preferences():
 
     tag menu
 
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("Settings"), scroll="viewport"):
 
         vbox:
 

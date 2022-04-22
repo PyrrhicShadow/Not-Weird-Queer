@@ -618,9 +618,6 @@ label ch1_home_alive:
 
     "[name] is ready to start a new day."
 
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
-
     if loop == 2:
         jump ch1_03
 

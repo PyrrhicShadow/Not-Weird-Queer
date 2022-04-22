@@ -6,6 +6,9 @@ label ch1_02:
     $ day += 1
     $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
 
+    $ renpy.checkpoint()
+    $ renpy.force_autosave(take_screenshot=True, block=True)
+
 # for now, each morning in the "loop" is the same
 
     call ch1_morning

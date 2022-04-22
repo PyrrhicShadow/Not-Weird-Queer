@@ -12,14 +12,14 @@ define audio.ally = "audio/music/reckoning.mp3" # the ally's theme, used when ha
 define audio.death = "audio/music/prairie_wolfs_view.mp3" # the theme for when you die or when you dogcheck
 define audio.end = "audio/music/die_historic.mp3" # ending theme
 
+################################################################################
+## Character Voices
+################################################################################
+
 define audio.name_dia = "audio/voice/hey.ogg"
 define audio.ally_dia = "audio/voice/hey.ogg"
 define audio.extra_dia = "audio/voice/oh.ogg"
 define audio.adult_dia = "audio/voice/oh.ogg"
-
-################################################################################
-## Character Voices
-################################################################################
 
 init python:
 

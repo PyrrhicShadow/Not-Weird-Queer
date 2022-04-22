@@ -313,9 +313,6 @@ label ch2_home:
 
     "[name] is ready to start a new day."
 
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
-
     if actn > 5:
         jump ch2_11
     else:
