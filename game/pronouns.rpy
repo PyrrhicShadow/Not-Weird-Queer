@@ -68,10 +68,10 @@ init python:
 ## pronoun defaults to he/him, or singular
 ## common irregulars include is/are, have/has, do/does
 ## let's say `px` contains the user-player's pronouns
-#  $ temp1 = v(px, have)
-#  $ temp2 = v(px, think)
-## temp1 returns "They have" or "She has"
-## temp2 returns "They think" or "She thinks"
+#  $ verb0 = v(px, have)
+#  $ verb1 = v(px, think)
+## verb0 returns "They have" or "She has"
+## verb1 returns "They think" or "She thinks"
     def v(pronoun = he_him, *verbs):
         common = v_common(verbs[0])
 

@@ -141,12 +141,12 @@ label ch2_11:
     n "Sweet!"
 
     if a_gender == "male":
-        $ temp1 = "aliens that only eat fingers"
+        $ temp0 = "aliens that only eat fingers"
 
     else:
         $ tmep1 = "something girly, I don't know"
 
-    "The two of them draft a story about [temp1]."
+    "The two of them draft a story about [temp0]."
 
     "By the time it's time to share, both [name] and [ally] agree that the story is really clever and original."
 
@@ -197,11 +197,11 @@ label ch2_11:
     n "Can't wait."
 
     if self > 8:
-        $ temp1 = " among a string of good days"
+        $ temp0 = " among a string of good days"
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    "Today was a surprisingly good day[temp1]. Life sure is looking up."
+    "Today was a surprisingly good day[temp0]. Life sure is looking up."
 
     "[name] is ready to start [pn[psv]] weekend."
 

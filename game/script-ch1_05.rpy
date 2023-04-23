@@ -26,30 +26,30 @@ label ch1_05:
     "[name] goes to [pn[psv]] art class with [ally]."
 
     if day == 5:
-        $ temp1 = "working on"
+        $ temp0 = "working on"
     else:
-        $ temp1 = "finishing up"
+        $ temp0 = "finishing up"
 
-    "Today, the class is [temp1] their paper-mâché sculptures."
+    "Today, the class is [temp0] their paper-mâché sculptures."
 
     if day == 5:
         if gender == "male":
-            $ temp1 = "pain, covered with sharp corners and dark, jarring colors"
+            $ temp0 = "pain, covered with sharp corners and dark, jarring colors"
         elif gender == "female":
-            $ temp1 = "pain, curvacious and gracefully helpless, spotted with bright, popping complementary colors"
+            $ temp0 = "pain, curvacious and gracefully helpless, spotted with bright, popping complementary colors"
         else:
-            $ temp1 = "pain, with contradictory sharpness and smooth edges"
+            $ temp0 = "pain, with contradictory sharpness and smooth edges"
     else:
         if gender == "male":
-            $ temp1 = "masculine pain"
+            $ temp0 = "masculine pain"
         elif gender == "female":
-            $ temp1 = "feminine pain"
+            $ temp0 = "feminine pain"
         else:
-            $ temp1 = "gender-ambiguous pain"
+            $ temp0 = "gender-ambiguous pain"
 
     # show main's sculpture
 
-    "[name]'s sculpture is a stylized depiction of [temp1]."
+    "[name]'s sculpture is a stylized depiction of [temp0]."
 
     $ renpy.show("ally " + a_gender + " norm")
 
@@ -107,11 +107,11 @@ label ch1_05_ryan_talk:
     "[name] takes a deep breath."
 
     if d_gender == "male":
-        $ temp1 = "boyish"
+        $ temp0 = "boyish"
     elif d_gender == "female":
-        $ temp1 = "girly"
+        $ temp0 = "girly"
 
-    n "I mean, I've always felt weird when people called me '[pd[sbj]]' or '[pd[obj]]' or tried to associate me with [temp1] things."
+    n "I mean, I've always felt weird when people called me '[pd[sbj]]' or '[pd[obj]]' or tried to associate me with [temp0] things."
 
     a "I see."
 
@@ -128,11 +128,11 @@ label ch1_05_ryan_talk:
     n "Oh. You think so?"
 
     if gender == "enby":
-        $ temp1 = ""
+        $ temp0 = ""
     else:
-        $ temp1 = ", like me"
+        $ temp0 = ", like me"
 
-    a "Yeah!  I think so. You're saying that you're actually a [a_noun][temp1]."
+    a "Yeah!  I think so. You're saying that you're actually a [a_noun][temp0]."
 
     if gender == "enby":
         "[name] chuckles quietly to [pn[obj]]self."
@@ -230,9 +230,9 @@ label ch1_05_ryan_evade:
 
     if day > 5:
         $ happy -= 1
-        $ verb = v(pn, "do", "does")
 
-        "[name] wants to tell [ally] what's going on, but [pn[sbj]] [verb]n't know how to find the right words."
+        $ verb0 = v(pn, "do", "does")
+        "[name] wants to tell [ally] what's going on, but [pn[sbj]] [verb0]n't know how to find the right words."
 
         n_self "Maybe next time."
 
@@ -251,11 +251,11 @@ label ch1_05_ryan_invite:
     a "So, what you're doing after school?"
 
     if self < 0:
-        $ temp1 = "  I don't even know why I keep going."
+        $ temp0 = "  I don't even know why I keep going."
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    n "Not much.  Just my book club.[temp1]"
+    n "Not much.  Just my book club.[temp0]"
 
     $ renpy.show("ally " + a_gender + " smile")
 
@@ -279,11 +279,11 @@ label ch1_05_lunch:
         jump ch1_05_lunch_thanks
 
     if a_gender == "male":
-        $ temp1 = "tacos or pizza"
+        $ temp0 = "tacos or pizza"
     else:
-        $ temp1 = "chocolate or rice krispies"
+        $ temp0 = "chocolate or rice krispies"
 
-    "They debate whether [temp1] is the superior midnight snack."
+    "They debate whether [temp0] is the superior midnight snack."
 
     if loop == 4:
         jump ch1_04_art
@@ -420,8 +420,5 @@ label ch1_05_home:
     $ last_happy = happy
     $ happy = 0
     $ bus = False
-
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
 
     jump ch1_06

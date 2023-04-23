@@ -28,11 +28,11 @@ label ch1_04:
     "[peTeach] splits the class into boys and girls teams to play dodgeball."
 
     if ryan > 4:
-        $ temp1 = " with " + ally
+        $ temp0 = " with " + ally
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    "[name] walks over to the [a_noun]'s team[temp1]."
+    "[name] walks over to the [a_noun]'s team[temp0]."
 
     $ renpy.show("ally " + a_gender + " norm")
 
@@ -76,8 +76,7 @@ label ch1_04:
 
 label ch1_04_pe_gender:
 
-    $ verb = v(pn, "want")
-
+    $ verb0 = v(pn, "want")
     n "Sorry, [peTeach], I'm playing on the [a_noun]'s team today!"
 
     if ryan > 4:
@@ -85,16 +84,16 @@ label ch1_04_pe_gender:
         $ happy += 1
 
         if talk:
-            $ temp1 = ""
-            $ temp2 = pn["obj"]
+            $ temp0 = ""
+            $ temp1 = pn["obj"]
 
         else:
-            $ temp1 = "Despite not fully understanding why, "
-            $ temp2 = pd["obj"]
+            $ temp0 = "Despite not fully understanding why, "
+            $ temp1 = pd["obj"]
 
-        "[temp1][ally] supports [pn[obj]], too."
+        "[temp0][ally] supports [pn[obj]], too."
 
-        a "Yeah. Maybe one of the other [a_noun]s can switch places with [temp2]?"
+        a "Yeah. Maybe one of the other [a_noun]s can switch places with [temp1]?"
 
         "[peTeach] takes a moment to think over [ally]'s suggestion."
 
@@ -127,8 +126,8 @@ label ch1_04_pe_gender:
             "A [a_noun] walks over to the [d_noun]'s team, snickering. [peTeach] is satisfied."
 
         else:
-            $ verb = v(pn, "stare")
-            "[pn[sbj]] [verb] at the ground for a moment before walking to the [d_noun]'s team."
+            $ verb0 = v(pn, "stare")
+            "[pn[sbj]] [verb0] at the ground for a moment before walking to the [d_noun]'s team."
 
     hide teacher
     hide ally
@@ -136,11 +135,11 @@ label ch1_04_pe_gender:
     "[name] isn't particularly good at sports, but dodgeball is easy enough."
 
     if ryan < 6 and self < 3:
-        $ temp1 = "is tolerable"
+        $ temp0 = "is tolerable"
     else:
-        $ temp1 = "goes without a hitch"
+        $ temp0 = "goes without a hitch"
 
-    "The class period [temp1]."
+    "The class period [temp0]."
 
     if ryan > 6 and self > 1:
         jump ch1_04_ryan_talk
@@ -176,13 +175,13 @@ label ch1_04_ryan_talk:
     $ renpy.show("ally " + a_gender + " norm")
 
     if talk:
-        $ temp1 = name
+        $ temp0 = name
     else:
-        $ temp1 = d_name
+        $ temp0 = d_name
 
     "Near the end of the class period, [ally] pulls [name] aside."
 
-    a "Hey, [temp1], let's talk after class."
+    a "Hey, [temp0], let's talk after class."
 
     n "Oh? Um, sure."
 
@@ -218,15 +217,14 @@ label ch1_04_lunch:
         "[ally] has homework to get done, so [pn[sbj]] doesn't have time to eat lunch with [name]"
 
     if gender == "male":
-        $ temp1 = renpy.random.choice(["male topic 1", "male topic 2", "male topic 3"])
+        $ temp0 = renpy.random.choice(["male topic 1", "male topic 2", "male topic 3"])
     elif gender == "female":
-        $ temp1 = renpy.random.choice(["female topic 1", "female topic 2", "female topic 3"])
+        $ temp0 = renpy.random.choice(["female topic 1", "female topic 2", "female topic 3"])
     else:
-        $ temp1 = renpy.random.choice(["topic 1", "topic 2", "topic 3"])
+        $ temp0 = renpy.random.choice(["topic 1", "topic 2", "topic 3"])
 
-    $ verb = v(pn, "get")
-
-    "[name] eats [pn[psv]] sandwich in peace, thinking about [temp1], when [pn[sbj]] [verb] bullied by this girl sitting across from [pn[obj]]."
+    $ verb0 = v(pn, "get")
+    "[name] eats [pn[psv]] sandwich in peace, thinking about [temp0], when [pn[sbj]] [verb0] bullied by this girl sitting across from [pn[obj]]."
 
     show extra female norm
 
@@ -250,11 +248,11 @@ label ch1_04_lunch_confront:
     "The bully looked at her hand and then at [name] again."
 
     if gender == "female":
-        $ temp1 = "girl"
+        $ temp0 = "girl"
     else:
-        $ temp1 = "dude"
+        $ temp0 = "dude"
 
-    xf "Chill out, [temp1], I was just joking. Can't you take a joke?"
+    xf "Chill out, [temp0], I was just joking. Can't you take a joke?"
 
     if self < 0:
         "Stunned, [name] backed up and ran out of the cafeteria."
@@ -267,7 +265,7 @@ label ch1_04_lunch_confront:
         xf "Whatever, weirdo."
 
         xf "Amazingly, the bully left [pn[obj]] alone for the rest of the lunch period."
-        
+
         jump ch1_04_lunch_after
 
 label ch1_04_lunch_after:
@@ -308,22 +306,22 @@ label ch1_04_art:
     "[name] goes to [pn[psv]] art class with [ally]."
 
     if day == 4:
-        $ temp1 = "working on"
+        $ temp0 = "working on"
     else:
-        $ temp1 = "finishing up"
+        $ temp0 = "finishing up"
 
-    "Today, the class is [temp1] their paper-mâché sculptures."
+    "Today, the class is [temp0] their paper-mâché sculptures."
 
     if gender == "male":
-        $ temp1 = "covered with sharp corners and dark, jarring colors"
+        $ temp0 = "covered with sharp corners and dark, jarring colors"
     elif gender == "female":
-        $ temp1 = "curvacious and gracefully helpless, spotted with bright, popping complementary colors"
+        $ temp0 = "curvacious and gracefully helpless, spotted with bright, popping complementary colors"
     else:
-        $ temp1 = "with contradictory sharpness and smooth edges, "
+        $ temp0 = "with contradictory sharpness and smooth edges, "
 
     $ renpy.show("art main " + gender)
 
-    "[name]'s sculpture is a stylized depiction of pain, [temp1]."
+    "[name]'s sculpture is a stylized depiction of pain, [temp0]."
 
     $ renpy.show("ally " + a_gender + " norm", at_list=[right])
 
@@ -333,15 +331,15 @@ label ch1_04_art:
 
     if talk:
         if gender == "male":
-            $ temp1 = "deep, masculine"
+            $ temp0 = "deep, masculine"
         elif gender == "female":
-            $ temp1 = "deep, feminine"
+            $ temp0 = "deep, feminine"
         else:
-            $ temp1 = "mixture of both masculine and feminine"
+            $ temp0 = "mixture of both masculine and feminine"
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    a "I like how the colors and shapes come together to express this [temp1] pain."
+    a "I like how the colors and shapes come together to express this [temp0] pain."
 
     n "Thanks."
 
@@ -359,19 +357,19 @@ label ch1_04_art:
     "[ally] studies [pa[psv]] own sculpture for a second."
 
     if talk:
-        $ temp1 = name + ". Yours feels like you"
+        $ temp0 = name + ". Yours feels like you"
     else:
-        $ temp1 = deadname
+        $ temp0 = deadname
 
-    a "Sure, but it's nowhere near as cool as yours, [temp1]."
+    a "Sure, but it's nowhere near as cool as yours, [temp0]."
 
     "[name] smiles."
 
     if talk:
-        $ temp1 = ", " + ally
+        $ temp0 = ", " + ally
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    n "Thank you[temp1]."
+    n "Thank you[temp0]."
 
     jump ch1_club

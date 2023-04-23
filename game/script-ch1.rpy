@@ -44,12 +44,11 @@ label ch1_morning:
 label ch1_morning_happy:
 
     $ renpy.show("main " + gender + " " + outfit + " norm")
-    $ verb = v(pn, "has")
 
-    "[name] is awake before [pn[psv]] alarm rang so [pn[sbj]] [verb] time to make [pn[obj]]self breakfast without being late for the bus."
+    $ verb0 = v(pn, "has")
+    "[name] is awake before [pn[psv]] alarm rang so [pn[sbj]] [verb0] time to make [pn[obj]]self breakfast without being late for the bus."
 
-    $ verb = v(pn, "pick")
-
+    $ verb0 = v(pn, "pick")
     "[pn[sbj]!c] picks a vaguely [adj] outfit and makes a sandwich for lunch."
 
     scene bg kitchen
@@ -62,10 +61,9 @@ label ch1_morning_neutral:
 
     "[name] hits snooze on [pn[psv]] alarm clock twice before jumping out of bed."
 
-    $ verb = v(pn, "pick")
+    $ verb0 = v(pn, "pick")
     $ verb1 = v(pn, "make")
-
-    "[pn[sbj]!c] [verb] out a gender neutral outfit and [verb1] it out the door on time, but only because [pn[sbj]] skipped breakfast."
+    "[pn[sbj]!c] [verb0] out a gender neutral outfit and [verb1] it out the door on time, but only because [pn[sbj]] skipped breakfast."
 
     scene bg kitchen
 
@@ -74,10 +72,10 @@ label ch1_morning_neutral:
 label ch1_morning_sad:
 
     $ renpy.show("main " + gender + " " + outfit + " norm")
-    $ verb = v(pn, "throw")
-    $ verb1 = v(pn, "comb")
 
-    "[name] had overselpt again. Hastily, [pn[sbj]] [verb] on a [d_adj] outfit and [verb] through [pn[psv]] unruly hair."
+    $ verb0 = v(pn, "throw")
+    $ verb1 = v(pn, "comb")
+    "[name] had overselpt again. Hastily, [pn[sbj]] [verb0] on a [d_adj] outfit and [verb0] through [pn[psv]] unruly hair."
 
     scene bg kitchen
 
@@ -118,14 +116,14 @@ label ch1_bus:
     else:
 
         if ryan == 0:
-            $ temp1 = "classmate"
+            $ temp0 = "classmate"
         else:
-            $ temp1 = "friend"
+            $ temp0 = "friend"
 
         menu:
             "There are three open seats left."
 
-            "Sit with [pn[psv]] [temp1], [ally]":
+            "Sit with [pn[psv]] [temp0], [ally]":
                 $ happy += 1
                 $ ryan += 1
                 $ bus = True
@@ -141,11 +139,11 @@ label ch1_bus:
 label ch1_bus_ryan:
 
     if ryan > 1:
-        $ temp1 = "friend"
+        $ temp0 = "friend"
     else:
-        $ temp1 = "classmate"
+        $ temp0 = "classmate"
 
-    "[name] sits with [pn[psv]] [temp1], [ally]."
+    "[name] sits with [pn[psv]] [temp0], [ally]."
 
     if ryan > 1:
         call ch1_bus_ryan_friend
@@ -153,11 +151,11 @@ label ch1_bus_ryan:
         call ch1_bus_ryan_classmate
 
     if ryan > 2:
-        $ temp3 = "sit with a friend"
+        $ temp2 = "sit with a friend"
     else:
         $temp3 = "have company"
 
-    "It's nice to [temp3] on the bus."
+    "It's nice to [temp2] on the bus."
 
     jump ch1_school
 
@@ -187,9 +185,8 @@ label ch1_bus_ryan_classmate:
 
     "Since [ally] thinks [name]'s name is \"[d_name]\", [pa[sbj]] thinks [name]'s a [d_noun]."
 
-    $ verb = v(pn, "is")
-
-    "[name] doesn't bother to correct [pa[obj]]. This happens all the time, and [pn[sbj]] [verb]n't sure what [pn[sbj]] could do about it."
+    $ verb0 = v(pn, "is")
+    "[name] doesn't bother to correct [pa[obj]]. This happens all the time, and [pn[sbj]] [verb0]n't sure what [pn[sbj]] could do about it."
 
     "[ally] seems like a cool person otherwise."
 
@@ -248,12 +245,12 @@ label ch1_bus_stranger:
 
 label ch1_bus_alone:
 
-    $ temp1 = renpy.random.choice(["English", "biology", "art", "math", "history"])
+    $ temp0 = renpy.random.choice(["English", "biology", "art", "math", "history"])
 
     if ryan > 1:
         "[name] decided not to bother [ally] with [pn[psv]] problems today."
 
-    "[name] stares out the window as [pn[sbj]] thinks about [pn[psv]] [temp1] homework."
+    "[name] stares out the window as [pn[sbj]] thinks about [pn[psv]] [temp0] homework."
 
     n_self "Another day, another lonely day."
 
@@ -265,25 +262,25 @@ label ch1_school:
 
     if bus:
 
-        $ temp1 = " " + ally
+        $ temp0 = " " + ally
         if ryan > 2:
-            $ temp2 = " with"
+            $ temp1 = " with"
         else:
-            $ temp2 = " behind"
+            $ temp1 = " behind"
     else:
 
+        $ temp0 = ""
         $ temp1 = ""
-        $ temp2 = ""
 
     if self > 1:
-        $ temp3 = "notices that flowers of multiple colors and varieties are in bloom"
+        $ temp2 = "notices that flowers of multiple colors and varieties are in bloom"
     elif self < 0:
-        $ temp3 = "is annoyed to be at school again but whatever"
+        $ temp2 = "is annoyed to be at school again but whatever"
     else:
-        $ verb = v(pn, "worry", "worries")
-        $ temp3 = verb + " about the upcoming hay fever season"
+        $ verb0 = v(pn, "worry", "worries")
+        $ temp2 = verb0 + " about the upcoming hay fever season"
 
-    "As [name] walks to middle school[temp2][temp1], [pn[sbj]] [temp3]."
+    "As [name] walks to middle school[temp1][temp0], [pn[sbj]] [temp2]."
 
     return
 
@@ -311,83 +308,82 @@ label ch1_hallway_cry:
 label ch1_club:
 
     if club:
-        $ temp1 = " with " + ally
-        $ temp2 = " next to " + ally
+        $ temp0 = " with " + ally
+        $ temp1 = " next to " + ally
     else:
+        $ temp0 = ""
         $ temp1 = ""
-        $ temp2 = ""
 
     scene bg club front
 
-    "After school, [name] goes to the middle school book club[temp1]."
+    "After school, [name] goes to the middle school book club[temp0]."
 
-    $ verb = v(pn, "sit")
+    $ verb0 = v(pn, "sit")
     $ verb1 = v(pn, "begin")
-
-    "[pn[sbj]!cl] [verb] down[temp2]. As usual, [pn[sbj]] [verb1] writing."
+    "[pn[sbj]!cl] [verb0] down[temp1]. As usual, [pn[sbj]] [verb1] writing."
 
     if happy > 2:
-        $ temp2 = "a short story about "
+        $ temp1 = "a short story about "
 
         if gender == "male":
             if loop == 2:
-                $ temp2 = temp2 + "his favorite taco place downtown"
+                $ temp1 = temp2 + "his favorite taco place downtown"
 
             elif loop == 3:
-                $ temp2 = temp2 + "a PewDiePie Let's Play"
+                $ temp1 = temp2 + "a PewDiePie Let's Play"
 
             elif loop == 4:
-                $ temp2 = temp2 + "male idea 4"
+                $ temp1 = temp2 + "male idea 4"
 
             else:
-                $ temp2 = temp2 + "his Hotwheels collection"
+                $ temp1 = temp2 + "his Hotwheels collection"
 
         elif gender == "female":
             if loop == 2:
-                $ temp2 = temp2 + "her neighbor's new kittens"
+                $ temp1 = temp2 + "her neighbor's new kittens"
 
             elif loop == 3:
-                $ temp2 = temp2 + "a sentient Pintrest board"
+                $ temp1 = temp2 + "a sentient Pintrest board"
 
             elif loop == 4:
-                $ temp2 = temp2 + "female idea 4"
+                $ temp1 = temp2 + "female idea 4"
 
             else:
-                $ temp2 = temp2 + "the color chartreuse"
+                $ temp1 = temp2 + "the color chartreuse"
 
         else:
             if loop == 2:
-                $ temp2 = temp2 + "gender neutral idea 1"
+                $ temp1 = temp2 + "gender neutral idea 1"
 
             elif loop == 3:
-                $ temp2 = temp2 + "gender neutral idea 2"
+                $ temp1 = temp2 + "gender neutral idea 2"
 
             elif loop == 4:
-                $ temp2 = temp2 + "gender neutral idea 4"
+                $ temp1 = temp2 + "gender neutral idea 4"
 
             else:
-                $ temp2 = temp2 + "gender neutral idea 3"
+                $ temp1 = temp2 + "gender neutral idea 3"
     else:
-        $ temp2 = "a poem "
+        $ temp1 = "a poem "
 
         if happy < 1:
-            $ temp2 = temp2 + "about knives"
+            $ temp1 = temp2 + "about knives"
 
             if self < -1:
-                $ temp2 = temp2 + ". All the knives"
+                $ temp1 = temp2 + ". All the knives"
         else:
-            $ temp2 = temp2 + "metaphorically describing "
+            $ temp1 = temp2 + "metaphorically describing "
 
             if loop == 2:
-                $ temp2 = temp2 + "a heated argument"
+                $ temp1 = temp2 + "a heated argument"
 
             elif loop == 3:
-                $ temp2 = temp2 + "the bottom of a well"
+                $ temp1 = temp2 + "the bottom of a well"
 
             else:
-                $ temp2 = temp2 + "the darkness in space"
+                $ temp1 = temp2 + "the darkness in space"
 
-    "Today, [name] is writing [temp2]."
+    "Today, [name] is writing [temp1]."
 
     "Soon, it is time for everyone to share their pieces of writing."
 
@@ -427,16 +423,16 @@ label ch1_club_share_ryan:
     scene bg club front
 
     if club:
-        $ temp1 = " and " + ally
+        $ temp0 = " and " + ally
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
     if loop % 2 == 0:
         show extra male norm
     else:
         show extra female norm
 
-    "Some of the other club members share their stories. [name][temp1] snap after each one."
+    "Some of the other club members share their stories. [name][temp0] snap after each one."
 
     hide extra
 
@@ -500,9 +496,9 @@ label ch1_club_nothing_ryan:
     a "Why don't you share it with the club?"
 
     if self < 1:
-        $ temp1 = "I guess I'm not that confident."
+        $ temp0 = "I guess I'm not that confident."
 
-    n "I don't know. [temp1]"
+    n "I don't know. [temp0]"
 
     a "It's really good. You should share it next time, okay? I think they'll love it."
 
@@ -527,19 +523,19 @@ label ch1_club_share_alone:
     "[name] shares [pn[psv]] poem with the club."
 
     if self < 0:
-        $ temp1 = "start to "
+        $ temp0 = "start to "
+    else:
+        $ temp0 = ""
+    if happy < 0:
+        $ temp1 = " quietly after an awkward silence"
     else:
         $ temp1 = ""
-    if happy < 0:
-        $ temp2 = " quietly after an awkward silence"
+    if (self > -1) and (happy > -1):
+        $ temp2 = " for " + pn["obj"]
     else:
         $ temp2 = ""
-    if (self > -1) and (happy > -1):
-        $ temp3 = " for " + pn["obj"]
-    else:
-        $ temp3 = ""
 
-    "The other members [temp1]snap[temp2][temp3]."
+    "The other members [temp0]snap[temp1][temp2]."
 
     hide main
 

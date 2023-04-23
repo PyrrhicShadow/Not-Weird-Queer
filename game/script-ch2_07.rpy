@@ -27,13 +27,13 @@ label ch2_07:
 
     if day == (day1 + 1):
         $ bioteam = "Issac"
-        $ temp1 = "a flower anatomy poster"
+        $ temp0 = "a flower anatomy poster"
     elif day == (day + 5):
         $ bioteam = "Evan"
-        $ temp1 = "discecting and labeling a flower"
+        $ temp0 = "discecting and labeling a flower"
     else:
         $ bioteam = "Luke"
-        $ temp1 = "a flower anatomy study guide"
+        $ temp0 = "a flower anatomy study guide"
 
     if bioteam.lower() == name.lower():
         $ bioteam = bioteam + " C"
@@ -50,7 +50,7 @@ label ch2_07:
 
     "[name] and [ally] form a team of 3 with their classmate [bioteam]."
 
-    "The three are working on [temp1]."
+    "The three are working on [temp0]."
 
     $ renpy.show("ally " + a_gender + " norm")
 
@@ -144,11 +144,11 @@ label ch2_07_ryan_apologizes:
     a "Well, it just doesn't feel right to expose you like that. I'll try to remember next time."
 
     if not defbio:
-        $ temp1 = "I was just nervous just now, but "
+        $ temp0 = "I was just nervous just now, but "
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    n "I mean, [temp1]I should be acting more like myself, right?"
+    n "I mean, [temp0]I should be acting more like myself, right?"
 
     n "If I'm not afraid to be a [noun], then you won't have to watch yourself."
 
@@ -161,23 +161,23 @@ label ch2_07_ryan_apologizes:
     scene bg classroom history
 
     if day == (day1 + 1):
-        $ temp1 = "playing a movie about the American Revolution"
+        $ temp0 = "playing a movie about the American Revolution"
 
     else:
-        $ temp1 = "lecturing about the Articles of Confederation"
+        $ temp0 = "lecturing about the Articles of Confederation"
 
-    "Today in history class, [histTeach] is [temp1]."
+    "Today in history class, [histTeach] is [temp0]."
 
     if gender == "male":
-        $ temp1 = "the perfect fps arsenal"
+        $ temp0 = "the perfect fps arsenal"
 
     elif gender == "female":
-        $ temp1 = "finding the perfect shade of purple"
+        $ temp0 = "finding the perfect shade of purple"
 
     else:
-        $ temp1 = "cheddar cheese and frozen mice"
+        $ temp0 = "cheddar cheese and frozen mice"
 
-    "[name] writes a poem about [temp1] in [pn[psv]] notebook."
+    "[name] writes a poem about [temp0] in [pn[psv]] notebook."
 
     n_self "History class is so boring."
 

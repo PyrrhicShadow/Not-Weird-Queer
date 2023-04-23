@@ -5,7 +5,7 @@ label ch1_03:
     $ loop = 3
     $ day += 1
     $ save_name = name + " (" + pn["pn"] + "), Day " + "%s" %day
-    
+
     $ renpy.checkpoint()
     $ renpy.force_autosave(take_screenshot=True, block=True)
 
@@ -45,9 +45,9 @@ label ch1_03:
 
     show teacher math
 
-    $ temp1 = renpy.random.choice(["lowest common denominators", "basic inequalities", "exponent rules"])
+    $ temp0 = renpy.random.choice(["lowest common denominators", "basic inequalities", "exponent rules"])
 
-    "Back in math class, [name] zones out as [mathTeach] goes over [temp1]."
+    "Back in math class, [name] zones out as [mathTeach] goes over [temp0]."
 
     "Eventually, it's time for lunch."
 
@@ -57,15 +57,13 @@ label ch1_03_math_gender:
 
     $ happy += 1
 
-    $ verb = v(pn, "need")
-
-    "[name] goes to the bathroom and does what [pn[sbj]] [verb] to do."
+    $ verb0 = v(pn, "need")
+    "[name] goes to the bathroom and does what [pn[sbj]] [verb0] to do."
 
     scene bg school hallway
 
-    $ verb = v(pn, "walk")
-
-    "As [pn[sbj]] [verb] out, [pn[psv]] art teacher, [artTeach], walks by."
+    $ verb0 = v(pn, "walk")
+    "As [pn[sbj]] [verb0] out, [pn[psv]] art teacher, [artTeach], walks by."
 
     show teacher art
 
@@ -91,9 +89,8 @@ label ch1_03_math_notGender:
 
     $ happy -= 1
 
-    $ verb = v(pn, "is")
-
-    "[name] goes into the [d_noun]'s bathroom. It bothers [pn[obj]] to need to hide who [pn[sbj]] [verb] but the fear keeps [pn[obj]] from doing differently."
+    $ verb0 = v(pn, "is")
+    "[name] goes into the [d_noun]'s bathroom. It bothers [pn[obj]] to need to hide who [pn[sbj]] [verb0] but the fear keeps [pn[obj]] from doing differently."
 
     "Afterward, [name] heads back to math class."
 
@@ -103,11 +100,10 @@ label ch1_03_math_missing:
 
     "Unfortunately, [name]'s school doesn't have a gender neutral bathroom."
 
-    $ verb = v(pn, "has")
+    $ verb0 = v(pn, "has")
     $ verb1 = v(pn, "make")
-
     menu:
-        "[name] frowns but [pn[sbj]] really [verb] to pee, so [pn[sbj]] [verb1] a choice."
+        "[name] frowns but [pn[sbj]] really [verb0] to pee, so [pn[sbj]] [verb1] a choice."
 
         "[a_noun]'s":
             jump ch1_03_math_gender
@@ -125,11 +121,11 @@ label ch1_03_lunch:
     scene bg gym lunch
 
     if ryan > 1:
-        $ temp1 = "with " + ally + " "
+        $ temp0 = "with " + ally + " "
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    "[name] picks a table [temp1]and starts eating [pn[psv]] sandwich."
+    "[name] picks a table [temp0]and starts eating [pn[psv]] sandwich."
 
     if club:
         call ch1_03_lunch_club
@@ -189,19 +185,18 @@ label ch1_03_english:
 
     if happy > 1:
         if gender == "male":
-            $ temp1 = "sexy sports cars"
+            $ temp0 = "sexy sports cars"
         elif gender == "female":
-            $ temp1 = "cats with party hats"
+            $ temp0 = "cats with party hats"
         else:
-            $ temp1 = "popping, abstract shapes"
+            $ temp0 = "popping, abstract shapes"
     elif self < 0:
-        $ temp1 = "a way to leave this world behind"
+        $ temp0 = "a way to leave this world behind"
     else:
-        $ temp1 = "nothing of particular importance"
+        $ temp0 = "nothing of particular importance"
 
-    $ verb = v(pn, "doodle")
-
-    "As [name]'s taking notes, [pn[sbj]] [verb] [temp1] in the margins of [pn[psv]] notes."
+    $ verb0 = v(pn, "doodle")
+    "As [name]'s taking notes, [pn[sbj]] [verb0] [temp0] in the margins of [pn[psv]] notes."
 
     "Eventually, the bell rings."
 

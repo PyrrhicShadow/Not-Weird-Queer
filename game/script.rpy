@@ -38,11 +38,11 @@ label start:
     $ death = False
 
     # temp variables
-    $ verb = ""
+    $ verb0 = ""
     $ verb1 = ""
+    $ temp0 = ""
     $ temp1 = ""
     $ temp2 = ""
-    $ temp3 = ""
 
     # get the main character's name and pronouns
     scene bg start game
@@ -313,9 +313,9 @@ label dirty_hacker:
 
     play music death
 
-    end """The programmer's not sure how you got here, but you're not supposed to be here.
+    end "The programmer's not sure how you got here, but you're not supposed to be here."
 
-    Odds are, you're just a dirty little hacker, aren't you?"""
+    end "Odds are, you're just a dirty little hacker, aren't you?"
 
     return
 
@@ -325,21 +325,27 @@ label tbc:
 
     scene bg end game
 
+    "[name] and [pn[psv]] friend [ally] have made great strides in understanding themselves, and their adventure will soon come to a close, but the ending hasn't yet been written."
+
+    "Go forth, brave soul, and enjoy the [config.version] ending."
+
+    "Of course, don't forget to leave some feedback!"
+
     play music end
 
     if persistent.complete:
-        $ temp1 = " again"
+        $ temp0 = " again"
+    else:
+        $ temp0 = ""
+
+    if death:
+        $ temp1 = ", even perservering to get " + name + " to a better place"
     else:
         $ temp1 = ""
 
-    if death:
-        $ temp2 = ", even perservering to get " + name + " to a better place"
-    else:
-        $ temp2 = ""
-
     end "For the special player who played this special game:"
 
-    end "Thank you for making it through this game[temp1]."
+    end "Thank you for making it through this game[temp0]."
 
     end "No, seriously."
 
@@ -355,7 +361,7 @@ label tbc:
 
     end "I hope you enjoyed playing {i}[config.name]{/i} as much as I enjoyed making it."
 
-    end "[name] also thanks you eternally for helping [pn[obj]] get through [pn[psv]] journey[temp2]."
+    end "[name] also thanks you eternally for helping [pn[obj]] get through [pn[psv]] journey[temp1]."
 
     end "You completed [pn[psv]] adventure with [self] self-esteem points over [day] days."
 

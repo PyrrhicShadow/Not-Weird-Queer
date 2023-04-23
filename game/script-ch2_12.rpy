@@ -25,10 +25,4 @@ label ch2_12:
 
 # head to the pier
 
-    "[name] and [pn[psv]] friend [ally] have made great strides in understanding themselves, and their adventure will soon come to a close, but the ending hasn't yet been written."
-
-    "Go forth, brave soul, and enjoy the [config.version] ending."
-
-    "Of course, don't forget to leave some feedback!"
-
     jump tbc

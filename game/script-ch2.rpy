@@ -40,15 +40,15 @@ label ch2_morning:
 
     if loop == 7:
         if gender == "male":
-            $ temp1 = "some boys'"
+            $ temp0 = "some boys'"
 
         elif gender == "female":
-            $ temp1 = "some girls'"
+            $ temp0 = "some girls'"
 
         else:
-            $ temp1 = "both girls' and boys'"
+            $ temp0 = "both girls' and boys'"
 
-        "[pn[sbj]!c] has [temp1] clothes that [pn[sbj]] had bough on [pn[psv]] own with [pn[psv]] Christmas money."
+        "[pn[sbj]!c] has [temp0] clothes that [pn[sbj]] had bough on [pn[psv]] own with [pn[psv]] Christmas money."
 
         "On the other hand, [pn[sbj]] could it safe and just wear a [d_noun]s' outfit."
 
@@ -77,28 +77,28 @@ label ch2_morning_gender:
 
     if gender == "male":
         if loop == 7:
-            $ temp1 = "graphic t-shirt and sweat pants"
+            $ temp0 = "graphic t-shirt and sweat pants"
         elif loop == 8:
-            $ temp1 = "blue t-shirt and basketball shorts"
+            $ temp0 = "blue t-shirt and basketball shorts"
         elif loop == 9:
-            $ temp1 = "long-sleeved polo and jeans"
+            $ temp0 = "long-sleeved polo and jeans"
         else:
-            $ temp1 = "black t-shirt and jeans"
+            $ temp0 = "black t-shirt and jeans"
 
     elif gender == "female":
         if loop == 7:
-            $ temp1 = "v-neck sweater and red skirt"
+            $ temp0 = "v-neck sweater and red skirt"
         elif loop == 8:
-            $ temp1 = "lacy top and skinny jeans"
+            $ temp0 = "lacy top and skinny jeans"
         elif loop == 9:
-            $ temp1 = "denim dress with a flower pin"
+            $ temp0 = "denim dress with a flower pin"
         else:
-            $ temp1 = "flowy sky-blue dress with pink leggings"
+            $ temp0 = "flowy sky-blue dress with pink leggings"
 
     else:
-        $ temp1 = "gender neutral outfit idea"
+        $ temp0 = "gender neutral outfit idea"
 
-    "[name] looks in the mirror at [pn[psv]] [temp1]."
+    "[name] looks in the mirror at [pn[psv]] [temp0]."
 
     "It's emboldening to be able to dress the way [pn[sbj]] feels on the inside."
 
@@ -111,28 +111,28 @@ label ch2_morning_notGender:
 
     if d_gender == "female":
         if loop == 7:
-            $ temp1 = "v-neck sweater and red skirt"
+            $ temp0 = "v-neck sweater and red skirt"
         elif loop == 8:
-            $ temp1 = "flower-print shirt and skinny jeans"
+            $ temp0 = "flower-print shirt and skinny jeans"
         elif loop == 9:
-            $ temp1 = "denim dress"
+            $ temp0 = "denim dress"
         else:
-            $ temp1 = "plain white shirt and skirt"
+            $ temp0 = "plain white shirt and skirt"
 
     elif d_gender == "male":
         if loop == 7:
-            $ temp1 = "boyish graphic t-shirt"
+            $ temp0 = "boyish graphic t-shirt"
         elif loop == 8:
-            $ temp1 = "long-sleeved polo"
+            $ temp0 = "long-sleeved polo"
         elif loop == 9:
-            $ temp1 = "t-shirt and basketball shorts"
+            $ temp0 = "t-shirt and basketball shorts"
         else:
-            $ temp1 = "outfit 4"
+            $ temp0 = "outfit 4"
 
     else:
-        $ temp1 = dirty_hacker
+        $ temp0 = dirty_hacker
 
-    "[name] quickly throws on a [temp1] and hurries out to the kitchen."
+    "[name] quickly throws on a [temp0] and hurries out to the kitchen."
 
     "[name] is embarrassed that [pn[sbj]] didn't have to courage to express [pn[psv]] true self."
 
@@ -143,21 +143,19 @@ label ch2_morning_neutral:
     $ renpy.show("main " + gender + " " + outfit + " norm")
 
     if loop == 7:
-        $ temp1 = "gender neutral outfit 1"
+        $ temp0 = "gender neutral outfit 1"
     elif loop == 8:
-        $ temp1 = "gender neutral outfit 2"
+        $ temp0 = "gender neutral outfit 2"
     elif loop == 9:
-        $ temp1 = "gender neutral outfit 3"
+        $ temp0 = "gender neutral outfit 3"
     else:
-        $ temp1 = "gender neutral outfit 4"
+        $ temp0 = "gender neutral outfit 4"
 
-    $ verb = v(pn, "do", "does")
+    $ verb0 = v(pn, "do", "does")
+    "[name] decides that [pn[sbj]] doesn't feel like taking risks today, but [pn[sbj]] also [verb0]n't want to hide [pn[obj]]self."
 
-    "[name] decides that [pn[sbj]] doesn't feel like taking risks today, but [pn[sbj]] also [verb]n't want to hide [pn[obj]]self."
-
-    $ verb = v(pn, "put")
-
-    "[pn[sbj]!c] [verb] on a [temp1]."
+    $ verb0 = v(pn, "put")
+    "[pn[sbj]!c] [verb0] on a [temp0]."
 
     "[name] figures [pn[sbj]] can always fight another day."
 
@@ -231,15 +229,15 @@ label ch2_club:
     "[name] and [ally] go to the afterschool book club."
 
     if loop == 7:
-        $ temp1 = "day 1 topic"
+        $ temp0 = "day 1 topic"
     elif loop == 8:
-        $ temp1 = "day 2 topic"
+        $ temp0 = "day 2 topic"
     elif loop == 9:
-        $ temp1 = "day 3 topic"
+        $ temp0 = "day 3 topic"
     else:
-        $ temp1 = "day 4 topic"
+        $ temp0 = "day 4 topic"
 
-    "[name] writes a story about [temp1]."
+    "[name] writes a story about [temp0]."
 
     "When [pn[sbj]] showes [ally], [pn[sbj]] tells [name] that it's really good and that other people will like it."
 
@@ -272,15 +270,15 @@ label ch2_home:
     play music outside
 
     if loop == 7:
-        $ temp1 = "chat topic 1"
+        $ temp0 = "chat topic 1"
     elif loop == 8:
-        $ temp1 = "chat topic 2"
+        $ temp0 = "chat topic 2"
     elif loop == 9:
-        $ temp1 = "chat topic 3"
+        $ temp0 = "chat topic 3"
     else:
-        $ temp1 = "chat topic 4"
+        $ temp0 = "chat topic 4"
 
-    "After the club meeting, [name] and [ally] chat a little about [temp1] while walking home."
+    "After the club meeting, [name] and [ally] chat a little about [temp0] while walking home."
 
     if happy < 0:
         $ self -= 1
@@ -302,9 +300,8 @@ label ch2_home:
             "Hopefully, tomorrow will go well, too."
 
         elif last_happy < 0:
-            $ verb = v(pn, "have", "has")
-
-            "The day was a rough one, but nothing [pn[sbj]] [verb]n't seen before."
+            $ verb0 = v(pn, "have", "has")
+            "The day was a rough one, but nothing [pn[sbj]] [verb0]n't seen before."
 
         else:
             "The day was an okay one."

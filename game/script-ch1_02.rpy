@@ -24,31 +24,31 @@ label ch1_02:
     play music school
 
     if day > 2:
-        $ temp1 = "still "
+        $ temp0 = "still "
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    "[name] goes to [pn[psv]] biology class.  The teacher, [bioTeach] is[temp1] lecturing about parts of flowers."
+    "[name] goes to [pn[psv]] biology class.  The teacher, [bioTeach] is[temp0] lecturing about parts of flowers."
 
     n_self "Flower genders are weird."
 
     if day == 2:
-        $ temp2 = "anthers"
+        $ temp1 = "anthers"
 
     elif day > 2 and day < 6:
-        $ temp2 = "pistils"
+        $ temp1 = "pistils"
 
     else:
-        $ temp2 = "sepals"
+        $ temp1 = "sepals"
 
     show teacher bio
 
-    "[bioTeach] asks a question about flower [temp2]."
+    "[bioTeach] asks a question about flower [temp1]."
 
     if ryan > 1:
-        $ temp1 = "friend"
+        $ temp0 = "friend"
     else:
-        $ temp1 = "classmate"
+        $ temp0 = "classmate"
 
     menu:
         "[name] knows the answer. What should [pn[sbj]] do?"
@@ -56,7 +56,7 @@ label ch1_02:
         "Raise [pn[psv]] hand":
             call ch1_02_bio_answer
 
-        "Whisper to [pn[psv]] [temp1], [ally]":
+        "Whisper to [pn[psv]] [temp0], [ally]":
             call ch1_02_bio_ryan
 
         "Do nothing":
@@ -68,7 +68,7 @@ label ch1_02_bio_answer:
 
     bio "[d_name]?"
 
-    "Cringing upon being refered to with {i}that{/i} name, [name] answers the question about [temp2]."
+    "Cringing upon being refered to with {i}that{/i} name, [name] answers the question about [temp1]."
 
     bio "Correct."
 
@@ -116,15 +116,14 @@ label ch1_02_bio_nothing:
     $ happy -= 1
 
     if day == 2:
-        $ temp3 = ally
+        $ temp2 = ally
     else:
-        $ temp3 = renpy.random.choice(["Becky", "Peter", "Josh", "Chara"])
+        $ temp2 = renpy.random.choice(["Becky", "Peter", "Josh", "Chara"])
 
-    "[name] stares out the window as [temp3] answers the question."
+    "[name] stares out the window as [temp2] answers the question."
 
-    $ verb = v(pn, "were", "was")
-
-    "Although [name] knew the answer, [pn[sbj]] [verb] too embarrassed to answer."
+    $ verb0 = v(pn, "were", "was")
+    "Although [name] knew the answer, [pn[sbj]] [verb0] too embarrassed to answer."
 
     "Maybe next time."
 
@@ -153,11 +152,11 @@ label ch1_02_lunch:
     n "What do you mean…?"
 
     if d_gender == "male":
-        $ temp1 = "freaking sissy"
+        $ temp0 = "freaking sissy"
     elif d_gender == "female":
-        $ temp1 = "crazy feminazi"
+        $ temp0 = "crazy feminazi"
 
-    xm "You a [temp1] or something?"
+    xm "You a [temp0] or something?"
 
     "The bully laughs too loudly to be comfortable."
 
@@ -273,13 +272,13 @@ label ch1_02_ryan_invite:
     $ club = True
 
     if (day > 2) and (self < 2):
-        $ temp1 = " I don't even know why I keep going."
+        $ temp0 = " I don't even know why I keep going."
     else:
         $temp1 = ""
 
     a "So, what're you doing after school?"
 
-    n "Not much. Just my book club.[temp1]"
+    n "Not much. Just my book club.[temp0]"
 
     a "Can I come with?"
 

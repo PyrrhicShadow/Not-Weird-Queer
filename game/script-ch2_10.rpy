@@ -50,15 +50,15 @@ label ch2_10_math_art:
     n "Oh, thank you, [mathBud]."
 
     if gender == "male":
-        $ temp1 = "shapes"
+        $ temp0 = "shapes"
 
     elif gender == "female":
-        $ temp1 = "colors"
+        $ temp0 = "colors"
 
     else:
-        $ temp1 = "shapes and colors"
+        $ temp0 = "shapes and colors"
 
-    m "Oh, no need to thank me. You capture this feeling of darkness really well, even though the [temp1] you used weren't dark at all."
+    m "Oh, no need to thank me. You capture this feeling of darkness really well, even though the [temp0] you used weren't dark at all."
 
     menu:
         "[name] feels proud of [pn[psv]] sculpture. Should [pn[psv]] explain their art to [mathBud]"
@@ -74,15 +74,15 @@ label ch2_10_math_explain:
     $ happy += 1
 
     if gender == "male":
-        $ temp1 = "masculine"
+        $ temp0 = "masculine"
 
     elif gender == "female":
-        $ temp1 = "feminine"
+        $ temp0 = "feminine"
 
     else:
-        $ temp1 = "gender-ambiguous"
+        $ temp0 = "gender-ambiguous"
 
-    "[name] decides to explain to [mathBud] the personal significance of the [temp1] pain depicted in [pn[psv]] sculpture."
+    "[name] decides to explain to [mathBud] the personal significance of the [temp0] pain depicted in [pn[psv]] sculpture."
 
     n "And that's why I've decided to go as '[name]' now."
 
@@ -193,12 +193,12 @@ label ch2_10_lunch_popkid:
         $ happy -= 1
 
         if d_gender == "female":
-            $ temp1 = "really pretty"
+            $ temp0 = "really pretty"
 
         elif d_gender == "male":
-            $ temp1 = "badass and manly"
+            $ temp0 = "badass and manly"
 
-        "[popKid] compliments [name]'s outfit for being [temp1]."
+        "[popKid] compliments [name]'s outfit for being [temp0]."
 
         "[name] tries to take [popKid]'s words as a compliment the best [pn[sbj]] can even though it makes [pn[obj]] feel angry about [pn[obj]]self."
 
@@ -230,12 +230,12 @@ label ch2_10_english:
     "[name] heads to English class."
 
     if defEng:
-        $ temp1 = "still "
+        $ temp0 = "still "
 
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    "[engTeach] [temp1]refers to [pn[obj]] as a [d_noun]."
+    "[engTeach] [temp0]refers to [pn[obj]] as a [d_noun]."
 
     if defEng:
         menu:
@@ -274,12 +274,12 @@ label ch2_10_english_calm:
         $ actn += 1
 
     if defEng:
-        $ temp1 = " once again"
+        $ temp0 = " once again"
 
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    "[name] explains[temp1] that [pn[psv]] is a [noun] and uses {noalt}[pn[pn]]{/noalt}{alt}[pn[sbj]] [pn[obj]]{/alt} pronouns."
+    "[name] explains[temp0] that [pn[psv]] is a [noun] and uses {noalt}[pn[pn]]{/noalt}{alt}[pn[sbj]] [pn[obj]]{/alt} pronouns."
 
     "Getting people to repsepct [name]'s gender is an uphill battle, but calm and collected is the way to win the war."
 
@@ -301,15 +301,15 @@ label ch2_10_english_angry:
     n "It's-{w} It's not irrelivent, it's about respect, {w}just like all that respect stuff you've been talking about all year!"
 
     if gender == "male":
-        $ temp1 = "Mister"
+        $ temp0 = "Mister"
 
     elif gender == "female":
-        $ temp1 = "Miss"
+        $ temp0 = "Miss"
 
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    eng "Oh, really, [temp1]?"
+    eng "Oh, really, [temp0]?"
 
     n "Yes. {w}Yes, it is."
 
@@ -331,9 +331,9 @@ label ch2_10_english_nothing:
 
     else:
         if outfit == "d":
-            $ temp1 = ", and other days to fight them.  This is not [name]'s day"
+            $ temp0 = ", and other days to fight them.  This is not [name]'s day"
 
-        "[name] decides to let it go. There are other battles $sbj can fight[temp1]."
+        "[name] decides to let it go. There are other battles $sbj can fight[temp0]."
 
     if self < 4:
         jump ch2_hallway_cry
@@ -402,25 +402,25 @@ label ch2_10_club_nothing:
 label ch2_10_club_ryan:
 
     if share:
-        $ temp1 = "Once it's " + a_psv + " turn, "
+        $ temp0 = "Once it's " + a_psv + " turn, "
 
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
     play music ally
 
-    "[temp1][ally] reads [pa[psv]] short poem in front of class."
+    "[temp0][ally] reads [pa[psv]] short poem in front of class."
 
     if day == (day1 + 2):
-        $ temp1 = "strangely bouncy " + book + " poem"
+        $ temp0 = "strangely bouncy " + book + " poem"
 
     elif day == (day1 + 6):
-        $ temp1 = "philisophical piece about climate change"
+        $ temp0 = "philisophical piece about climate change"
 
     else:
-        $ temp1 = "few repeating lines about the life of a cat"
+        $ temp0 = "few repeating lines about the life of a cat"
 
-    "It's a [temp1]. [ally]'s voice shakes slightly as [pa[sbj]] reads, something that surprises [name] as [ally] is usually such a fearless, outgoing person."
+    "It's a [temp0]. [ally]'s voice shakes slightly as [pa[sbj]] reads, something that surprises [name] as [ally] is usually such a fearless, outgoing person."
 
     "[name] snaps enthusiastically for [pn[psv]] friend, but notices that [ally] is right about the other club members."
 

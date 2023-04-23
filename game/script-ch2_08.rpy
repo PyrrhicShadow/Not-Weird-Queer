@@ -83,15 +83,15 @@ label ch2_08_english_answer:
     a "Yeah, that Mr. Francis guy is a dick. I'm sorry you have to put up with him."
 
     if outfit == "g":
-        $ temp1 = "anyway"
+        $ temp0 = "anyway"
 
     elif outfit == "d":
-        $ temp1 = "only because no one else knew the answer"
+        $ temp0 = "only because no one else knew the answer"
 
     else:
-        $ temp1 = "eventually"
+        $ temp0 = "eventually"
 
-    n "Well, he let me answer only because no one else knew the answer, [temp1], so it was okay in the end."
+    n "Well, he let me answer only because no one else knew the answer, [temp0], so it was okay in the end."
 
     a "That was really brave of you to stand up to him."
 
@@ -116,19 +116,18 @@ label ch2_08_english_nothing:
 
     "[engTeach] calls on three different [noun]s before one of them answers the question correctly."
 
-    $ verb = v("feel")
-
-    "[name] knew the answer, so [pn[sbj]] [verb] bad that [pn[sbj]] just let it go so easily."
+    $ verb0 = v("feel")
+    "[name] knew the answer, so [pn[sbj]] [verb0] bad that [pn[sbj]] just let it go so easily."
 
     if outfit == "g":
         n_self "Well, I know [engTeach] is a sexist and besides, [ally] isn't here."
 
-        $ temp1 = "Still, "
+        $ temp0 = "Still, "
 
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    n_self "[temp1]I should probably stand up for myself next time."
+    n_self "[temp0]I should probably stand up for myself next time."
 
     scene bg school hallway
 
@@ -192,12 +191,12 @@ label ch2_08_english_after:
     "[name] shakes [pn[psv]] head."
 
     if a_gender == "male":
-        $ temp1 = "guy"
+        $ temp0 = "guy"
 
     else:
-        $ temp1 = "chick"
+        $ temp0 = "chick"
 
-    n "Is it just me, or was that [temp1] kind of a creep?"
+    n "Is it just me, or was that [temp0] kind of a creep?"
 
     a "And an asshole at that. If [pa[sbj]] was really interested, [pa[sbj]] wouldn't have been so rude just because you told [pa[obj]] that you're a [noun]."
 
@@ -241,23 +240,23 @@ label ch2_08_art:
     "$name heads to $pos art class with $ally."
 
     if day > day1 + 7:
-        $ temp1 = "finishing up"
+        $ temp0 = "finishing up"
 
     else:
-        $ temp1 = "working on"
+        $ temp0 = "working on"
 
-    "Today, the class is [temp1] sculptures made from recycled materials."
+    "Today, the class is [temp0] sculptures made from recycled materials."
 
     if gender == "male":
-        $ temp1 = "masculine sculpture idea"
+        $ temp0 = "masculine sculpture idea"
 
     elif gender == "female":
-        $ temp1 = "feminine sculpture idea"
+        $ temp0 = "feminine sculpture idea"
 
     else:
-        $ temp1 = "nonbinary sculpture idea"
+        $ temp0 = "nonbinary sculpture idea"
 
-    "$name is making a [temp1]."
+    "$name is making a [temp0]."
 
     "[ally] is also working on a sculpture of [pa[psv]] own with some sort of recycled materials."
 
@@ -270,15 +269,13 @@ label ch2_08_club_story:
 
     cp "Anyone wanna volunteer today?"
 
-    $ verb = v(pn, "re", "s")
-
-    "[name] raises [pn[psv]] hand. The club president tell [pn[obj]] that [pn[sbj]]'[verb] fourth."
+    $ verb0 = v(pn, "re", "s")
+    "[name] raises [pn[psv]] hand. The club president tell [pn[obj]] that [pn[sbj]]'[verb0] fourth."
 
     hide extra
 
-    $ verb = v(pn, "read")
-
-    "Finally, it's time for [name] to share. [pn[sbj]!c] [verb] [pn[psv]] story with a calm, clear voice."
+    $ verb0 = v(pn, "read")
+    "Finally, it's time for [name] to share. [pn[sbj]!c] [verb0] [pn[psv]] story with a calm, clear voice."
 
     "After everyone's done snapping, Cami Newton raises her hand."
 
@@ -290,9 +287,8 @@ label ch2_08_club_story:
 
     c "Sure. That sounds good."
 
-    $ verb = v(pn, "wonder")
-
-    "After [name] sits down, [pn[sbj]] [verb] what [pn[sbj]] should tell Cami."
+    $ verb0 = v(pn, "wonder")
+    "After [name] sits down, [pn[sbj]] [verb0] what [pn[sbj]] should tell Cami."
 
     menu:
         "Should [name] share [pn[psv]] inspiration?"

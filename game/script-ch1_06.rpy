@@ -21,9 +21,8 @@ label ch1_06:
 
     "After a leisurely Saturday morning of lounging in bed and watching Cartoon Network, it's time to go hang out with [ally]."
 
-    $ verb = v(pn, "put")
-
-    "Feeling more confident than usual, [pn[sbj]] [verb] on a mostly [adj] outfit before heading out."
+    $ verb0 = v(pn, "put")
+    "Feeling more confident than usual, [pn[sbj]] [verb0] on a mostly [adj] outfit before heading out."
 
 # head to the park
 
@@ -78,13 +77,13 @@ label ch1_06:
     n "It was my love of reading that led me to join the book club."
 
     if book == "manga":
-        $ temp1 = "create"
+        $ temp0 = "create"
     else:
-        $ temp1 = "write"
+        $ temp0 = "write"
 
-    a "Oh, cool! Do you like to [temp1] [book] outside of the club?"
+    a "Oh, cool! Do you like to [temp0] [book] outside of the club?"
 
-    n "Well, I like to [temp1] all sorts of things, not just [book]."
+    n "Well, I like to [temp0] all sorts of things, not just [book]."
 
     n "But, yeah, I do. It's a really rewarding experience, expressing myself on paper."
 
@@ -137,13 +136,13 @@ label ch1_06:
     "[ally] puts [pa[psv]] hand on [name]'s shoulder."
 
     if d_gender == "male":
-        $ temp1 = "masculine"
+        $ temp0 = "masculine"
     elif d_gender == "female":
-        $ temp1 = "feminine"
+        $ temp0 = "feminine"
 
     $ renpy.show("ally " + a_gender + " frown")
 
-    a "Hey. I don't know very much about what it's like to be you, but if you don't like being associated with [temp1] things, I'm going to guess that you aren't happy dressing like a [d_noun], either."
+    a "Hey. I don't know very much about what it's like to be you, but if you don't like being associated with [temp0] things, I'm going to guess that you aren't happy dressing like a [d_noun], either."
 
     n "Yeah, but it's scary sometimes. I can't just dress like a [noun] because I want to."
 
@@ -196,12 +195,12 @@ label ch1_06:
     n "I mean, it's just life. I kind of accept it, now."
 
     if gender == "enby":
-        $ temp1 = " act all gender neutral"
+        $ temp0 = " act all gender neutral"
 
     else:
-        $ temp1 = ""
+        $ temp0 = ""
 
-    a "Well, that doesn't seem fair. I mean, why can I act like a [a_noun] but you can't[temp1]?"
+    a "Well, that doesn't seem fair. I mean, why can I act like a [a_noun] but you can't[temp0]?"
 
     n "I don't know. I just know that if I dress [d_adj] and try to act like a [d_noun], the bullies mostly leave me alone."
 
@@ -238,15 +237,15 @@ label ch1_06:
     "[name] laughs, trying to see if [ally] was joking."
 
     if gender == "male":
-        $ temp1 = "PewDiePie Let's Plays"
+        $ temp0 = "PewDiePie Let's Plays"
 
     elif gender == "female":
-        $ temp1 = "sentient Pinterest boards"
+        $ temp0 = "sentient Pinterest boards"
 
     else:
-        $ temp1 = "topic 2"
+        $ temp0 = "topic 2"
 
-    n "Now you're just teasing me. I write about [temp1]."
+    n "Now you're just teasing me. I write about [temp0]."
 
     $ renpy.show("ally " + a_gender + " laugh")
 
@@ -379,9 +378,8 @@ label ch1_06_home:
 
     "[name] goes home feeling lighter about [pn[obj]]self."
 
-    $ verb = v(pn, "try", "tries")
-
-    "Maybe if [pn[sbj]] [verb] to express [pn[obj]]self more, things will start getting better."
+    $ verb0 = v(pn, "try", "tries")
+    "Maybe if [pn[sbj]] [verb0] to express [pn[obj]]self more, things will start getting better."
 
     "[name] is ready to start a new week."
 
@@ -394,8 +392,5 @@ label ch1_06_home:
     $ happy = 0
     $ bus = True
     $ actn = 0
-
-    $ renpy.checkpoint()
-    $ renpy.force_autosave(take_screenshot=True, block=True)
 
     jump ch2

@@ -139,18 +139,18 @@ label ch2_09_lunch:
     n "I've had enough of him for the day."
 
     if book == "manga":
-        $ temp1 = ""
-        $ temp2 = "manga"
+        $ temp0 = ""
+        $ temp1 = "manga"
 
     else:
-        $ temp1 = " novel"
-        $ temp2 = "novel"
+        $ temp0 = " novel"
+        $ temp1 = "novel"
 
-    a "Sure. I started a new [book][temp1] last night."
+    a "Sure. I started a new [book][temp0] last night."
 
     n "Oh, what's it about?"
 
-    "[ally] laughs before describing the plot of [pa[psv]] [temp2]."
+    "[ally] laughs before describing the plot of [pa[psv]] [temp1]."
 
     "Chilling with [name]'s friend is a good break from the events of history class."
 
