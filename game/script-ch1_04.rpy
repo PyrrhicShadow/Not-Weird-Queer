@@ -99,9 +99,7 @@ label ch1_04_pe_gender:
 
         pe "Fine, whatever. Any volunteers?"
 
-        "A [a_noun] walks over to the [d_noun]'s team, snickering."
-
-        "[peTeach] is satisfied."
+        "A [a_noun] walks over to the [d_noun]'s team, snickering. [peTeach] is satisfied."
 
         hide teacher
 
