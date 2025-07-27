@@ -50,7 +50,7 @@ Note-sheet-sans (male and female) by Jake Kao, a collage from assets by Toby Fox
 
 ### bg:
 
-"October" by Stephan Moccio
+"October" by Stephan Moccio (will not appear in full game please don't sue me)
 
 Three Chain Links – Die Historic: https://youtu.be/ZyVq4HF8oRw, Creative Commons Attribution 3.0 - http://bit.ly/RFP_CClicense
 
